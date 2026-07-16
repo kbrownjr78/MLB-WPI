@@ -5,6 +5,9 @@ on:
     - cron: '0 10 * * *' # Runs daily at 10:00 AM UTC / 6:00 AM EST
   workflow_dispatch: # Allows manual one-click execution from the GitHub Actions tab
 
+permissions:
+  contents: write # Crucial: Gives the workflow write access to commit back to the main branch
+
 jobs:
   run-predictions:
     runs-on: ubuntu-latest
@@ -13,13 +16,13 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        persist-credentials: false
+        persist-credentials: true # Allows the runner to push updates back to GitHub
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        cache: 'pip' # Speeds up subsequent runs by caching downloaded packages
+        cache: 'pip'
 
     - name: Install Dependencies
       run: |
@@ -32,17 +35,22 @@ jobs:
 
     - name: Run MLB Predictive Model
       env:
-        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }} # Inject your optional live weather token here
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
       run: |
         python src/predict_games.py
 
-    - name: Get Current Date
-      id: get_date
-      run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
-    - name: Upload Daily Predictions CSV Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: mlb-sim-output-${{ steps.get_date.outputs.today }}
-        path: data/predictions/mlb_sim_output_${{ steps.get_date.outputs.today }}.csv
-        retention-days: 7 # Deletes old datasets automatically after 7 days to save space
+    - name: Commit and Push Prediction CSV to Main Branch
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@://github.com"
+        
+        # Add the newly generated CSV file
+        git add data/predictions/*.csv
+        
+        # Check if changes exist before trying to commit to avoid workflow failure errors
+        if git diff --cached --quiet; then
+          echo "No new prediction data found. Skipping commit."
+        else
+          git commit -m "Automated Data Push: Generated Predictions for $(date +'%Y-%m-%d')"
+          git push origin main
+        fi
