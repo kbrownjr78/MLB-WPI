@@ -52,10 +52,18 @@ class MLBWeatherEnrichedEngine:
         try:
             async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
                 weather = await client.get(city)
+                
+                # Safe fallback parsing for text direction string inputs
+                raw_dir = weather.wind_direction
+                if hasattr(raw_dir, 'value'):
+                    dir_val = raw_dir.value
+                else:
+                    dir_val = str(raw_dir)
+                    
                 return {
                     'temp': weather.temperature,
                     'wind_speed': weather.wind_speed,
-                    'wind_direction': weather.wind_direction.value if hasattr(weather.wind_direction, 'value') else 0
+                    'wind_direction': dir_val
                 }
         except Exception as e:
             print(f"Weather fetch failed for {city}: {e}. Applying standard default baselines.")
@@ -93,6 +101,20 @@ class MLBWeatherEnrichedEngine:
             }
         except Exception:
             return None
+    def _compass_to_degrees(self, direction):
+        """Translates text wind directions into numerical compass degrees."""
+        if isinstance(direction, (int, float)):
+            return float(direction)
+            
+        mapping = {
+            'N': 0.0, 'NNE': 22.5, 'NE': 45.0, 'ENE': 67.5,
+            'E': 90.0, 'ESE': 112.5, 'SE': 135.0, 'SSE': 157.5,
+            'S': 180.0, 'SSW': 202.5, 'SW': 225.0, 'WSW': 247.5,
+            'W': 270.0, 'WNW': 292.5, 'NW': 315.0, 'NNW': 337.5
+        }
+        clean_dir = str(direction).strip().upper()
+        return mapping.get(clean_dir, 0.0)
+
     def calculate_environmental_modifier(self, home_team, w_data):
         """Implements the full Delta_Env operational framework formula."""
         p_info = self.park_data.get(home_team, {'factor': 1.00, 'dome': False})
@@ -106,8 +128,9 @@ class MLBWeatherEnrichedEngine:
         elevation_factor = 3.5 if home_team == 'Colorado Rockies' else 1.0
         delta_density = (w_data['temp'] - 70) * 0.001 * elevation_factor
         
-        # Delta_Wind = WindSpeed * cos(Wind_Angle) * Park_Sensitivity
-        wind_angle_rad = np.radians(w_data['wind_direction'])
+        # Safe translation of compass strings to degree numerical values
+        deg_angle = self._compass_to_degrees(w_data['wind_direction'])
+        wind_angle_rad = np.radians(deg_angle)
         delta_wind = w_data['wind_speed'] * np.cos(wind_angle_rad) * 0.002
         
         # Combined Custom Delta_Env Vector
@@ -123,7 +146,7 @@ class MLBWeatherEnrichedEngine:
             'delta_env': delta_env,
             'away_avg_runs_per_inning': 0.52 * delta_env,
             'home_avg_runs_per_inning': 0.55 * delta_env,
-            'away_sp_k_prop': 5.5 / delta_env,  # Strikeouts drop in heavy air/high run environments
+            'away_sp_k_prop': 5.5 / delta_env,
             'home_sp_k_prop': 6.0 / delta_env
         }
         return metrics
