@@ -4,3 +4,4 @@ scipy>=1.10.0
 requests>=2.31.0
 pybaseball>=2.2.0
 MLB-StatsAPI>=1.0.0
+python-weather>=2.0.0
