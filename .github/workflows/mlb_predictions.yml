@@ -3,7 +3,7 @@ name: MLB Monte Carlo Prediction Engine
 on:
   schedule:
     - cron: '0 10 * * *' # Runs daily at 10:00 AM UTC / 6:00 AM EST
-  workflow_dispatch: # Allows manual triggers from the GitHub UI
+  workflow_dispatch: # Allows manual one-click execution from the GitHub Actions tab
 
 jobs:
   run-predictions:
@@ -12,27 +12,37 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        cache: 'pip'
+        cache: 'pip' # Speeds up subsequent runs by caching downloaded packages
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas numpy scipy requests pybaseball
+        pip install -r requirements.txt
+
+    - name: Create Directories
+      run: |
+        mkdir -p data/predictions
 
     - name: Run MLB Predictive Model
       env:
-        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }} # Optional: For live weather APIs
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }} # Inject your optional live weather token here
       run: |
         python src/predict_games.py
+
+    - name: Get Current Date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
     - name: Upload Daily Predictions Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: daily-mlb-predictions-${{ datetime.date.today() }}
+        name: daily-mlb-predictions-${{ steps.date.outputs.date }}
         path: data/predictions/
-        retention-days: 7
+        retention-days: 7 # Deletes old datasets automatically after 7 days to save space
