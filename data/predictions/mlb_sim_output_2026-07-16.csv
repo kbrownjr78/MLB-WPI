@@ -1,2 +1,2 @@
-Game,Away_SP,Home_SP,Away_Sim_Prob,Home_Sim_Prob,Target_Edge
-NYY @ CWS,Gerrit Cole,Garrett Crochet,99.0%,1.0%,AWAY ML
+GameID,Matchup,Away_Probable_SP,Home_Probable_SP,Away_Sim_WinProb,Home_Sim_WinProb,Calculated_Edge
+823440,New York Mets @ Philadelphia Phillies,Christian Scott,Aaron Nola,54.89%,45.11%,AWAY ML
