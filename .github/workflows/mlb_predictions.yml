@@ -37,12 +37,12 @@ jobs:
         python src/predict_games.py
 
     - name: Get Current Date
-      id: date
-      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      id: get_date
+      run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
     - name: Upload Daily Predictions Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: daily-mlb-predictions-${{ steps.date.outputs.date }}
+        name: daily-mlb-predictions-${{ steps.get_date.outputs.today }}
         path: data/predictions/
         retention-days: 7 # Deletes old datasets automatically after 7 days to save space
