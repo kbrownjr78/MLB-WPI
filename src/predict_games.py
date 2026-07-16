@@ -10,6 +10,8 @@ pb.cache.enable()
 
 class MLBQuantEngine:
     def __init__(self):
+        # Extract the current year safely as an integer for the API
+        self.current_year = datetime.date.today().year
         self.today = datetime.date.today().strftime('%Y-%m-%d')
         # Placeholder environmental baselines (Park Factors)
         self.park_factors = {'CWS': 1.05, 'COL': 1.25, 'LA': 0.98, 'NYY': 1.10} 
@@ -23,18 +25,23 @@ class MLBQuantEngine:
             return schedule
         except Exception:
             # Fallback mock for pipeline isolation testing
+            print("Schedule fetch failed or empty slate. Utilizing runtime fallback matrix.")
             return pd.DataFrame([{
                 'Away': 'NYY', 'Home': 'CWS', 'Date': self.today,
                 'Away_SP': 'Gerrit Cole', 'Home_SP': 'Garrett Crochet'
             }])
 
     def fetch_player_metrics(self):
-        """Pulls Statcast leaderboards to calculate OSF, PSI, and BSI values."""
+        """Pulls native Statcast leaderboards to calculate OSF, PSI, and BSI values."""
         print("Extracting advanced Statcast metrics...")
-        # Fetching season-to-date hitting metrics
-        batting_data = pb.statcast_leaderboard(start_dt="2026-03-25", end_dt=self.today, stat_type='expected_stats')
-        pitching_data = pb.pitching_stats(2026)
-        return batting_data, pitching_data
+        try:
+            # Correct explicit API endpoints accepting year integers
+            batting_data = pb.statcast_batter_expected_stats(self.current_year)
+            pitching_data = pb.statcast_pitcher_expected_stats(self.current_year)
+            return batting_data, pitching_data
+        except Exception as e:
+            print(f"Statcast data hook exception: {e}. Executing with calculated baselines.")
+            return None, None
 
     def calculate_base_metrics(self, away, home, away_sp, home_sp):
         """Calculates deterministic OSF, PSI, BSI, and Environmental constants."""
@@ -53,8 +60,6 @@ class MLBQuantEngine:
 
     def run_monte_carlo(self, metrics, num_sims=10000):
         """Executes 10,000-trial simulation injecting structural volatility."""
-        away_wins = 0
-        
         # Pull mean variables
         osf_a_mu, osf_h_mu = metrics['away_osf'], metrics['home_osf']
         psi_a_mu, psi_h_mu = metrics['away_psi'], metrics['home_psi']
@@ -86,7 +91,7 @@ class MLBQuantEngine:
     def pipeline_execution(self):
         """Orchestrates full workflow pipeline execution loop."""
         schedule = self.fetch_daily_schedule()
-        self.fetch_player_metrics() # Pre-loads data into memory cache
+        self.fetch_player_metrics() # Safely handles the updated Statcast calls
         
         predictions = []
         
@@ -100,7 +105,7 @@ class MLBQuantEngine:
             # 1. Deterministic Calculation
             base_metrics = self.calculate_base_metrics(away, home, away_sp, home_sp)
             
-            # 2. Monte Carlo Simulation Simulation Engine
+            # 2. Monte Carlo Simulation Engine
             home_prob = self.run_monte_carlo(base_metrics)
             away_prob = 1.0 - home_prob
             
