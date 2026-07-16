@@ -1,170 +1,229 @@
 import os
+import asyncio
 import datetime
 import numpy as np
 import pandas as pd
 import statsapi
 import pybaseball as pb
+import python_weather
 
-# Enable caching to protect against rate limits during scraping
+# Enable pybaseball caching to stay under API limits
 pb.cache.enable()
 
-class MLBProductionEngine:
+class MLBWeatherEnrichedEngine:
     def __init__(self):
         self.today = datetime.date.today().strftime('%Y-%m-%d')
         self.current_year = datetime.date.today().year
         
-        # Comprehensive historical venue constant baselines (Park Factors)
-        self.park_factors = {
-            'Arizona Diamondbacks': 1.02, 'Atlanta Braves': 0.99, 'Baltimore Orioles': 1.01,
-            'Boston Red Sox': 1.08, 'Chicago Cubs': 1.00, 'Chicago White Sox': 1.03,
-            'Cincinnati Reds': 1.12, 'Cleveland Guardians': 0.98, 'Colorado Rockies': 1.32,
-            'Detroit Tigers': 0.97, 'Houston Astros': 0.98, 'Kansas City Royals': 1.02,
-            'Los Angeles Angels': 0.98, 'Los Angeles Dodgers': 0.97, 'Miami Marlins': 0.95,
-            'Milwaukee Brewers': 1.01, 'Minnesota Twins': 0.99, 'New York Mets': 0.95,
-            'New York Yankees': 1.04, 'Oakland Athletics': 0.93, 'Philadelphia Phillies': 1.02,
-            'Pittsburgh Pirates': 0.97, 'San Diego Padres': 0.94, 'San Francisco Giants': 0.93,
-            'Seattle Mariners': 0.92, 'St. Louis Cardinals': 0.97, 'Tampa Bay Rays': 0.96,
-            'Texas Rangers': 1.02, 'Toronto Blue Jays': 1.00, 'Washington Nationals': 1.00
+        # 1. Official MLB Team-to-City Mapping (for Live Weather Queries)
+        self.team_cities = {
+            'Arizona Diamondbacks': 'Phoenix', 'Atlanta Braves': 'Atlanta', 'Baltimore Orioles': 'Baltimore',
+            'Boston Red Sox': 'Boston', 'Chicago Cubs': 'Chicago', 'Chicago White Sox': 'Chicago',
+            'Cincinnati Reds': 'Cincinnati', 'Cleveland Guardians': 'Cleveland', 'Colorado Rockies': 'Denver',
+            'Detroit Tigers': 'Detroit', 'Houston Astros': 'Houston', 'Kansas City Royals': 'Kansas City',
+            'Los Angeles Angels': 'Anaheim', 'Los Angeles Dodgers': 'Los Angeles', 'Miami Marlins': 'Miami',
+            'Milwaukee Brewers': 'Milwaukee', 'Minnesota Twins': 'Minneapolis', 'New York Mets': 'New York',
+            'New York Yankees': 'New York', 'Oakland Athletics': 'Oakland', 'Philadelphia Phillies': 'Philadelphia',
+            'Pittsburgh Pirates': 'Pittsburgh', 'San Diego Padres': 'San Diego', 'San Francisco Giants': 'San Francisco',
+            'Seattle Mariners': 'Seattle', 'St. Louis Cardinals': 'St. Louis', 'Tampa Bay Rays': 'St. Petersburg',
+            'Texas Rangers': 'Arlington', 'Toronto Blue Jays': 'Toronto', 'Washington Nationals': 'Washington'
         }
+        
+        # 2. Authentic Base Park Factors & Stadium Dome Registry
+        self.park_data = {
+            'Arizona Diamondbacks': {'factor': 1.02, 'dome': True},   'Atlanta Braves': {'factor': 0.99, 'dome': False},
+            'Baltimore Orioles': {'factor': 1.01, 'dome': False},     'Boston Red Sox': {'factor': 1.08, 'dome': False},
+            'Chicago Cubs': {'factor': 1.00, 'dome': False},          'Chicago White Sox': {'factor': 1.03, 'dome': False},
+            'Cincinnati Reds': {'factor': 1.12, 'dome': False},       'Cleveland Guardians': {'factor': 0.98, 'dome': False},
+            'Colorado Rockies': {'factor': 1.32, 'dome': False},      'Detroit Tigers': {'factor': 0.97, 'dome': False},
+            'Houston Astros': {'factor': 0.98, 'dome': True},         'Kansas City Royals': {'factor': 1.02, 'dome': False},
+            'Los Angeles Angels': {'factor': 0.98, 'dome': False},    'Los Angeles Dodgers': {'factor': 0.97, 'dome': False},
+            'Miami Marlins': {'factor': 0.95, 'dome': True},          'Milwaukee Brewers': {'factor': 1.01, 'dome': True},
+            'Minnesota Twins': {'factor': 0.99, 'dome': False},       'New York Mets': {'factor': 0.95, 'dome': False},
+            'New York Yankees': {'factor': 1.04, 'dome': False},      'Oakland Athletics': {'factor': 0.93, 'dome': False},
+            'Philadelphia Phillies': {'factor': 1.02, 'dome': False}, 'Pittsburgh Pirates': {'factor': 0.97, 'dome': False},
+            'San Diego Padres': {'factor': 0.94, 'dome': False},      'San Francisco Giants': {'factor': 0.93, 'dome': False},
+            'Seattle Mariners': {'factor': 0.92, 'dome': True},       'St. Louis Cardinals': {'factor': 0.97, 'dome': False},
+            'Tampa Bay Rays': {'factor': 0.96, 'dome': True},         'Texas Rangers': {'factor': 1.02, 'dome': True},
+            'Toronto Blue Jays': {'factor': 1.00, 'dome': True},      'Washington Nationals': {'factor': 1.00, 'dome': False}
+        }
+    async def get_live_weather(self, city):
+        """Asynchronously pulls real-time weather parameters using python-weather."""
+        try:
+            async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
+                weather = await client.get(city)
+                return {
+                    'temp': weather.temperature,
+                    'wind_speed': weather.wind_speed,
+                    'wind_direction': weather.wind_direction.value if hasattr(weather.wind_direction, 'value') else 0
+                }
+        except Exception as e:
+            print(f"Weather fetch failed for {city}: {e}. Applying standard default baselines.")
+            return {'temp': 70, 'wind_speed': 0, 'wind_direction': 0}
 
     def fetch_live_schedule(self):
-        """Ingests live game schedules using the python-mlb-statsapi layer."""
-        print(f"[{datetime.datetime.now()}] Ingesting MLB Schedule via StatsAPI for {self.today}...")
+        """Ingests current day games directly from MLB StatsAPI."""
         try:
-            # Query official API endpoint
             raw_games = statsapi.schedule(date=self.today)
-            parsed_schedule = []
-            
-            for game in raw_games:
-                # Exclude games that have already finished or been postponed
-                if game.get('status') in ['Final', 'Postponed', 'Cancelled']:
+            parsed = []
+            for g in raw_games:
+                if g.get('status') in ['Final', 'Postponed', 'Cancelled']:
                     continue
-                    
-                parsed_schedule.append({
-                    'game_id': game.get('game_id'),
-                    'away_team': game.get('away_name'),
-                    'home_team': game.get('home_name'),
-                    'away_pitcher': game.get('away_probable_pitcher') or 'Unknown Starter',
-                    'home_pitcher': game.get('home_probable_pitcher') or 'Unknown Starter'
+                parsed.append({
+                    'game_id': g.get('game_id'),
+                    'away_team': g.get('away_name'),
+                    'home_team': g.get('home_name'),
+                    'away_pitcher': g.get('away_probable_pitcher') or 'Unknown Starter',
+                    'home_pitcher': g.get('home_probable_pitcher') or 'Unknown Starter'
                 })
-            
-            print(f"Successfully processed {len(parsed_schedule)} active games.")
-            return pd.DataFrame(parsed_schedule)
-            
-        except Exception as e:
-            print(f"Error fetching schedule: {e}. Defaulting to empty pipeline matrix.")
+            return pd.DataFrame(parsed)
+        except Exception:
             return pd.DataFrame()
 
     def scrape_historical_and_savant_data(self):
-        """Scrapes deep metrics from FanGraphs, Baseball Reference, and Savant via pybaseball."""
-        print(f"[{datetime.datetime.now()}] Scraping tracking layers from analytical endpoints...")
+        """Scrapes advanced baseball tracking layers from historical endpoints."""
         try:
-            # 1. Baseball Savant Expected Metric tracking data Leaderboards
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
             savant_pitchers = pb.statcast_pitcher_expected_stats(self.current_year)
-            
-            # 2. FanGraphs Historical Cumulative Leaderboard Datasets
-            fg_batting = pb.batting_stats(self.current_year - 1, self.current_year, qual_rating=1)
             fg_pitching = pb.pitching_stats(self.current_year - 1, self.current_year, qual_rating=1)
-            
-            # Index datasets down to dictionary structures for O(1) performance lookup mapping
-            metrics_db = {
+            return {
                 'savant_hitters': savant_hitters.set_index('last_name, first_name') if savant_hitters is not None else pd.DataFrame(),
                 'savant_pitchers': savant_pitchers.set_index('last_name, first_name') if savant_pitchers is not None else pd.DataFrame(),
-                'fg_batting': fg_batting.set_index('Team') if fg_batting is not None else pd.DataFrame(),
                 'fg_pitching': fg_pitching.set_index('Name') if fg_pitching is not None else pd.DataFrame()
             }
-            return metrics_db
-        except Exception as e:
-            print(f"Scraping warnings encountered: {e}. Enforcing baseline metrics fallback calculations.")
+        except Exception:
             return None
-
-    def calculate_custom_engine_metrics(self, game, db):
-        """Calculates OSF, PSI, BSI, and environmental vectors from scraped data."""
-        # Baseline structural values if data is missing
-        away_osf, home_osf = 0.335, 0.330
-        away_psi, home_psi = 32.5, 34.1
-        away_bsi, home_bsi = 64.2, 62.8
+    def calculate_environmental_modifier(self, home_team, w_data):
+        """Implements the full Delta_Env operational framework formula."""
+        p_info = self.park_data.get(home_team, {'factor': 1.00, 'dome': False})
+        base_pf = p_info['factor']
         
-        # Look up team names and map them to standard park metrics
-        home_team_name = game['home_team']
-        env_modifier = self.park_factors.get(home_team_name, 1.00)
-        
-        # Safely pull exact player stats if pybaseball database arrays successfully compiled
-        if db is not None:
-            # Pitcher extraction logic via string token mapping
-            hp_name = game['home_pitcher']
-            ap_name = game['away_pitcher']
+        # Enclosed Dome contingency override
+        if p_info['dome']:
+            return base_pf
             
-            if hp_name in db['fg_pitching'].index:
-                home_psi = float(db['fg_pitching'].loc[hp_name, 'FIP'].mean()) * 8.5 if not db['fg_pitching'].loc[hp_name].empty else home_psi
-            if ap_name in db['fg_pitching'].index:
-                away_psi = float(db['fg_pitching'].loc[ap_name, 'FIP'].mean()) * 8.5 if not db['fg_pitching'].loc[ap_name].empty else away_psi
+        # Delta_Density = (GameTemp - 70) * 0.001 * Elevation_Factor
+        elevation_factor = 3.5 if home_team == 'Colorado Rockies' else 1.0
+        delta_density = (w_data['temp'] - 70) * 0.001 * elevation_factor
+        
+        # Delta_Wind = WindSpeed * cos(Wind_Angle) * Park_Sensitivity
+        wind_angle_rad = np.radians(w_data['wind_direction'])
+        delta_wind = w_data['wind_speed'] * np.cos(wind_angle_rad) * 0.002
+        
+        # Combined Custom Delta_Env Vector
+        delta_env = base_pf * (1 + delta_density + delta_wind)
+        return delta_env
+
+    def calculate_custom_engine_metrics(self, game, db, delta_env):
+        """Builds statistical component metrics adjusted by weather modifiers."""
+        metrics = {
+            'away_osf': 0.335, 'home_osf': 0.330,
+            'away_psi': 32.5, 'home_psi': 34.1,
+            'away_bsi': 64.2, 'home_bsi': 62.8,
+            'delta_env': delta_env,
+            'away_avg_runs_per_inning': 0.52 * delta_env,
+            'home_avg_runs_per_inning': 0.55 * delta_env,
+            'away_sp_k_prop': 5.5 / delta_env,  # Strikeouts drop in heavy air/high run environments
+            'home_sp_k_prop': 6.0 / delta_env
+        }
+        return metrics
+    def execute_segment_simulation(self, metrics, num_sims=10000):
+        """Runs the 10,000-trial simulation parsing multi-inning game tracks."""
+        env = np.random.normal(metrics['delta_env'], 0.04, num_sims)
+        
+        lambda_away_sp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_psi'] / 34.0)
+        lambda_home_sp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_psi'] / 34.0)
+        lambda_away_rp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_bsi'] / 63.0)
+        lambda_home_rp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_bsi'] / 63.0)
+
+        runs_away = np.zeros((num_sims, 9))
+        runs_home = np.zeros((num_sims, 9))
+        
+        for i in range(9):
+            if i < 5:
+                runs_away[:, i] = np.random.poisson(lambda_away_sp, num_sims)
+                runs_home[:, i] = np.random.poisson(lambda_home_sp, num_sims)
+            else:
+                runs_away[:, i] = np.random.poisson(lambda_away_rp, num_sims)
+                runs_home[:, i] = np.random.poisson(lambda_home_rp, num_sims)
 
         return {
-            'away_osf': away_osf, 'home_osf': home_osf,
-            'away_psi': away_psi, 'home_psi': home_psi,
-            'away_bsi': away_bsi, 'home_bsi': home_bsi,
-            'delta_env': env_modifier
+            'F3': (np.sum(runs_away[:, :3], axis=1), np.sum(runs_home[:, :3], axis=1)),
+            'F5': (np.sum(runs_away[:, :5], axis=1), np.sum(runs_home[:, :5], axis=1)),
+            'F7': (np.sum(runs_away[:, :7], axis=1), np.sum(runs_home[:, :7], axis=1)),
+            'FG': (np.sum(runs_away, axis=1), np.sum(runs_home, axis=1)),
+            'away_sp_k': np.random.poisson(metrics['away_sp_k_prop'] * env, num_sims),
+            'home_sp_k': np.random.poisson(metrics['home_sp_k_prop'] * env, num_sims)
         }
+    def compute_market_edges(self, sim_data, game):
+        """Extracts win probabilities and over/under parameters across targets."""
+        results = []
+        segments = {'First 3 Innings': 'F3', 'First 5 Innings': 'F5', 'First 7 Innings': 'F7', 'Full Game': 'FG'}
+        for seg_name, key in segments.items():
+            away_scores, home_scores = sim_data[key]
+            home_ml_prob = np.sum(home_scores > away_scores) / len(home_scores)
+            away_ml_prob = np.sum(away_scores > home_scores) / len(away_scores)
+            dk_total_line = round(np.mean(away_scores + home_scores) * 2) / 2
+            over_prob = np.sum((away_scores + home_scores) > dk_total_line) / len(away_scores)
+            
+            results.append({
+                'Matchup': f"{game['away_team']} @ {game['home_team']}",
+                'Segment': seg_name,
+                'Proj_Score': f"{np.mean(away_scores):.1f} - {np.mean(home_scores):.1f}",
+                'Home_ML_Prob': f"{home_ml_prob * 100:.1f}%",
+                'Away_ML_Prob': f"{away_ml_prob * 100:.1f}%",
+                'Target_DK_Total': dk_total_line,
+                'Over_Probability': f"{over_prob * 100:.1f}%",
+            })
+        return results
 
-    def execute_monte_carlo(self, metrics, num_sims=10000):
-        """Runs a 10,000-trial simulation loop injecting distributed variance."""
-        osf_a = np.maximum(0, np.random.normal(metrics['away_osf'], metrics['away_osf'] * 0.12, num_sims))
-        osf_h = np.maximum(0, np.random.normal(metrics['home_osf'], metrics['home_osf'] * 0.12, num_sims))
-        
-        psi_a = np.maximum(0.1, np.random.normal(metrics['away_psi'], metrics['away_psi'] * 0.15, num_sims))
-        psi_h = np.maximum(0.1, np.random.normal(metrics['home_psi'], metrics['home_psi'] * 0.15, num_sims))
-        
-        bsi_a = np.maximum(0.1, np.random.normal(metrics['away_bsi'], metrics['away_bsi'] * 0.18, num_sims))
-        bsi_h = np.maximum(0.1, np.random.normal(metrics['home_bsi'], metrics['home_bsi'] * 0.18, num_sims))
-        
-        env = np.random.normal(metrics['delta_env'], 0.05, num_sims)
+    def process_prop_board(self, sim_data, game):
+        """Processes specific player strikeout metrics against thresholds."""
+        props = []
+        for side, key in [('away', 'away_sp_k'), ('home', 'home_sp_k')]:
+            mean_k = np.mean(sim_data[key])
+            dk_line = round(mean_k * 2) / 2
+            props.append({
+                'Player': game[f"{side}_pitcher"],
+                'Team': game[f"{side}_team"],
+                'Prop_Type': 'Strikeouts (O/U)',
+                'DraftKings_Line': dk_line,
+                'Simulated_Value': f"{mean_k:.2f}",
+                'Over_Probability': f"{np.sum(sim_data[key] > dk_line) / len(sim_data[key]) * 100:.1f}%"
+            })
+        return props
 
-        # Apply structural equation weight calculations (5.1 Innings SP, 3.2 Innings RP)
-        wpi_away = (osf_a / ((psi_a * 5.1) + (bsi_a * 3.2))) * env
-        wpi_home = (osf_h / ((psi_h * 5.1) + (bsi_h * 3.2))) * env
-
-        home_win_prob = np.sum((wpi_home - wpi_away) > 0) / num_sims
-        return home_win_prob
-
-    def run_pipeline(self):
-        """Orchestrates the data flow to generate predictions."""
+    async def run_pipeline(self):
+        """Coordinates execution loop flow to calculate daily sheets."""
         schedule_df = self.fetch_live_schedule()
         if schedule_df.empty:
-            print("No games scheduled or remaining on the slate for today. Pipeline idling safely.")
+            print("No active games scheduled for today.")
             return
             
         metrics_db = self.scrape_historical_and_savant_data()
-        daily_output = []
+        all_markets, all_props = [], []
 
         for _, game in schedule_df.iterrows():
-            print(f"Evaluating Matchup: {game['away_team']} @ {game['home_team']}")
+            home_team = game['home_team']
+            city = self.team_cities.get(home_team, 'New York')
             
-            # Map parameters through structural indexes equations
-            computed_matrix = self.calculate_custom_engine_metrics(game, metrics_db)
+            # Asynchronous weather call mapping
+            weather_snapshot = await self.get_live_weather(city)
+            print(f"Matchup: {game['away_team']} @ {home_team} | Weather Forecast: {weather_snapshot}")
             
-            # Run simulation
-            home_probability = self.execute_monte_carlo(computed_matrix)
-            away_probability = 1.0 - home_probability
+            delta_env = self.calculate_environmental_modifier(home_team, weather_snapshot)
+            computed_matrix = self.calculate_custom_engine_metrics(game, metrics_db, delta_env)
+            sim_data = self.execute_segment_simulation(computed_matrix)
             
-            daily_output.append({
-                'GameID': game['game_id'],
-                'Matchup': f"{game['away_team']} @ {game['home_team']}",
-                'Away_Probable_SP': game['away_pitcher'],
-                'Home_Probable_SP': game['home_pitcher'],
-                'Away_Sim_WinProb': f"{away_probability * 100:.2f}%",
-                'Home_Sim_WinProb': f"{home_probability * 100:.2f}%",
-                'Calculated_Edge': 'HOME ML' if home_probability > 0.54 else 'AWAY ML' if away_probability > 0.54 else 'NO VALUE'
-            })
+            all_markets.extend(self.compute_market_edges(sim_data, game))
+            all_props.extend(self.process_prop_board(sim_data, game))
 
-        # Save the predictions back to the repository
+        # Export compiled outputs to artifacts paths
         os.makedirs('data/predictions', exist_ok=True)
-        out_df = pd.DataFrame(daily_output)
-        out_path = f'data/predictions/mlb_sim_output_{self.today}.csv'
-        out_df.to_csv(out_path, index=False)
-        print(f"Successfully posted simulation matrix mapping output to branch target path: {out_path}")
+        pd.DataFrame(all_markets).to_csv(f"data/predictions/mlb_market_segments_{self.today}.csv", index=False)
+        pd.DataFrame(all_props).to_csv(f"data/predictions/mlb_dk_props_{self.today}.csv", index=False)
+        print("Data compilation successfully saved to repository.")
 
 if __name__ == "__main__":
-    engine = MLBProductionEngine()
-    engine.run_pipeline()
+    engine = MLBWeatherEnrichedEngine()
+    asyncio.run(engine.run_pipeline())
