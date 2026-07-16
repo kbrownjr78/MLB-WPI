@@ -40,9 +40,9 @@ jobs:
       id: get_date
       run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    - name: Upload Daily Predictions Artifact
+    - name: Upload Daily Predictions CSV Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: daily-mlb-predictions-${{ steps.get_date.outputs.today }}
-        path: data/predictions/
+        name: mlb-sim-output-${{ steps.get_date.outputs.today }}
+        path: data/predictions/mlb_sim_output_${{ steps.get_date.outputs.today }}.csv
         retention-days: 7 # Deletes old datasets automatically after 7 days to save space
