@@ -1,31 +1,211 @@
-Player,Team,Prop_Type,DraftKings_Line,Simulated_Value,Over_Probability
-Griffin Jax,Tampa Bay Rays,Strikeouts (O/U),5.0,5.22,42.1%
-Jake Bennett,Boston Red Sox,Strikeouts (O/U),5.0,5.18,41.7%
-Unknown Starter,Tampa Bay Rays,Strikeouts (O/U),5.0,5.22,42.4%
-Unknown Starter,Boston Red Sox,Strikeouts (O/U),5.0,5.22,42.1%
-Roki Sasaki,Los Angeles Dodgers,Strikeouts (O/U),5.0,5.21,42.0%
-Gerrit Cole,New York Yankees,Strikeouts (O/U),5.0,5.22,41.9%
-Jared Jones,Pittsburgh Pirates,Strikeouts (O/U),5.0,5.20,42.3%
-Gavin Williams,Cleveland Guardians,Strikeouts (O/U),5.0,5.21,42.5%
-Cal Quantrill,Texas Rangers,Strikeouts (O/U),5.0,5.17,41.8%
-Chris Sale,Atlanta Braves,Strikeouts (O/U),5.0,5.18,41.5%
-Anthony Kay,Chicago White Sox,Strikeouts (O/U),5.0,5.21,42.1%
-Spencer Miles,Toronto Blue Jays,Strikeouts (O/U),5.0,5.23,42.2%
-Sandy Alcantara,Miami Marlins,Strikeouts (O/U),5.0,5.19,41.5%
-Logan Henderson,Milwaukee Brewers,Strikeouts (O/U),5.0,5.20,42.0%
-Bailey Ober,Minnesota Twins,Strikeouts (O/U),5.0,5.19,42.1%
-Colin Rea,Chicago Cubs,Strikeouts (O/U),5.0,5.22,42.1%
-Dean Kremer,Baltimore Orioles,Strikeouts (O/U),5.0,5.20,42.0%
-Peter Lambert,Houston Astros,Strikeouts (O/U),5.0,5.20,41.2%
-Michael King,San Diego Padres,Strikeouts (O/U),5.0,5.18,41.9%
-Seth Lugo,Kansas City Royals,Strikeouts (O/U),5.0,5.24,42.3%
-Brady Singer,Cincinnati Reds,Strikeouts (O/U),5.0,5.18,41.9%
-Gabriel Hughes,Colorado Rockies,Strikeouts (O/U),5.0,5.19,41.9%
-Troy Melton,Detroit Tigers,Strikeouts (O/U),5.0,5.21,42.2%
-Reid Detmers,Los Angeles Angels,Strikeouts (O/U),5.0,5.16,41.7%
-Cade Cavalli,Washington Nationals,Strikeouts (O/U),5.0,5.23,42.2%
-Gage Jump,Athletics,Strikeouts (O/U),5.0,5.18,42.0%
-Unknown Starter,St. Louis Cardinals,Strikeouts (O/U),5.0,5.23,42.3%
-Merrill Kelly,Arizona Diamondbacks,Strikeouts (O/U),5.0,5.22,42.0%
-Landen Roupp,San Francisco Giants,Strikeouts (O/U),5.0,5.21,42.1%
-Bryce Miller,Seattle Mariners,Strikeouts (O/U),5.0,5.19,41.7%
+Player/Lineup,Team,Market_Type,DraftKings_Line,Simulated_Mean,Over_Probability
+Griffin Jax,Tampa Bay Rays,Strikeouts (O/U),5.0,4.75,34.2%
+Griffin Jax,Tampa Bay Rays,Earned Runs (O/U),2.5,2.62,48.7%
+Jake Bennett,Boston Red Sox,Strikeouts (O/U),5.0,4.76,33.6%
+Jake Bennett,Boston Red Sox,Earned Runs (O/U),2.5,2.60,48.1%
+Away Lineup Average,Tampa Bay Rays,Hits (O/U),0.5,0.92,59.7%
+Away Lineup Average,Tampa Bay Rays,Total Bases (O/U),1.5,1.48,43.4%
+Away Lineup Average,Tampa Bay Rays,RBIs (O/U),0.5,0.49,39.0%
+Away Lineup Average,Tampa Bay Rays,Runs Scored (O/U),0.5,0.49,38.5%
+Away Lineup Average,Tampa Bay Rays,To Hit a Home Run (Yes),0.5,0.13,13.3%
+Home Lineup Average,Boston Red Sox,Hits (O/U),0.5,0.93,60.8%
+Home Lineup Average,Boston Red Sox,Total Bases (O/U),1.5,1.48,43.9%
+Home Lineup Average,Boston Red Sox,RBIs (O/U),0.5,0.49,38.6%
+Home Lineup Average,Boston Red Sox,Runs Scored (O/U),0.5,0.50,39.0%
+Home Lineup Average,Boston Red Sox,To Hit a Home Run (Yes),0.5,0.14,13.5%
+Unknown Starter,Tampa Bay Rays,Strikeouts (O/U),4.5,4.74,51.2%
+Unknown Starter,Tampa Bay Rays,Earned Runs (O/U),2.5,2.64,48.5%
+Unknown Starter,Boston Red Sox,Strikeouts (O/U),4.5,4.74,51.5%
+Unknown Starter,Boston Red Sox,Earned Runs (O/U),2.5,2.61,48.5%
+Away Lineup Average,Tampa Bay Rays,Hits (O/U),0.5,0.95,61.1%
+Away Lineup Average,Tampa Bay Rays,Total Bases (O/U),1.5,1.48,43.6%
+Away Lineup Average,Tampa Bay Rays,RBIs (O/U),0.5,0.49,38.8%
+Away Lineup Average,Tampa Bay Rays,Runs Scored (O/U),0.5,0.49,38.8%
+Away Lineup Average,Tampa Bay Rays,To Hit a Home Run (Yes),0.5,0.13,12.9%
+Home Lineup Average,Boston Red Sox,Hits (O/U),0.5,0.93,60.6%
+Home Lineup Average,Boston Red Sox,Total Bases (O/U),1.5,1.48,42.6%
+Home Lineup Average,Boston Red Sox,RBIs (O/U),0.5,0.49,38.7%
+Home Lineup Average,Boston Red Sox,Runs Scored (O/U),0.5,0.49,38.7%
+Home Lineup Average,Boston Red Sox,To Hit a Home Run (Yes),0.5,0.14,13.5%
+Roki Sasaki,Los Angeles Dodgers,Strikeouts (O/U),5.0,5.02,39.0%
+Roki Sasaki,Los Angeles Dodgers,Earned Runs (O/U),2.5,2.50,44.8%
+Gerrit Cole,New York Yankees,Strikeouts (O/U),5.0,5.01,38.6%
+Gerrit Cole,New York Yankees,Earned Runs (O/U),2.5,2.51,45.9%
+Away Lineup Average,Los Angeles Dodgers,Hits (O/U),0.5,0.87,58.7%
+Away Lineup Average,Los Angeles Dodgers,Total Bases (O/U),1.5,1.40,40.9%
+Away Lineup Average,Los Angeles Dodgers,RBIs (O/U),0.5,0.47,37.6%
+Away Lineup Average,Los Angeles Dodgers,Runs Scored (O/U),0.5,0.46,36.8%
+Away Lineup Average,Los Angeles Dodgers,To Hit a Home Run (Yes),0.5,0.13,12.8%
+Home Lineup Average,New York Yankees,Hits (O/U),0.5,0.86,57.7%
+Home Lineup Average,New York Yankees,Total Bases (O/U),1.5,1.40,41.1%
+Home Lineup Average,New York Yankees,RBIs (O/U),0.5,0.47,37.8%
+Home Lineup Average,New York Yankees,Runs Scored (O/U),0.5,0.46,36.5%
+Home Lineup Average,New York Yankees,To Hit a Home Run (Yes),0.5,0.13,12.7%
+Jared Jones,Pittsburgh Pirates,Strikeouts (O/U),5.5,5.30,43.8%
+Jared Jones,Pittsburgh Pirates,Earned Runs (O/U),2.5,2.38,42.4%
+Gavin Williams,Cleveland Guardians,Strikeouts (O/U),5.5,5.31,44.3%
+Gavin Williams,Cleveland Guardians,Earned Runs (O/U),2.5,2.32,40.7%
+Away Lineup Average,Pittsburgh Pirates,Hits (O/U),0.5,0.83,55.9%
+Away Lineup Average,Pittsburgh Pirates,Total Bases (O/U),1.5,1.35,39.3%
+Away Lineup Average,Pittsburgh Pirates,RBIs (O/U),0.5,0.45,35.8%
+Away Lineup Average,Pittsburgh Pirates,Runs Scored (O/U),0.5,0.44,35.4%
+Away Lineup Average,Pittsburgh Pirates,To Hit a Home Run (Yes),0.5,0.12,11.6%
+Home Lineup Average,Cleveland Guardians,Hits (O/U),0.5,0.84,57.0%
+Home Lineup Average,Cleveland Guardians,Total Bases (O/U),1.5,1.34,38.4%
+Home Lineup Average,Cleveland Guardians,RBIs (O/U),0.5,0.44,35.5%
+Home Lineup Average,Cleveland Guardians,Runs Scored (O/U),0.5,0.44,35.4%
+Home Lineup Average,Cleveland Guardians,To Hit a Home Run (Yes),0.5,0.12,12.1%
+Cal Quantrill,Texas Rangers,Strikeouts (O/U),5.0,5.17,41.0%
+Cal Quantrill,Texas Rangers,Earned Runs (O/U),2.5,2.43,43.9%
+Chris Sale,Atlanta Braves,Strikeouts (O/U),5.0,5.20,42.0%
+Chris Sale,Atlanta Braves,Earned Runs (O/U),2.5,2.44,44.3%
+Away Lineup Average,Texas Rangers,Hits (O/U),0.5,0.86,57.6%
+Away Lineup Average,Texas Rangers,Total Bases (O/U),1.5,1.36,39.0%
+Away Lineup Average,Texas Rangers,RBIs (O/U),0.5,0.45,36.3%
+Away Lineup Average,Texas Rangers,Runs Scored (O/U),0.5,0.45,36.4%
+Away Lineup Average,Texas Rangers,To Hit a Home Run (Yes),0.5,0.12,12.1%
+Home Lineup Average,Atlanta Braves,Hits (O/U),0.5,0.86,57.8%
+Home Lineup Average,Atlanta Braves,Total Bases (O/U),1.5,1.37,40.2%
+Home Lineup Average,Atlanta Braves,RBIs (O/U),0.5,0.45,36.2%
+Home Lineup Average,Atlanta Braves,Runs Scored (O/U),0.5,0.46,36.5%
+Home Lineup Average,Atlanta Braves,To Hit a Home Run (Yes),0.5,0.12,11.6%
+Anthony Kay,Chicago White Sox,Strikeouts (O/U),5.0,5.21,42.3%
+Anthony Kay,Chicago White Sox,Earned Runs (O/U),2.5,2.41,43.5%
+Spencer Miles,Toronto Blue Jays,Strikeouts (O/U),5.0,5.22,42.1%
+Spencer Miles,Toronto Blue Jays,Earned Runs (O/U),2.5,2.41,43.4%
+Away Lineup Average,Chicago White Sox,Hits (O/U),0.5,0.86,57.5%
+Away Lineup Average,Chicago White Sox,Total Bases (O/U),1.5,1.37,39.7%
+Away Lineup Average,Chicago White Sox,RBIs (O/U),0.5,0.45,36.2%
+Away Lineup Average,Chicago White Sox,Runs Scored (O/U),0.5,0.44,35.7%
+Away Lineup Average,Chicago White Sox,To Hit a Home Run (Yes),0.5,0.13,12.7%
+Home Lineup Average,Toronto Blue Jays,Hits (O/U),0.5,0.85,57.7%
+Home Lineup Average,Toronto Blue Jays,Total Bases (O/U),1.5,1.34,38.8%
+Home Lineup Average,Toronto Blue Jays,RBIs (O/U),0.5,0.46,36.5%
+Home Lineup Average,Toronto Blue Jays,Runs Scored (O/U),0.5,0.45,36.1%
+Home Lineup Average,Toronto Blue Jays,To Hit a Home Run (Yes),0.5,0.12,12.1%
+Sandy Alcantara,Miami Marlins,Strikeouts (O/U),5.0,5.17,41.7%
+Sandy Alcantara,Miami Marlins,Earned Runs (O/U),2.5,2.39,42.6%
+Logan Henderson,Milwaukee Brewers,Strikeouts (O/U),5.0,5.17,41.5%
+Logan Henderson,Milwaukee Brewers,Earned Runs (O/U),2.5,2.41,43.0%
+Away Lineup Average,Miami Marlins,Hits (O/U),0.5,0.85,57.5%
+Away Lineup Average,Miami Marlins,Total Bases (O/U),1.5,1.37,39.5%
+Away Lineup Average,Miami Marlins,RBIs (O/U),0.5,0.45,35.8%
+Away Lineup Average,Miami Marlins,Runs Scored (O/U),0.5,0.46,37.3%
+Away Lineup Average,Miami Marlins,To Hit a Home Run (Yes),0.5,0.12,11.6%
+Home Lineup Average,Milwaukee Brewers,Hits (O/U),0.5,0.86,57.8%
+Home Lineup Average,Milwaukee Brewers,Total Bases (O/U),1.5,1.36,39.5%
+Home Lineup Average,Milwaukee Brewers,RBIs (O/U),0.5,0.45,36.0%
+Home Lineup Average,Milwaukee Brewers,Runs Scored (O/U),0.5,0.46,36.6%
+Home Lineup Average,Milwaukee Brewers,To Hit a Home Run (Yes),0.5,0.12,11.9%
+Bailey Ober,Minnesota Twins,Strikeouts (O/U),5.0,5.19,41.5%
+Bailey Ober,Minnesota Twins,Earned Runs (O/U),2.5,2.42,43.0%
+Colin Rea,Chicago Cubs,Strikeouts (O/U),5.0,5.18,41.8%
+Colin Rea,Chicago Cubs,Earned Runs (O/U),2.5,2.42,43.4%
+Away Lineup Average,Minnesota Twins,Hits (O/U),0.5,0.86,57.9%
+Away Lineup Average,Minnesota Twins,Total Bases (O/U),1.5,1.36,39.6%
+Away Lineup Average,Minnesota Twins,RBIs (O/U),0.5,0.46,36.5%
+Away Lineup Average,Minnesota Twins,Runs Scored (O/U),0.5,0.44,35.9%
+Away Lineup Average,Minnesota Twins,To Hit a Home Run (Yes),0.5,0.12,11.8%
+Home Lineup Average,Chicago Cubs,Hits (O/U),0.5,0.85,56.3%
+Home Lineup Average,Chicago Cubs,Total Bases (O/U),1.5,1.36,39.4%
+Home Lineup Average,Chicago Cubs,RBIs (O/U),0.5,0.45,36.4%
+Home Lineup Average,Chicago Cubs,Runs Scored (O/U),0.5,0.45,36.7%
+Home Lineup Average,Chicago Cubs,To Hit a Home Run (Yes),0.5,0.12,11.8%
+Dean Kremer,Baltimore Orioles,Strikeouts (O/U),5.5,5.28,43.7%
+Dean Kremer,Baltimore Orioles,Earned Runs (O/U),2.5,2.34,41.9%
+Peter Lambert,Houston Astros,Strikeouts (O/U),5.5,5.28,43.5%
+Peter Lambert,Houston Astros,Earned Runs (O/U),2.5,2.34,41.7%
+Away Lineup Average,Baltimore Orioles,Hits (O/U),0.5,0.83,56.6%
+Away Lineup Average,Baltimore Orioles,Total Bases (O/U),1.5,1.35,39.0%
+Away Lineup Average,Baltimore Orioles,RBIs (O/U),0.5,0.45,36.9%
+Away Lineup Average,Baltimore Orioles,Runs Scored (O/U),0.5,0.45,36.0%
+Away Lineup Average,Baltimore Orioles,To Hit a Home Run (Yes),0.5,0.12,11.7%
+Home Lineup Average,Houston Astros,Hits (O/U),0.5,0.85,56.9%
+Home Lineup Average,Houston Astros,Total Bases (O/U),1.5,1.31,37.6%
+Home Lineup Average,Houston Astros,RBIs (O/U),0.5,0.44,35.2%
+Home Lineup Average,Houston Astros,Runs Scored (O/U),0.5,0.45,36.1%
+Home Lineup Average,Houston Astros,To Hit a Home Run (Yes),0.5,0.12,11.7%
+Michael King,San Diego Padres,Strikeouts (O/U),5.0,5.10,40.5%
+Michael King,San Diego Padres,Earned Runs (O/U),2.5,2.45,44.7%
+Seth Lugo,Kansas City Royals,Strikeouts (O/U),5.0,5.09,39.7%
+Seth Lugo,Kansas City Royals,Earned Runs (O/U),2.5,2.47,44.9%
+Away Lineup Average,San Diego Padres,Hits (O/U),0.5,0.88,58.9%
+Away Lineup Average,San Diego Padres,Total Bases (O/U),1.5,1.37,39.5%
+Away Lineup Average,San Diego Padres,RBIs (O/U),0.5,0.45,36.3%
+Away Lineup Average,San Diego Padres,Runs Scored (O/U),0.5,0.44,35.9%
+Away Lineup Average,San Diego Padres,To Hit a Home Run (Yes),0.5,0.13,12.6%
+Home Lineup Average,Kansas City Royals,Hits (O/U),0.5,0.88,58.8%
+Home Lineup Average,Kansas City Royals,Total Bases (O/U),1.5,1.35,39.1%
+Home Lineup Average,Kansas City Royals,RBIs (O/U),0.5,0.45,36.5%
+Home Lineup Average,Kansas City Royals,Runs Scored (O/U),0.5,0.45,36.3%
+Home Lineup Average,Kansas City Royals,To Hit a Home Run (Yes),0.5,0.12,12.0%
+Brady Singer,Cincinnati Reds,Strikeouts (O/U),4.0,3.97,36.5%
+Brady Singer,Cincinnati Reds,Earned Runs (O/U),3.0,3.16,38.6%
+Gabriel Hughes,Colorado Rockies,Strikeouts (O/U),4.0,3.97,36.9%
+Gabriel Hughes,Colorado Rockies,Earned Runs (O/U),3.0,3.15,38.6%
+Away Lineup Average,Cincinnati Reds,Hits (O/U),0.5,1.11,67.0%
+Away Lineup Average,Cincinnati Reds,Total Bases (O/U),1.5,1.77,52.5%
+Away Lineup Average,Cincinnati Reds,RBIs (O/U),0.5,0.59,44.2%
+Away Lineup Average,Cincinnati Reds,Runs Scored (O/U),0.5,0.59,44.8%
+Away Lineup Average,Cincinnati Reds,To Hit a Home Run (Yes),0.5,0.16,15.9%
+Home Lineup Average,Colorado Rockies,Hits (O/U),0.5,1.11,67.0%
+Home Lineup Average,Colorado Rockies,Total Bases (O/U),1.5,1.75,52.4%
+Home Lineup Average,Colorado Rockies,RBIs (O/U),0.5,0.59,44.5%
+Home Lineup Average,Colorado Rockies,Runs Scored (O/U),0.5,0.59,44.6%
+Home Lineup Average,Colorado Rockies,To Hit a Home Run (Yes),0.5,0.16,15.8%
+Troy Melton,Detroit Tigers,Strikeouts (O/U),5.5,5.38,44.6%
+Troy Melton,Detroit Tigers,Earned Runs (O/U),2.5,2.32,40.8%
+Reid Detmers,Los Angeles Angels,Strikeouts (O/U),5.5,5.37,45.0%
+Reid Detmers,Los Angeles Angels,Earned Runs (O/U),2.5,2.33,41.2%
+Away Lineup Average,Detroit Tigers,Hits (O/U),0.5,0.82,56.2%
+Away Lineup Average,Detroit Tigers,Total Bases (O/U),1.5,1.32,38.1%
+Away Lineup Average,Detroit Tigers,RBIs (O/U),0.5,0.45,35.8%
+Away Lineup Average,Detroit Tigers,Runs Scored (O/U),0.5,0.44,35.6%
+Away Lineup Average,Detroit Tigers,To Hit a Home Run (Yes),0.5,0.12,11.7%
+Home Lineup Average,Los Angeles Angels,Hits (O/U),0.5,0.85,57.5%
+Home Lineup Average,Los Angeles Angels,Total Bases (O/U),1.5,1.30,37.5%
+Home Lineup Average,Los Angeles Angels,RBIs (O/U),0.5,0.44,35.5%
+Home Lineup Average,Los Angeles Angels,Runs Scored (O/U),0.5,0.43,35.2%
+Home Lineup Average,Los Angeles Angels,To Hit a Home Run (Yes),0.5,0.11,10.9%
+Cade Cavalli,Washington Nationals,Strikeouts (O/U),5.0,5.18,41.8%
+Cade Cavalli,Washington Nationals,Earned Runs (O/U),2.5,2.38,43.2%
+Gage Jump,Athletics,Strikeouts (O/U),5.0,5.18,40.9%
+Gage Jump,Athletics,Earned Runs (O/U),2.5,2.38,42.6%
+Away Lineup Average,Washington Nationals,Hits (O/U),0.5,0.86,57.9%
+Away Lineup Average,Washington Nationals,Total Bases (O/U),1.5,1.34,38.5%
+Away Lineup Average,Washington Nationals,RBIs (O/U),0.5,0.46,37.1%
+Away Lineup Average,Washington Nationals,Runs Scored (O/U),0.5,0.46,37.0%
+Away Lineup Average,Washington Nationals,To Hit a Home Run (Yes),0.5,0.12,12.2%
+Home Lineup Average,Athletics,Hits (O/U),0.5,0.86,57.8%
+Home Lineup Average,Athletics,Total Bases (O/U),1.5,1.33,38.4%
+Home Lineup Average,Athletics,RBIs (O/U),0.5,0.46,37.3%
+Home Lineup Average,Athletics,Runs Scored (O/U),0.5,0.46,36.6%
+Home Lineup Average,Athletics,To Hit a Home Run (Yes),0.5,0.12,12.5%
+Unknown Starter,St. Louis Cardinals,Strikeouts (O/U),5.0,5.12,40.3%
+Unknown Starter,St. Louis Cardinals,Earned Runs (O/U),2.5,2.43,43.5%
+Merrill Kelly,Arizona Diamondbacks,Strikeouts (O/U),5.0,5.09,40.2%
+Merrill Kelly,Arizona Diamondbacks,Earned Runs (O/U),2.5,2.46,44.2%
+Away Lineup Average,St. Louis Cardinals,Hits (O/U),0.5,0.87,58.4%
+Away Lineup Average,St. Louis Cardinals,Total Bases (O/U),1.5,1.37,39.9%
+Away Lineup Average,St. Louis Cardinals,RBIs (O/U),0.5,0.46,36.7%
+Away Lineup Average,St. Louis Cardinals,Runs Scored (O/U),0.5,0.45,36.4%
+Away Lineup Average,St. Louis Cardinals,To Hit a Home Run (Yes),0.5,0.13,12.6%
+Home Lineup Average,Arizona Diamondbacks,Hits (O/U),0.5,0.88,58.8%
+Home Lineup Average,Arizona Diamondbacks,Total Bases (O/U),1.5,1.39,40.6%
+Home Lineup Average,Arizona Diamondbacks,RBIs (O/U),0.5,0.46,37.0%
+Home Lineup Average,Arizona Diamondbacks,Runs Scored (O/U),0.5,0.45,36.3%
+Home Lineup Average,Arizona Diamondbacks,To Hit a Home Run (Yes),0.5,0.12,12.2%
+Landen Roupp,San Francisco Giants,Strikeouts (O/U),5.5,5.66,49.5%
+Landen Roupp,San Francisco Giants,Earned Runs (O/U),2.0,2.23,38.6%
+Bryce Miller,Seattle Mariners,Strikeouts (O/U),5.5,5.67,50.5%
+Bryce Miller,Seattle Mariners,Earned Runs (O/U),2.0,2.19,37.6%
+Away Lineup Average,San Francisco Giants,Hits (O/U),0.5,0.79,54.8%
+Away Lineup Average,San Francisco Giants,Total Bases (O/U),1.5,1.23,35.2%
+Away Lineup Average,San Francisco Giants,RBIs (O/U),0.5,0.42,34.0%
+Away Lineup Average,San Francisco Giants,Runs Scored (O/U),0.5,0.41,33.9%
+Away Lineup Average,San Francisco Giants,To Hit a Home Run (Yes),0.5,0.11,11.1%
+Home Lineup Average,Seattle Mariners,Hits (O/U),0.5,0.78,54.1%
+Home Lineup Average,Seattle Mariners,Total Bases (O/U),1.5,1.23,35.2%
+Home Lineup Average,Seattle Mariners,RBIs (O/U),0.5,0.41,33.4%
+Home Lineup Average,Seattle Mariners,Runs Scored (O/U),0.5,0.43,35.0%
+Home Lineup Average,Seattle Mariners,To Hit a Home Run (Yes),0.5,0.12,11.7%
