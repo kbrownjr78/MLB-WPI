@@ -42,14 +42,31 @@ class MLBBacktestEngine:
             print(f"Error fetching actual score results: {e}")
             return {}
     def _evaluate_bets(self, pred_row, actual):
-        """Applies true sports betting settlement matrix constraints to calculate profit/loss."""
-        p_home_ml = float(pred_row['Home_ML_Probability'].replace('%', '')) / 100.0
-        p_away_ml = float(pred_row['Away_ML_Probability'].replace('%', '')) / 100.0
-        p_over = float(pred_row['Over_Total_Probability'].replace('%', '')) / 100.0
+        """Applies true sports betting settlement matrix constraints with flexible column string parsing."""
+        # Flexible Column Mapping Resolution
+        def get_row_value(row, choices, default="0%"):
+            for choice in choices:
+                if choice in row.index:
+                    return str(row[choice])
+            return default
+
+        raw_home_ml = get_row_value(pred_row, ['Home_ML_Probability', 'Home_ML_Prob'])
+        raw_away_ml = get_row_value(pred_row, ['Away_ML_Probability', 'Away_ML_Prob'])
+        raw_over = get_row_value(pred_row, ['Over_Total_Probability', 'Over_Probability'])
         
-        line_total = float(pred_row['Target_DK_Total_Line'])
+        # Safe float conversion strips text % tags
+        p_home_ml = float(raw_home_ml.replace('%', '')) / 100.0
+        p_away_ml = float(raw_away_ml.replace('%', '')) / 100.0
+        p_over = float(raw_over.replace('%', '')) / 100.0
         
-        # Pull actual final scores
+        # Flexible lookup for the sportsbook total line threshold
+        line_total = 8.5
+        for total_key in ['Target_DK_Total_Line', 'Target_DK_Total', 'DK_Total_Line']:
+            if total_key in pred_row.index:
+                line_total = float(pred_row[total_key])
+                break
+        
+        # Pull actual final scores from StatsAPI data container
         act_away = actual['away_score']
         act_home = actual['home_score']
         act_total = actual['total_runs']
@@ -68,7 +85,7 @@ class MLBBacktestEngine:
             
         # 2. SETTLE TOTALS OVER/UNDER MARKETS
         if p_over > 0.54:
-            if act_total == line_total: # Push condition handler
+            if act_total == line_total:  # Push condition handler
                 wagers.append({'Market': 'Total', 'Selection': 'Over', 'Win': 0.5, 'Profit': 0.0})
             else:
                 win = 1.0 if act_total > line_total else 0.0
@@ -88,7 +105,7 @@ class MLBBacktestEngine:
         csv_files = glob.glob(self.predictions_path)
         if not csv_files:
             print("No daily historical prediction files located inside data/predictions/ path targets.")
-            return
+            return pd.DataFrame()
             
         compiled_wagers = []
         
@@ -115,7 +132,7 @@ class MLBBacktestEngine:
         return pd.DataFrame(compiled_wagers)
     def display_roi_performance_dashboard(self, df_wagers):
         """Processes final transaction lists to generate exact performance sheets."""
-        if df_wagers is empty if 'df_wagers' not in locals() else df_wagers.empty:
+        if df_wagers is None or df_wagers.empty:
             print("Insufficient settled wagers processed to output performance evaluations.")
             return
             
