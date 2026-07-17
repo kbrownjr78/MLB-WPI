@@ -1,61 +1,61 @@
 Matchup,Segment,Proj_Score,Home_ML_Prob,Away_ML_Prob,Target_DK_Total,Over_Probability
-Tampa Bay Rays @ Boston Red Sox,First 3 Innings,1.9 - 1.9,40.1%,38.8%,4.0,32.5%
-Tampa Bay Rays @ Boston Red Sox,First 5 Innings,3.1 - 3.2,43.5%,41.0%,6.5,44.5%
-Tampa Bay Rays @ Boston Red Sox,First 7 Innings,4.4 - 4.5,45.7%,41.1%,9.0,39.7%
-Tampa Bay Rays @ Boston Red Sox,Full Game,5.6 - 5.9,47.7%,40.7%,11.5,47.5%
-Tampa Bay Rays @ Boston Red Sox,First 3 Innings,1.9 - 1.9,40.1%,38.5%,4.0,33.4%
-Tampa Bay Rays @ Boston Red Sox,First 5 Innings,3.1 - 3.2,42.5%,41.3%,6.5,44.6%
-Tampa Bay Rays @ Boston Red Sox,First 7 Innings,4.4 - 4.5,45.2%,41.2%,9.0,40.0%
-Tampa Bay Rays @ Boston Red Sox,Full Game,5.6 - 5.9,47.7%,40.4%,11.5,48.1%
-Los Angeles Dodgers @ New York Yankees,First 3 Innings,1.7 - 1.7,38.6%,38.6%,3.5,44.1%
-Los Angeles Dodgers @ New York Yankees,First 5 Innings,2.8 - 2.8,42.1%,40.6%,5.5,50.4%
-Los Angeles Dodgers @ New York Yankees,First 7 Innings,4.0 - 4.1,44.2%,41.2%,8.0,41.2%
-Los Angeles Dodgers @ New York Yankees,Full Game,5.1 - 5.3,45.8%,41.4%,10.5,46.3%
-Pittsburgh Pirates @ Cleveland Guardians,First 3 Innings,1.5 - 1.5,38.5%,37.5%,3.0,34.8%
-Pittsburgh Pirates @ Cleveland Guardians,First 5 Innings,2.5 - 2.5,41.5%,40.3%,5.0,38.2%
-Pittsburgh Pirates @ Cleveland Guardians,First 7 Innings,3.5 - 3.6,44.4%,40.1%,7.0,41.1%
-Pittsburgh Pirates @ Cleveland Guardians,Full Game,4.5 - 4.7,45.9%,40.0%,9.0,43.0%
-Texas Rangers @ Atlanta Braves,First 3 Innings,1.6 - 1.6,38.4%,37.5%,3.0,39.0%
-Texas Rangers @ Atlanta Braves,First 5 Innings,2.6 - 2.6,41.5%,40.5%,5.5,43.6%
-Texas Rangers @ Atlanta Braves,First 7 Innings,3.6 - 3.8,44.5%,40.7%,7.5,46.2%
-Texas Rangers @ Atlanta Braves,Full Game,4.7 - 4.9,45.9%,40.9%,9.5,48.7%
-Chicago White Sox @ Toronto Blue Jays,First 3 Innings,1.6 - 1.6,39.7%,37.5%,3.0,38.5%
-Chicago White Sox @ Toronto Blue Jays,First 5 Innings,2.6 - 2.6,41.9%,40.4%,5.0,43.0%
-Chicago White Sox @ Toronto Blue Jays,First 7 Innings,3.6 - 3.8,44.9%,40.2%,7.5,46.4%
-Chicago White Sox @ Toronto Blue Jays,Full Game,4.7 - 4.9,47.1%,40.0%,9.5,48.3%
-Miami Marlins @ Milwaukee Brewers,First 3 Innings,1.6 - 1.6,38.6%,38.3%,3.0,40.0%
-Miami Marlins @ Milwaukee Brewers,First 5 Innings,2.7 - 2.7,40.9%,40.8%,5.5,44.4%
-Miami Marlins @ Milwaukee Brewers,First 7 Innings,3.7 - 3.8,44.0%,41.3%,7.5,47.9%
-Miami Marlins @ Milwaukee Brewers,Full Game,4.8 - 4.9,45.9%,40.8%,9.5,50.3%
-Minnesota Twins @ Chicago Cubs,First 3 Innings,1.6 - 1.6,39.3%,37.6%,3.0,39.1%
-Minnesota Twins @ Chicago Cubs,First 5 Innings,2.6 - 2.7,42.2%,40.1%,5.5,42.6%
-Minnesota Twins @ Chicago Cubs,First 7 Innings,3.6 - 3.8,44.5%,40.9%,7.5,46.8%
-Minnesota Twins @ Chicago Cubs,Full Game,4.7 - 4.9,46.6%,40.1%,9.5,49.5%
-Baltimore Orioles @ Houston Astros,First 3 Innings,1.5 - 1.5,39.0%,36.8%,3.0,36.4%
-Baltimore Orioles @ Houston Astros,First 5 Innings,2.5 - 2.6,41.7%,39.3%,5.0,38.8%
-Baltimore Orioles @ Houston Astros,First 7 Innings,3.5 - 3.6,44.9%,39.8%,7.0,41.8%
-Baltimore Orioles @ Houston Astros,Full Game,4.5 - 4.7,46.6%,40.3%,9.0,43.5%
-San Diego Padres @ Kansas City Royals,First 3 Innings,1.6 - 1.6,38.7%,38.0%,3.5,41.5%
-San Diego Padres @ Kansas City Royals,First 5 Innings,2.7 - 2.7,41.6%,40.7%,5.5,46.5%
-San Diego Padres @ Kansas City Royals,First 7 Innings,3.8 - 3.9,44.7%,40.7%,7.5,50.5%
-San Diego Padres @ Kansas City Royals,Full Game,4.8 - 5.0,46.5%,40.7%,10.0,40.8%
-Cincinnati Reds @ Colorado Rockies,First 3 Innings,2.7 - 2.7,41.6%,40.9%,5.5,45.2%
-Cincinnati Reds @ Colorado Rockies,First 5 Innings,4.5 - 4.5,44.2%,42.4%,9.0,40.4%
-Cincinnati Reds @ Colorado Rockies,First 7 Innings,6.2 - 6.4,46.6%,42.3%,12.5,49.9%
-Cincinnati Reds @ Colorado Rockies,Full Game,8.0 - 8.4,48.3%,41.6%,16.5,47.5%
-Detroit Tigers @ Los Angeles Angels,First 3 Innings,1.5 - 1.5,38.6%,37.2%,3.0,34.6%
-Detroit Tigers @ Los Angeles Angels,First 5 Innings,2.5 - 2.5,41.4%,39.5%,5.0,37.9%
-Detroit Tigers @ Los Angeles Angels,First 7 Innings,3.4 - 3.6,44.5%,40.3%,7.0,40.3%
-Detroit Tigers @ Los Angeles Angels,Full Game,4.4 - 4.6,46.6%,40.0%,9.0,41.6%
-Washington Nationals @ Athletics,First 3 Innings,1.6 - 1.6,38.8%,38.3%,3.0,38.5%
-Washington Nationals @ Athletics,First 5 Innings,2.6 - 2.6,41.4%,40.9%,5.0,42.6%
-Washington Nationals @ Athletics,First 7 Innings,3.7 - 3.7,43.4%,41.3%,7.5,46.4%
-Washington Nationals @ Athletics,Full Game,4.7 - 4.9,45.6%,41.2%,9.5,48.9%
-St. Louis Cardinals @ Arizona Diamondbacks,First 3 Innings,1.7 - 1.7,38.9%,38.5%,3.5,41.8%
-St. Louis Cardinals @ Arizona Diamondbacks,First 5 Innings,2.7 - 2.7,41.7%,40.8%,5.5,46.0%
-St. Louis Cardinals @ Arizona Diamondbacks,First 7 Innings,3.8 - 3.9,44.2%,41.6%,7.5,50.1%
-St. Louis Cardinals @ Arizona Diamondbacks,Full Game,4.9 - 5.1,46.2%,40.7%,10.0,41.3%
-San Francisco Giants @ Seattle Mariners,First 3 Innings,1.3 - 1.3,36.5%,37.0%,2.5,49.8%
-San Francisco Giants @ Seattle Mariners,First 5 Innings,2.2 - 2.2,40.0%,40.7%,4.5,46.3%
-San Francisco Giants @ Seattle Mariners,First 7 Innings,3.1 - 3.2,43.0%,40.3%,6.5,44.0%
-San Francisco Giants @ Seattle Mariners,Full Game,4.0 - 4.1,45.3%,40.7%,8.0,42.3%
+Tampa Bay Rays @ Boston Red Sox,First 3 Innings,1.9 - 1.8,36.6%,40.8%,3.5,48.8%
+Tampa Bay Rays @ Boston Red Sox,First 5 Innings,3.1 - 2.9,38.8%,44.3%,6.0,40.5%
+Tampa Bay Rays @ Boston Red Sox,First 7 Innings,4.3 - 4.2,41.9%,44.2%,8.5,48.4%
+Tampa Bay Rays @ Boston Red Sox,Full Game,5.6 - 5.5,43.3%,45.0%,11.0,42.6%
+Tampa Bay Rays @ Boston Red Sox,First 3 Innings,1.9 - 1.8,37.5%,40.5%,3.5,50.0%
+Tampa Bay Rays @ Boston Red Sox,First 5 Innings,3.1 - 3.0,39.3%,43.8%,6.0,40.4%
+Tampa Bay Rays @ Boston Red Sox,First 7 Innings,4.4 - 4.2,41.3%,45.1%,8.5,49.3%
+Tampa Bay Rays @ Boston Red Sox,Full Game,5.6 - 5.5,42.9%,45.0%,11.0,43.0%
+Los Angeles Dodgers @ New York Yankees,First 3 Innings,1.7 - 1.6,36.3%,40.0%,3.5,41.2%
+Los Angeles Dodgers @ New York Yankees,First 5 Innings,2.8 - 2.6,38.5%,44.2%,5.5,46.4%
+Los Angeles Dodgers @ New York Yankees,First 7 Innings,3.9 - 3.8,40.6%,44.5%,7.5,50.7%
+Los Angeles Dodgers @ New York Yankees,Full Game,5.0 - 4.9,42.1%,44.9%,10.0,41.1%
+Pittsburgh Pirates @ Cleveland Guardians,First 3 Innings,1.5 - 1.4,35.7%,39.3%,3.0,33.7%
+Pittsburgh Pirates @ Cleveland Guardians,First 5 Innings,2.5 - 2.4,38.1%,43.8%,5.0,36.0%
+Pittsburgh Pirates @ Cleveland Guardians,First 7 Innings,3.5 - 3.4,40.9%,43.7%,7.0,38.0%
+Pittsburgh Pirates @ Cleveland Guardians,Full Game,4.5 - 4.4,42.6%,44.2%,9.0,39.5%
+Texas Rangers @ Atlanta Braves,First 3 Innings,1.5 - 1.5,36.5%,39.4%,3.0,35.9%
+Texas Rangers @ Atlanta Braves,First 5 Innings,2.6 - 2.5,38.8%,43.4%,5.0,40.2%
+Texas Rangers @ Atlanta Braves,First 7 Innings,3.6 - 3.5,40.8%,44.1%,7.0,43.0%
+Texas Rangers @ Atlanta Braves,Full Game,4.7 - 4.6,41.9%,44.4%,9.0,44.6%
+Chicago White Sox @ Toronto Blue Jays,First 3 Innings,1.6 - 1.5,35.6%,40.1%,3.0,36.7%
+Chicago White Sox @ Toronto Blue Jays,First 5 Innings,2.6 - 2.5,38.1%,43.8%,5.0,39.9%
+Chicago White Sox @ Toronto Blue Jays,First 7 Innings,3.7 - 3.5,39.7%,44.6%,7.0,42.8%
+Chicago White Sox @ Toronto Blue Jays,Full Game,4.7 - 4.6,41.9%,44.7%,9.5,44.2%
+Miami Marlins @ Milwaukee Brewers,First 3 Innings,1.6 - 1.5,35.2%,40.2%,3.0,37.3%
+Miami Marlins @ Milwaukee Brewers,First 5 Innings,2.6 - 2.5,39.4%,43.2%,5.0,40.9%
+Miami Marlins @ Milwaukee Brewers,First 7 Innings,3.7 - 3.6,41.5%,43.5%,7.5,44.3%
+Miami Marlins @ Milwaukee Brewers,Full Game,4.7 - 4.7,42.6%,44.1%,9.5,47.2%
+Minnesota Twins @ Chicago Cubs,First 3 Innings,1.6 - 1.5,35.8%,39.5%,3.0,37.6%
+Minnesota Twins @ Chicago Cubs,First 5 Innings,2.6 - 2.5,38.9%,43.0%,5.0,41.0%
+Minnesota Twins @ Chicago Cubs,First 7 Innings,3.7 - 3.6,41.5%,43.6%,7.5,44.5%
+Minnesota Twins @ Chicago Cubs,Full Game,4.7 - 4.6,42.6%,44.1%,9.5,46.0%
+Baltimore Orioles @ Houston Astros,First 3 Innings,1.5 - 1.4,36.4%,39.0%,3.0,33.8%
+Baltimore Orioles @ Houston Astros,First 5 Innings,2.5 - 2.4,38.4%,43.0%,5.0,36.2%
+Baltimore Orioles @ Houston Astros,First 7 Innings,3.5 - 3.4,41.2%,43.4%,7.0,38.3%
+Baltimore Orioles @ Houston Astros,Full Game,4.5 - 4.4,42.9%,44.0%,9.0,40.3%
+San Diego Padres @ Kansas City Royals,First 3 Innings,1.6 - 1.5,36.2%,39.9%,3.0,38.0%
+San Diego Padres @ Kansas City Royals,First 5 Innings,2.7 - 2.5,38.8%,43.5%,5.0,41.9%
+San Diego Padres @ Kansas City Royals,First 7 Innings,3.7 - 3.6,41.3%,44.9%,7.5,45.2%
+San Diego Padres @ Kansas City Royals,Full Game,4.8 - 4.7,42.0%,44.6%,9.5,47.7%
+Cincinnati Reds @ Colorado Rockies,First 3 Innings,2.6 - 2.6,40.0%,42.3%,5.0,41.7%
+Cincinnati Reds @ Colorado Rockies,First 5 Innings,4.4 - 4.2,40.5%,45.4%,8.5,50.1%
+Cincinnati Reds @ Colorado Rockies,First 7 Innings,6.2 - 6.1,42.8%,46.4%,12.5,45.9%
+Cincinnati Reds @ Colorado Rockies,Full Game,8.0 - 7.8,43.2%,46.5%,16.0,42.2%
+Detroit Tigers @ Los Angeles Angels,First 3 Innings,1.5 - 1.4,35.9%,39.4%,3.0,32.0%
+Detroit Tigers @ Los Angeles Angels,First 5 Innings,2.5 - 2.3,38.5%,42.6%,5.0,34.9%
+Detroit Tigers @ Los Angeles Angels,First 7 Innings,3.4 - 3.3,40.6%,44.3%,7.0,37.0%
+Detroit Tigers @ Los Angeles Angels,Full Game,4.4 - 4.3,42.1%,44.6%,9.0,38.3%
+Washington Nationals @ Athletics,First 3 Innings,1.6 - 1.5,36.5%,39.1%,3.0,35.9%
+Washington Nationals @ Athletics,First 5 Innings,2.6 - 2.5,38.8%,42.9%,5.0,40.0%
+Washington Nationals @ Athletics,First 7 Innings,3.6 - 3.5,40.7%,44.0%,7.0,42.3%
+Washington Nationals @ Athletics,Full Game,4.7 - 4.6,42.5%,44.3%,9.5,44.5%
+St. Louis Cardinals @ Arizona Diamondbacks,First 3 Innings,1.6 - 1.5,36.7%,39.9%,3.0,38.4%
+St. Louis Cardinals @ Arizona Diamondbacks,First 5 Innings,2.7 - 2.6,39.0%,43.1%,5.5,43.1%
+St. Louis Cardinals @ Arizona Diamondbacks,First 7 Innings,3.8 - 3.7,41.2%,44.6%,7.5,46.7%
+St. Louis Cardinals @ Arizona Diamondbacks,Full Game,4.8 - 4.8,42.0%,44.3%,9.5,49.2%
+San Francisco Giants @ Seattle Mariners,First 3 Innings,1.3 - 1.3,35.6%,37.9%,2.5,47.3%
+San Francisco Giants @ Seattle Mariners,First 5 Innings,2.2 - 2.1,38.1%,42.2%,4.5,42.9%
+San Francisco Giants @ Seattle Mariners,First 7 Innings,3.0 - 3.0,40.7%,42.4%,6.0,40.6%
+San Francisco Giants @ Seattle Mariners,Full Game,3.9 - 3.9,41.9%,42.9%,8.0,38.5%
