@@ -151,65 +151,85 @@ class MLBInningByInningEngine:
         
         return base_pf * (1 + delta_density + delta_wind)
 
+    def _calculate_log5_intersect(self, batter_stat, pitcher_stat, league_avg):
+        """Applies Bill James' Log5 formula to isolate true Batter vs Pitcher odds probabilities."""
+        numerator = (batter_stat * pitcher_stat) / league_avg
+        denominator = numerator + ((1.0 - batter_stat) * (1.0 - pitcher_stat)) / (1.0 - league_avg)
+        if denominator == 0:
+            return batter_stat
+        return numerator / denominator
+
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Calculates precise matchups by contrasting dynamic hitter vs pitcher stats from Savant datasets."""
-        league_woba_median = 0.315
-        league_fip_median = 4.25
+        """Calculates precise matchups by running Log5 odds intersections on player tracking stats."""
+        league_woba_avg = 0.315
+        league_fip_avg = 4.20
         
         away_team, home_team = game['away_team'], game['home_team']
         away_sp, home_sp = game['away_pitcher'], game['home_pitcher']
-
-        away_osf, home_osf = league_woba_median, league_woba_median
-        away_psi, home_psi = league_fip_median, league_fip_median
-        away_bsi, home_bsi = league_fip_median + 0.15, league_fip_median + 0.15
         
         a_lineup = game['away_lineup'] if game['away_lineup'] else [f"Away Batter {i}" for i in range(1, 10)]
         h_lineup = game['home_lineup'] if game['home_lineup'] else [f"Home Batter {i}" for i in range(1, 10)]
         
-        prop_baselines = {'away_pitcher': {'name': away_sp, 'k': 5.2, 'er': 2.4}, 'home_pitcher': {'name': home_sp, 'k': 5.2, 'er': 2.4}, 'batters': []}
+        prop_baselines = {
+            'away_pitcher': {'name': away_sp, 'k': 5.5, 'er': 2.2},
+            'home_pitcher': {'name': home_sp, 'k': 5.5, 'er': 2.2},
+            'batters': []
+        }
+        
+        away_team_woba, home_team_woba = league_woba_avg, league_woba_avg
+        away_sp_fip, home_sp_fip = league_fip_avg, league_fip_avg
+        away_bp_fip, home_bp_fip = league_fip_avg + 0.15, league_fip_avg + 0.15
 
         if db is not None:
-            # Map batter metrics from Statcast tables
             sb_h = db['savant_hitters']
             if not sb_h.empty and 'team_name' in sb_h.columns and 'est_woba' in sb_h.columns:
                 s_away = sb_h[sb_h['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
                 s_home = sb_h[sb_h['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
-                if not s_away.empty: away_osf = float(s_away['est_woba'].mean())
-                if not s_home.empty: home_osf = float(s_home['est_woba'].mean())
+                if not s_away.empty: away_team_woba = float(s_away['est_woba'].mean())
+                if not s_home.empty: home_team_woba = float(s_home['est_woba'].mean())
 
-            # Map pitcher metrics from Statcast tables
             sb_p = db['savant_pitchers']
             if not sb_p.empty and 'player_name' in sb_p.columns and 'est_woba' in sb_p.columns:
                 p_asp = sb_p[sb_p['player_name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
                 p_hsp = sb_p[sb_p['player_name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
                 if not p_asp.empty:
-                    away_psi = float(p_asp['est_woba'].mean()) * 12.5
-                    prop_baselines['away_pitcher']['k'] = 5.5
+                    away_sp_fip = float(p_asp['est_woba'].mean()) * 12.5
+                    prop_baselines['away_pitcher']['k'] = 6.0 if float(p_asp['est_woba'].mean()) < 0.300 else 5.0
                 if not p_hsp.empty:
-                    home_psi = float(p_hsp['est_woba'].mean()) * 12.5
-                    prop_baselines['home_pitcher']['k'] = 5.5
+                    home_sp_fip = float(p_hsp['est_woba'].mean()) * 12.5
+                    prop_baselines['home_pitcher']['k'] = 6.0 if float(p_hsp['est_woba'].mean()) < 0.300 else 5.0
 
-            # Map individual hitters
-            for side, roster, t_lbl in [('away', a_lineup, away_team), ('home', h_lineup, home_team)]:
-                for name in roster[:9]:
-                    pH, pTB, pRBI, pR, pHR = 0.85, 1.35, 0.45, 0.45, 0.12
-                    if not sb_h.empty and 'player_name' in sb_h.columns:
-                        p_row = sb_h[sb_h['player_name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
-                        if not p_row.empty:
-                            pH = float(p_row['est_woba'].mean()) * 2.5
-                            pTB = pH * 1.6
+        # Run Log5 to intersect Team vs Team Run Expectancy rates per inning
+        away_runs_vs_sp = (self._calculate_log5_intersect(away_team_woba, home_sp_fip/12.5, league_woba_avg) * 1.62) * delta_env
+        home_runs_vs_sp = (self._calculate_log5_intersect(home_team_woba, away_sp_fip/12.5, league_woba_avg) * 1.62) * delta_env
+        away_runs_vs_bp = (self._calculate_log5_intersect(away_team_woba, home_bp_fip/12.5, league_woba_avg) * 1.62) * delta_env
+        home_runs_vs_bp = (self._calculate_log5_intersect(home_team_woba, away_bp_fip/12.5, league_woba_avg) * 1.62) * delta_env
 
-                    prop_baselines['batters'].append({'name': name, 'side': side, 'team': t_lbl, 'hits': pH, 'tb': pTB, 'rbi': pRBI, 'runs': pR, 'hr': pHR})
+        # Run Log5 for Named Individual Hitters Props
+        if db is not None and not sb_h.empty:
+            for side, lineup, team_label, opp_sp_fip in [('away', a_lineup, away_team, home_sp_fip), ('home', h_lineup, home_team, away_sp_fip)]:
+                for player_name in lineup[:9]:
+                    pHits, pTB, pRBI, pRuns, pHR = 0.85, 1.35, 0.45, 0.45, 0.12
+                    p_row = sb_h[sb_h['player_name'].str.contains(player_name.split()[-1], na=False, case=False)] if len(player_name.split()) > 0 else pd.DataFrame()
+                    if not p_row.empty:
+                        hitter_xwoba = float(p_row['est_woba'].mean())
+                        matched_woba = self._calculate_log5_intersect(hitter_xwoba, opp_sp_fip/12.5, league_woba_avg)
+                        pHits = 0.85 * (matched_woba / league_woba_avg)
+                        pTB = 1.35 * (matched_woba / league_woba_avg)
+                        pHR = 0.12 * (matched_woba / league_woba_avg)
+
+                    prop_baselines['batters'].append({
+                        'name': player_name, 'side': side, 'team': team_label,
+                        'hits': pHits, 'tb': pTB, 'rbi': pRBI, 'runs': pRuns, 'hr': pHR
+                    })
 
         metrics = {
-            'away_osf': away_osf, 'home_osf': home_osf,
-            'away_psi': away_psi, 'home_psi': home_psi,
-            'away_bsi': away_bsi, 'home_bsi': home_bsi,
+            'away_osf': away_team_woba, 'home_osf': home_team_woba,
+            'away_psi': away_sp_fip, 'home_psi': home_sp_fip,
+            'away_bsi': away_bp_fip, 'home_bsi': home_bp_fip,
             'delta_env': delta_env,
-            'lambda_away_sp': (away_osf * 1.62) * (home_psi / league_fip_median) * delta_env,
-            'lambda_home_sp': (home_osf * 1.62) * (away_psi / league_fip_median) * delta_env,
-            'lambda_away_rp': (away_osf * 1.62) * (home_bsi / league_fip_median) * delta_env,
-            'lambda_home_rp': (home_osf * 1.62) * (away_bsi / league_fip_median) * delta_env,
+            'lambda_away_sp': away_runs_vs_sp, 'lambda_home_sp': home_runs_vs_sp,
+            'lambda_away_rp': away_runs_vs_bp, 'lambda_home_rp': home_runs_vs_bp,
             'props': prop_baselines
         }
         return metrics
@@ -285,7 +305,7 @@ class MLBInningByInningEngine:
             
             results.append({
                 'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
-                'Proj_Score': f"{mode_pair} - {mode_pair}",
+                'Proj_Score': f"{mode_pair[0]} - {mode_pair[1]}",
                 'Home_ML_Probability': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Probability': f"{away_ml_prob * 100:.1f}%",
                 'Target_DK_Total_Line': dk_total_line, 'Over_Total_Probability': f"{over_prob * 100:.1f}%", 'Under_Total_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
             })
@@ -295,7 +315,7 @@ class MLBInningByInningEngine:
         props_list = []
         p_sim = sim_data['pitcher_props']
         
-        # 1. Pitchers
+        # 1. Identified Pitchers by Name
         pitchers = [('away', game['away_pitcher'], game['away_team']), ('home', game['home_pitcher'], game['home_team'])]
         for side, name, team in pitchers:
             for p_key, label in [('k', 'Strikeouts (O/U)'), ('er', 'Earned Runs (O/U)')]:
@@ -307,7 +327,7 @@ class MLBInningByInningEngine:
                     'Over_Probability': f"{over_p * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_p) * 100:.1f}%"
                 })
 
-        # 2. Batters
+        # 2. Identified Batters by Name
         b_markets = [('hits', 'Hits (O/U)'), ('tb', 'Total Bases (O/U)'), ('rbi', 'RBIs (O/U)'), ('runs', 'Runs Scored (O/U)'), ('hr', 'Home Runs (O/U)')]
         for b_data in sim_data['batter_props']:
             for key, label in b_markets:
@@ -335,6 +355,7 @@ class MLBInningByInningEngine:
             away_team = game['away_team']
             home_team = game['home_team']
 
+            # Safety Skipping Trigger
             if away_sp == 'Unknown Starter' or home_sp == 'Unknown Starter':
                 print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher.")
                 continue
