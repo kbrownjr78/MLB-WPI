@@ -46,12 +46,12 @@ jobs:
       run: |
         python src/backtest_engine.py
 
-      - name: Commit and Push Compiled Matrix Logs to Main Branch
+    - name: Commit and Push Compiled Matrix Logs to Main Branch
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@://github.com"
         
-        # 🛡️ FIX: Stage the entire data/ tree to prevent bash wildcard pathspec failures
+        # 🛡️ FIX: Stages the entire data/ folder tree to prevent bash wildcard pathspec string failures
         git add --ignore-errors data/
         
         if git diff --cached --quiet; then
