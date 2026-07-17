@@ -78,7 +78,7 @@ class MLBPitchByPitchEngine:
             return {'temp': 70, 'wind_speed': 0, 'wind_direction': 0}
 
     def fetch_live_schedule(self):
-        """Ingests current day games along with individual roster lineups directly from StatsAPI."""
+        """Ingests current day games along with individual roster lineups directly from MLB StatsAPI."""
         try:
             raw_games = statsapi.schedule(date=self.today)
             parsed = []
@@ -157,13 +157,15 @@ class MLBPitchByPitchEngine:
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
         """Builds granular pitch-by-pitch probabilities for individual player matchups."""
+        league_woba_median = 0.315
+        league_fip_median = 4.25
+        
         away_team, home_team = game['away_team'], game['home_team']
         away_sp, home_sp = game['away_pitcher'], game['home_pitcher']
         
-        a_lineup = game['away_lineup'] if game['away_lineup'] else [f"Away Batter {i}" for i in range(1, 10)]
-        h_lineup = game['home_lineup'] if game['home_lineup'] else [f"Home Batter {i}" for i in range(1, 10)]
+        fg_away_code = self.fg_team_map.get(away_team, 'MIN')
+        fg_home_code = self.fg_team_map.get(home_team, 'MIN')
         
-        # Enforce pitch-level probability default structures
         pitchers = {
             'away': {'name': away_sp, 'strike_pct': 0.64, 'walk_pct': 0.08, 'in_play_fip': 4.10, 'fatigue_max': 95},
             'home': {'name': home_sp, 'strike_pct': 0.65, 'walk_pct': 0.07, 'in_play_fip': 3.95, 'fatigue_max': 95},
@@ -171,11 +173,13 @@ class MLBPitchByPitchEngine:
             'home_bullpen': {'strike_pct': 0.64, 'walk_pct': 0.08, 'in_play_fip': 4.10}
         }
         
+        a_lineup = game['away_lineup'] if game['away_lineup'] else [f"Away Batter {i}" for i in range(1, 10)]
+        h_lineup = game['home_lineup'] if game['home_lineup'] else [f"Home Batter {i}" for i in range(1, 10)]
+        
         batters = []
         fgb = db['fg_batting'] if db is not None else pd.DataFrame()
         fgp = db['fg_pitching'] if db is not None else pd.DataFrame()
 
-        # Extract Pitcher Statistics
         if not fgp.empty and 'Name' in fgp.columns:
             for side, name in [('away', away_sp), ('home', home_sp)]:
                 p_row = fgp[fgp['Name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
@@ -184,7 +188,6 @@ class MLBPitchByPitchEngine:
                     pitchers[side]['walk_pct'] = float(p_row['BB%'].mean()) / 100.0 if 'BB%' in p_row.columns else 0.08
                     pitchers[side]['in_play_fip'] = float(p_row['FIP'].mean())
 
-        # Extract Individual Batter Statistics
         for side, lineup, team in [('away', a_lineup, away_team), ('home', h_lineup, home_team)]:
             for i, p_name in enumerate(lineup[:9]):
                 b_stats = {'name': p_name, 'side': side, 'team': team, 'slot': i+1, 'contact_pct': 0.78, 'single_ratio': 0.65, 'double_ratio': 0.18, 'triple_ratio': 0.02, 'hr_ratio': 0.15}
@@ -220,12 +223,10 @@ class MLBPitchByPitchEngine:
                 hitting_side = 'away' if half == 'top' else 'home'
                 pitching_side = 'home' if half == 'top' else 'away'
                 
-                # Active Base Runner Tracking Array: [First, Second, Third]
                 bases = [0, 0, 0]
                 outs = 0
                 
                 while outs < 3:
-                    # Roster Lineup Management Loops
                     side_batters = batters_df[batters_df['side'] == hitting_side].reset_index(drop=True)
                     idx = lineup_index[hitting_side]
                     batter = side_batters.iloc[idx % 9]
@@ -234,7 +235,6 @@ class MLBPitchByPitchEngine:
                     if b_name not in props['player_events']:
                         props['player_events'][b_name] = {'hits': 0, 'tb': 0, 'rbi': 0, 'runs': 0, 'hr': 0}
                     
-                    # Bullpen Dependency Routing Matrix
                     is_sp = True
                     sp_label = f"{pitching_side}_sp"
                     if pitch_counts.get(sp_label, 0) >= pitchers[pitching_side]['fatigue_max']:
@@ -244,46 +244,39 @@ class MLBPitchByPitchEngine:
                         p_profile = pitchers[pitching_side]
                         pitch_counts[sp_label] += 1
                     
-                    # 1. Reset Count State for New Plate Appearance
                     balls, strikes = 0, 0
                     pa_resolved = False
                     
                     while not pa_resolved:
                         if is_sp: pitch_counts[sp_label] += 1
-                        
-                        # Pitch Multi-Class Decision Matrix
                         rand_pitch = np.random.rand()
                         strike_threshold = p_profile['strike_pct']
                         
                         if rand_pitch < strike_threshold:
-                            # Swing Decision Logic
                             if np.random.rand() < batter['contact_pct']:
-                                # Ball put in play
                                 pa_resolved = True
                                 rand_hit = np.random.rand() * env
                                 
-                                # Compare against contact profiles
                                 if rand_hit < (1.0 / p_profile['in_play_fip'] * 2.2):
                                     props['player_events'][b_name]['hits'] += 1
                                     hit_type = np.random.rand()
                                     
-                                    # Advance Base Runners dynamically
                                     if hit_type < batter['single_ratio']:
                                         props['player_events'][b_name]['tb'] += 1
                                         new_runs = bases[2]
                                         bases = [1, bases[0], bases[1]]
                                     elif hit_type < (batter['single_ratio'] + batter['double_ratio']):
                                         props['player_events'][b_name]['tb'] += 2
-                                        new_runs = bases[2] + bases[1]
+                                        new_runs = bases[1] + bases[2]
                                         bases = [0, 1, bases[0]]
                                     elif hit_type < (1.0 - batter['hr_ratio']):
                                         props['player_events'][b_name]['tb'] += 3
-                                        new_runs = bases[2] + bases[1] + bases[0]
+                                        new_runs = bases[0] + bases[1] + bases[2]
                                         bases = [0, 0, 1]
                                     else:
                                         props['player_events'][b_name]['tb'] += 4
                                         props['player_events'][b_name]['hr'] += 1
-                                        new_runs = 1 + bases[2] + bases[1] + bases[0]
+                                        new_runs = 1 + bases[0] + bases[1] + bases[2]
                                         bases = [0, 0, 0]
                                         
                                     runs[hitting_side] += new_runs
@@ -298,13 +291,12 @@ class MLBPitchByPitchEngine:
                                     outs += 1
                                     if is_sp: props[f"{pitching_side}_pitcher_k"] += 1
                         else:
-                            if np.random.rand() < 0.05: # Foul ball check
+                            if np.random.rand() < 0.05:
                                 if strikes < 2: strikes += 1
                             else:
                                 balls += 1
                                 if balls == 4:
                                     pa_resolved = True
-                                    # Walk runner advancement matrix
                                     if bases[0] == 1:
                                         if bases[1] == 1:
                                             if bases[2] == 1:
@@ -316,7 +308,6 @@ class MLBPitchByPitchEngine:
 
                     lineup_index[hitting_side] += 1
                     
-            # Log segment checkpoints at the end of targeted frames
             if inning == 3:
                 inning_scores['F3'] = runs.copy()
             elif inning == 5:
@@ -328,22 +319,23 @@ class MLBPitchByPitchEngine:
         return inning_scores, props
     def _calculate_score_mode(self, away_scores, home_scores):
         df = pd.DataFrame({'away': away_scores, 'home': home_scores})
-        return df.value_counts().idxmax(), df.value_counts().idxmax()
+        mode_pair = df.value_counts().idxmax()
+        return mode_pair[0], mode_pair[1]
 
     def _calculate_array_mode(self, data_list):
         return int(pd.Series(data_list).value_counts().idxmax())
 
     def run_monte_carlo(self, metrics, num_sims=1000):
-        all_markets, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home = [], [], [], [], []
-        segment_data = {'F3': ([], []), 'F5': ([], []), 'F7': ([], []), 'FG': ([], [])}
+        pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home = [], [], [], []
+        segment_data = {'F3': {'away': [], 'home': []}, 'F5': {'away': [], 'home': []}, 'F7': {'away': [], 'home': []}, 'FG': {'away': [], 'home': []}}
         hitter_aggregates = {}
 
         for _ in range(num_sims):
             scores, props = self._simulate_single_game_pbp(metrics)
             
             for k in ['F3', 'F5', 'F7', 'FG']:
-                segment_data[k][0].append(scores[k]['away'])
-                segment_data[k][1].append(scores[k]['home'])
+                segment_data[k]['away'].append(scores[k]['away'])
+                segment_data[k]['home'].append(scores[k]['home'])
                 
             pitcher_k_away.append(props['away_pitcher_k'])
             pitcher_k_home.append(props['home_pitcher_k'])
@@ -373,7 +365,7 @@ class MLBPitchByPitchEngine:
             away_team = game['away_team']
             home_team = game['home_team']
 
-            # 🛑 CRITICAL SAFETY CHECK: Skip game if either starting pitcher is unannounced
+            # Safety check: Skip game if either starting pitcher is unannounced
             if away_sp == 'Unknown Starter' or home_sp == 'Unknown Starter':
                 print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher line.")
                 continue
@@ -388,13 +380,13 @@ class MLBPitchByPitchEngine:
             
             # 1. Translate Segment Moneylines & Totals
             for label, key in [('First 3 Innings', 'F3'), ('First 5 Innings', 'F5'), ('First 7 Innings', 'F7'), ('Full Game', 'FG')]:
-                a_scores = np.array(seg_data[key][0])
-                h_scores = np.array(seg_data[key][1])
-                mode_pair = self._calculate_score_mode(a_scores, h_scores)
+                a_scores = np.array(seg_data[key]['away'])
+                h_scores = np.array(seg_data[key]['home'])
+                mode_a, mode_h = self._calculate_score_mode(a_scores, h_scores)
                 over_prob = np.sum((a_scores + h_scores) > (round(np.mean(a_scores + h_scores) * 2) / 2)) / len(a_scores)
                 
                 all_segments_out.append({
-                    'Matchup': f"{away_team} @ {home_team}", 'Segment': label, 'Proj_Score': f"{mode_pair[0][0]} - {mode_pair[0][1]}",
+                    'Matchup': f"{away_team} @ {home_team}", 'Segment': label, 'Proj_Score': f"{mode_a} - {mode_h}",
                     'Home_ML_Probability': f"{(np.sum(h_scores > a_scores)/len(a_scores))*100:.1f}%",
                     'Away_ML_Probability': f"{(np.sum(a_scores > h_scores)/len(a_scores))*100:.1f}%",
                     'Over_Probability': f"{over_prob * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
@@ -428,5 +420,5 @@ class MLBPitchByPitchEngine:
         print("Data compilation successfully saved to repository.")
 
 if __name__ == "__main__":
-    engine = MLBFullIndividualPropEngine()
+    engine = MLBPitchByPitchEngine()
     asyncio.run(engine.run_pipeline())
