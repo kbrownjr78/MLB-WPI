@@ -7,7 +7,7 @@ import statsapi
 import pybaseball as pb
 import python_weather
 
-# Enable pybaseball caching to stay under API limits
+# Enable pybaseball caching to optimize resource utilization
 pb.cache.enable()
 
 class MLBWeatherEnrichedEngine:
@@ -29,7 +29,21 @@ class MLBWeatherEnrichedEngine:
             'Texas Rangers': 'Arlington', 'Toronto Blue Jays': 'Toronto', 'Washington Nationals': 'Washington'
         }
         
-        # 2. Authentic Base Park Factors & Stadium Dome Registry
+        # 2. FanGraphs-to-MLB Team Name Normalization Map
+        self.fg_team_map = {
+            'Arizona Diamondbacks': 'ARI', 'Atlanta Braves': 'ATL', 'Baltimore Orioles': 'BAL',
+            'Boston Red Sox': 'BOS', 'Chicago Cubs': 'CHC', 'Chicago White Sox': 'CHW',
+            'Cincinnati Reds': 'CIN', 'Cleveland Guardians': 'CLE', 'Colorado Rockies': 'COL',
+            'Detroit Tigers': 'DET', 'Houston Astros': 'HOU', 'Kansas City Royals': 'KCR',
+            'Los Angeles Angels': 'LAA', 'Los Angeles Dodgers': 'LAD', 'Miami Marlins': 'MIA',
+            'Milwaukee Brewers': 'MIL', 'Minnesota Twins': 'MIN', 'New York Mets': 'NYM',
+            'New York Yankees': 'NYY', 'Oakland Athletics': 'OAK', 'Philadelphia Phillies': 'PHI',
+            'Pittsburgh Pirates': 'PIT', 'San Diego Padres': 'SDP', 'San Francisco Giants': 'SFG',
+            'Seattle Mariners': 'SEA', 'St. Louis Cardinals': 'STL', 'Tampa Bay Rays': 'TBR',
+            'Texas Rangers': 'TEX', 'Toronto Blue Jays': 'TOR', 'Washington Nationals': 'WSN'
+        }
+        
+        # 3. Authentic Base Park Factors & Stadium Dome Registry
         self.park_data = {
             'Arizona Diamondbacks': {'factor': 1.02, 'dome': True},   'Atlanta Braves': {'factor': 0.99, 'dome': False},
             'Baltimore Orioles': {'factor': 1.01, 'dome': False},     'Boston Red Sox': {'factor': 1.08, 'dome': False},
@@ -52,14 +66,8 @@ class MLBWeatherEnrichedEngine:
         try:
             async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
                 weather = await client.get(city)
-                
-                # Safe fallback parsing for text direction string inputs
                 raw_dir = weather.wind_direction
-                if hasattr(raw_dir, 'value'):
-                    dir_val = raw_dir.value
-                else:
-                    dir_val = str(raw_dir)
-                    
+                dir_val = raw_dir.value if hasattr(raw_dir, 'value') else str(raw_dir)
                 return {
                     'temp': weather.temperature,
                     'wind_speed': weather.wind_speed,
@@ -89,63 +97,97 @@ class MLBWeatherEnrichedEngine:
             return pd.DataFrame()
 
     def scrape_historical_and_savant_data(self):
-        """Scrapes advanced baseball tracking layers from historical endpoints."""
+        """Scrapes deep batter tracking layers from Baseball Savant and FanGraphs."""
         try:
+            print("Querying Baseball Savant Leaderboards...")
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
             savant_pitchers = pb.statcast_pitcher_expected_stats(self.current_year)
-            fg_pitching = pb.pitching_stats(self.current_year - 1, self.current_year, qual_rating=1)
+            
+            print("Querying FanGraphs Cumulative Team Leaderboards...")
+            # Set qual to low value to ingest full roster subsets
+            fg_batting = pb.batting_stats(self.current_year - 1, self.current_year, qual=10)
+            fg_pitching = pb.pitching_stats(self.current_year - 1, self.current_year, qual=10)
+            
             return {
-                'savant_hitters': savant_hitters.set_index('last_name, first_name') if savant_hitters is not None else pd.DataFrame(),
-                'savant_pitchers': savant_pitchers.set_index('last_name, first_name') if savant_pitchers is not None else pd.DataFrame(),
-                'fg_pitching': fg_pitching.set_index('Name') if fg_pitching is not None else pd.DataFrame()
+                'savant_hitters': savant_hitters if savant_hitters is not None else pd.DataFrame(),
+                'savant_pitchers': savant_pitchers if savant_pitchers is not None else pd.DataFrame(),
+                'fg_batting': fg_batting if fg_batting is not None else pd.DataFrame(),
+                'fg_pitching': fg_pitching if fg_pitching is not None else pd.DataFrame()
             }
-        except Exception:
+        except Exception as e:
+            print(f"Scraping failed: {e}. Executing with pipeline defaults.")
             return None
     def _compass_to_degrees(self, direction):
         """Translates text wind directions into numerical compass degrees."""
         if isinstance(direction, (int, float)):
             return float(direction)
-            
         mapping = {
             'N': 0.0, 'NNE': 22.5, 'NE': 45.0, 'ENE': 67.5,
             'E': 90.0, 'ESE': 112.5, 'SE': 135.0, 'SSE': 157.5,
             'S': 180.0, 'SSW': 202.5, 'SW': 225.0, 'WSW': 247.5,
             'W': 270.0, 'WNW': 292.5, 'NW': 315.0, 'NNW': 337.5
         }
-        clean_dir = str(direction).strip().upper()
-        return mapping.get(clean_dir, 0.0)
+        return mapping.get(str(direction).strip().upper(), 0.0)
 
     def calculate_environmental_modifier(self, home_team, w_data):
         """Implements the full Delta_Env operational framework formula."""
         p_info = self.park_data.get(home_team, {'factor': 1.00, 'dome': False})
         base_pf = p_info['factor']
-        
-        # Enclosed Dome contingency override
         if p_info['dome']:
             return base_pf
             
-        # Delta_Density = (GameTemp - 70) * 0.001 * Elevation_Factor
         elevation_factor = 3.5 if home_team == 'Colorado Rockies' else 1.0
         delta_density = (w_data['temp'] - 70) * 0.001 * elevation_factor
         
-        # Safe translation of compass strings to degree numerical values
         deg_angle = self._compass_to_degrees(w_data['wind_direction'])
         wind_angle_rad = np.radians(deg_angle)
         delta_wind = w_data['wind_speed'] * np.cos(wind_angle_rad) * 0.002
         
-        # Combined Custom Delta_Env Vector
-        delta_env = base_pf * (1 + delta_density + delta_wind)
-        return delta_env
+        return base_pf * (1 + delta_density + delta_wind)
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Builds statistical component metrics adjusted by weather modifiers."""
+        """Dynamically computes team OSF from scraped Baseball Savant and FanGraphs stats."""
+        # 1. Standard safety fallbacks if specific data hooks are absent
+        away_osf, home_osf = 0.320, 0.320 
+        
+        away_team = game['away_team']
+        home_team = game['home_team']
+        
+        # Translate full names to FanGraphs codes (e.g. 'New York Yankees' -> 'NYY')
+        fg_away_code = self.fg_team_map.get(away_team, 'MIN')
+        fg_home_code = self.fg_team_map.get(home_team, 'MIN')
+
+        if db is not None:
+            # Parse FanGraphs Team-wide wOBA averages
+            fgb = db['fg_batting']
+            if not fgb.empty and 'Team' in fgb.columns:
+                away_rows = fgb[fgb['Team'] == fg_away_code]
+                home_rows = fgb[fgb['Team'] == fg_home_code]
+                if not away_rows.empty:
+                    away_osf = float(away_rows['wOBA'].mean())
+                if not home_rows.empty:
+                    home_osf = float(home_rows['wOBA'].mean())
+
+            # Refine baseline using advanced Savant tracking layers if available
+            sb = db['savant_hitters']
+            if not sb.empty and 'team_name' in sb.columns and 'est_woba' in sb.columns:
+                # Standardize long team names inside Savant data structures
+                s_away = sb[sb['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
+                s_home = sb[sb['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
+                if not s_away.empty:
+                    # Balance real outcomes (wOBA) with expected skill parameters (xwOBA / est_woba)
+                    away_osf = (away_osf + float(s_away['est_woba'].mean())) / 2
+                if not s_home.empty:
+                    home_osf = (home_osf + float(s_home['est_woba'].mean())) / 2
+
+        # 2. Scale expected run per inning models dynamically using the derived hitting arrays
         metrics = {
-            'away_osf': 0.335, 'home_osf': 0.330,
+            'away_osf': away_osf, 'home_osf': home_osf,
             'away_psi': 32.5, 'home_psi': 34.1,
             'away_bsi': 64.2, 'home_bsi': 62.8,
             'delta_env': delta_env,
-            'away_avg_runs_per_inning': 0.52 * delta_env,
-            'home_avg_runs_per_inning': 0.55 * delta_env,
+            'away_avg_runs_per_inning': (away_osf * 1.62) * delta_env,
+            'home_avg_runs_per_inning': (home_osf * 1.62) * delta_env,
             'away_sp_k_prop': 5.5 / delta_env,
             'home_sp_k_prop': 6.0 / delta_env
         }
