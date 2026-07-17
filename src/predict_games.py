@@ -7,15 +7,15 @@ import statsapi
 import pybaseball as pb
 import python_weather
 
-# Enable pybaseball caching to optimize resource utilization
+# Enable pybaseball caching to stay under API limits
 pb.cache.enable()
 
-class MLBPitchByPitchEngine:
+class MLBInningByInningEngine:
     def __init__(self):
         self.today = datetime.date.today().strftime('%Y-%m-%d')
         self.current_year = datetime.date.today().year
         
-        # 1. Official MLB Team-to-City Mapping (for Live Weather Queries)
+        # 1. Official MLB Team-to-City Mapping (for Weather Queries)
         self.team_cities = {
             'Arizona Diamondbacks': 'Phoenix', 'Atlanta Braves': 'Atlanta', 'Baltimore Orioles': 'Baltimore',
             'Boston Red Sox': 'Boston', 'Chicago Cubs': 'Chicago', 'Chicago White Sox': 'Chicago',
@@ -156,7 +156,7 @@ class MLBPitchByPitchEngine:
         return base_pf * (1 + delta_density + delta_wind)
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Builds granular pitch-by-pitch probabilities for individual player matchups."""
+        """Calculates inning-by-inning baselines from scraped player stats."""
         league_woba_median = 0.315
         league_fip_median = 4.25
         
@@ -165,190 +165,177 @@ class MLBPitchByPitchEngine:
         
         fg_away_code = self.fg_team_map.get(away_team, 'MIN')
         fg_home_code = self.fg_team_map.get(home_team, 'MIN')
-        
-        pitchers = {
-            'away': {'name': away_sp, 'strike_pct': 0.64, 'walk_pct': 0.08, 'in_play_fip': 4.10, 'fatigue_max': 95},
-            'home': {'name': home_sp, 'strike_pct': 0.65, 'walk_pct': 0.07, 'in_play_fip': 3.95, 'fatigue_max': 95},
-            'away_bullpen': {'strike_pct': 0.63, 'walk_pct': 0.09, 'in_play_fip': 4.20},
-            'home_bullpen': {'strike_pct': 0.64, 'walk_pct': 0.08, 'in_play_fip': 4.10}
-        }
+
+        away_osf, home_osf = league_woba_median, league_woba_median
+        away_psi, home_psi = league_fip_median, league_fip_median
+        away_bsi, home_bsi = league_fip_median + 0.15, league_fip_median + 0.15
         
         a_lineup = game['away_lineup'] if game['away_lineup'] else [f"Away Batter {i}" for i in range(1, 10)]
         h_lineup = game['home_lineup'] if game['home_lineup'] else [f"Home Batter {i}" for i in range(1, 10)]
         
-        batters = []
-        fgb = db['fg_batting'] if db is not None else pd.DataFrame()
-        fgp = db['fg_pitching'] if db is not None else pd.DataFrame()
+        prop_baselines = {'away_pitcher': {'name': away_sp, 'k': 5.2, 'er': 2.4}, 'home_pitcher': {'name': home_sp, 'k': 5.2, 'er': 2.4}, 'batters': []}
 
-        if not fgp.empty and 'Name' in fgp.columns:
-            for side, name in [('away', away_sp), ('home', home_sp)]:
-                p_row = fgp[fgp['Name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
-                if not p_row.empty:
-                    pitchers[side]['strike_pct'] = float(p_row['Zone%'].mean()) / 100.0 if 'Zone%' in p_row.columns else 0.64
-                    pitchers[side]['walk_pct'] = float(p_row['BB%'].mean()) / 100.0 if 'BB%' in p_row.columns else 0.08
-                    pitchers[side]['in_play_fip'] = float(p_row['FIP'].mean())
+        if db is not None:
+            fgb = db['fg_batting']
+            if not fgb.empty and 'Team' in fgb.columns:
+                a_rows = fgb[fgb['Team'] == fg_away_code]
+                h_rows = fgb[fgb['Team'] == fg_home_code]
+                if not a_rows.empty: away_osf = float(a_rows['wOBA'].mean())
+                if not h_rows.empty: home_osf = float(h_rows['wOBA'].mean())
 
-        for side, lineup, team in [('away', a_lineup, away_team), ('home', h_lineup, home_team)]:
-            for i, p_name in enumerate(lineup[:9]):
-                b_stats = {'name': p_name, 'side': side, 'team': team, 'slot': i+1, 'contact_pct': 0.78, 'single_ratio': 0.65, 'double_ratio': 0.18, 'triple_ratio': 0.02, 'hr_ratio': 0.15}
+            fgp = db['fg_pitching']
+            if not fgp.empty and 'Name' in fgp.columns and 'FIP' in fgp.columns:
+                asp_row = fgp[fgp['Name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
+                hsp_row = fgp[fgp['Name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
                 
-                if not fgb.empty and 'Name' in fgb.columns:
-                    b_row = fgb[fgb['Name'].str.contains(p_name.split()[-1], na=False, case=False)] if len(p_name.split()) > 0 else pd.DataFrame()
-                    if not b_row.empty:
-                        b_stats['contact_pct'] = float(b_row['Contact%'].mean()) / 100.0 if 'Contact%' in b_row.columns else 0.78
-                        total_hits = float(b_row['H'].sum()) if 'H' in b_row.columns and b_row['H'].sum() > 0 else 1.0
-                        b_stats['single_ratio'] = (total_hits - float(b_row['2B'].sum() + b_row['3B'].sum() + b_row['HR'].sum())) / total_hits
-                        b_stats['double_ratio'] = float(b_row['2B'].sum()) / total_hits
-                        b_stats['triple_ratio'] = float(b_row['3B'].sum()) / total_hits
-                        b_stats['hr_ratio'] = float(b_row['HR'].sum()) / total_hits
+                if not asp_row.empty:
+                    away_psi = float(asp_row['FIP'].mean())
+                    prop_baselines['away_pitcher']['k'] = (float(asp_row['SO'].mean()) / 32.0) * 5.5 if 'SO' in asp_row.columns else 5.2
+                    prop_baselines['away_pitcher']['er'] = (float(asp_row['ER'].mean()) / 32.0) * 2.4 if 'ER' in asp_row.columns else 2.4
+                if not hsp_row.empty:
+                    home_psi = float(hsp_row['FIP'].mean())
+                    prop_baselines['home_pitcher']['k'] = (float(hsp_row['SO'].mean()) / 32.0) * 5.5 if 'SO' in hsp_row.columns else 5.2
+                    prop_baselines['home_pitcher']['er'] = (float(hsp_row['ER'].mean()) / 32.0) * 2.4 if 'ER' in hsp_row.columns else 2.4
 
-                batters.append(b_stats)
+                away_bp = fgp[fgp['Team'] == fg_away_code]
+                home_bp = fgp[fgp['Team'] == fg_home_code]
+                if not away_bp.empty: away_bsi = float(away_bp['FIP'].mean())
+                if not home_bp.empty: home_bsi = float(home_bp['FIP'].mean())
 
-        return {'pitchers': pitchers, 'batters': pd.DataFrame(batters), 'delta_env': delta_env}
-    def _simulate_single_game_pbp(self, metrics):
-        """Executes a true pitch-by-pitch stochastic simulation path for 9 full innings."""
-        pitchers = metrics['pitchers']
-        batters_df = metrics['batters']
-        env = metrics['delta_env']
+            for side, roster, t_lbl in [('away', a_lineup, away_team), ('home', h_lineup, home_team)]:
+                for name in roster[:9]:
+                    pH, pTB, pRBI, pR, pHR = 0.85, 1.35, 0.45, 0.45, 0.12
+                    if not fgb.empty and 'Name' in fgb.columns:
+                        p_row = fgb[fgb['Name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
+                        if not p_row.empty:
+                            g_max = float(p_row['G'].max()) if 'G' in p_row.columns and p_row['G'].max() > 0 else 162.0
+                            pH = float(p_row['H'].sum()) / g_max if 'H' in p_row.columns else 0.85
+                            pTB = float(p_row['TB'].sum()) / g_max if 'TB' in p_row.columns else 1.35
+                            pRBI = float(p_row['RBI'].sum()) / g_max if 'RBI' in p_row.columns else 0.45
+                            pR = float(p_row['R'].sum()) / g_max if 'R' in p_row.columns else 0.45
+                            pHR = float(p_row['HR'].sum()) / g_max if 'HR' in p_row.columns else 0.12
+
+                    prop_baselines['batters'].append({'name': name, 'side': side, 'team': t_lbl, 'hits': pH, 'tb': pTB, 'rbi': pRBI, 'runs': pR, 'hr': pHR})
+
+        # Multi-Inning Rate Mappings (lambda)
+        metrics = {
+            'away_osf': away_osf, 'home_osf': home_osf,
+            'away_psi': away_psi, 'home_psi': home_psi,
+            'away_bsi': away_bsi, 'home_bsi': home_bsi,
+            'delta_env': delta_env,
+            'lambda_away_sp': (away_osf * 1.62) * (home_psi / league_fip_median) * delta_env,
+            'lambda_home_sp': (home_osf * 1.62) * (away_psi / league_fip_median) * delta_env,
+            'lambda_away_rp': (away_osf * 1.62) * (home_bsi / league_fip_median) * delta_env,
+            'lambda_home_rp': (home_osf * 1.62) * (away_bsi / league_fip_median) * delta_env,
+            'props': prop_baselines
+        }
+        return metrics
+    def execute_segment_simulation(self, metrics, num_sims=10000):
+        """Vectorizes Monte Carlo paths to generate inning-by-inning team scoring matrices and player props."""
+        env = np.random.normal(metrics['delta_env'], 0.04, num_sims)
         
-        runs = {'away': 0, 'home': 0}
-        inning_scores = {'F3': {'away': 0, 'home': 0}, 'F5': {'away': 0, 'home': 0}, 'F7': {'away': 0, 'home': 0}, 'FG': {'away': 0, 'home': 0}}
-        props = {'away_pitcher_k': 0, 'home_pitcher_k': 0, 'away_pitcher_er': 0, 'home_pitcher_er': 0, 'player_events': {}}
+        # Pull inning scoring rates
+        l_away_sp = metrics['lambda_away_sp'] * env
+        l_home_sp = metrics['lambda_home_sp'] * env
+        l_away_rp = metrics['lambda_away_rp'] * env
+        l_home_rp = metrics['lambda_home_rp'] * env
+
+        runs_away = np.zeros((num_sims, 9))
+        runs_home = np.zeros((num_sims, 9))
         
-        pitch_counts = {'away_sp': 0, 'home_sp': 0}
-        lineup_index = {'away': 0, 'home': 0}
+        # --- GRANULAR INNING-BY-INNING SIMULATION LOOP ---
+        for i in range(9):
+            if i < 5:  # Innings 1-5: Starting Pitcher Dominance Matrix
+                runs_away[:, i] = np.random.poisson(l_away_sp, num_sims)
+                runs_home[:, i] = np.random.poisson(l_home_sp, num_sims)
+            else:  # Innings 6-9: Bullpen Prevention Matrix
+                runs_away[:, i] = np.random.poisson(l_away_rp, num_sims)
+                runs_home[:, i] = np.random.poisson(l_home_rp, num_sims)
 
-        for inning in range(1, 10):
-            for half in ['top', 'bottom']:
-                hitting_side = 'away' if half == 'top' else 'home'
-                pitching_side = 'home' if half == 'top' else 'away'
-                
-                bases = [0, 0, 0]
-                outs = 0
-                
-                while outs < 3:
-                    side_batters = batters_df[batters_df['side'] == hitting_side].reset_index(drop=True)
-                    idx = lineup_index[hitting_side]
-                    batter = side_batters.iloc[idx % 9]
-                    b_name = batter['name']
-                    
-                    if b_name not in props['player_events']:
-                        props['player_events'][b_name] = {'hits': 0, 'tb': 0, 'rbi': 0, 'runs': 0, 'hr': 0}
-                    
-                    is_sp = True
-                    sp_label = f"{pitching_side}_sp"
-                    if pitch_counts.get(sp_label, 0) >= pitchers[pitching_side]['fatigue_max']:
-                        is_sp = False
-                        p_profile = pitchers[f"{pitching_side}_bullpen"]
-                    else:
-                        p_profile = pitchers[pitching_side]
-                        pitch_counts[sp_label] += 1
-                    
-                    balls, strikes = 0, 0
-                    pa_resolved = False
-                    
-                    while not pa_resolved:
-                        if is_sp: pitch_counts[sp_label] += 1
-                        rand_pitch = np.random.rand()
-                        strike_threshold = p_profile['strike_pct']
-                        
-                        if rand_pitch < strike_threshold:
-                            if np.random.rand() < batter['contact_pct']:
-                                pa_resolved = True
-                                rand_hit = np.random.rand() * env
-                                
-                                if rand_hit < (1.0 / p_profile['in_play_fip'] * 2.2):
-                                    props['player_events'][b_name]['hits'] += 1
-                                    hit_type = np.random.rand()
-                                    
-                                    if hit_type < batter['single_ratio']:
-                                        props['player_events'][b_name]['tb'] += 1
-                                        new_runs = bases[2]
-                                        bases = [1, bases[0], bases[1]]
-                                    elif hit_type < (batter['single_ratio'] + batter['double_ratio']):
-                                        props['player_events'][b_name]['tb'] += 2
-                                        new_runs = bases[1] + bases[2]
-                                        bases = [0, 1, bases[0]]
-                                    elif hit_type < (1.0 - batter['hr_ratio']):
-                                        props['player_events'][b_name]['tb'] += 3
-                                        new_runs = bases[0] + bases[1] + bases[2]
-                                        bases = [0, 0, 1]
-                                    else:
-                                        props['player_events'][b_name]['tb'] += 4
-                                        props['player_events'][b_name]['hr'] += 1
-                                        new_runs = 1 + bases[0] + bases[1] + bases[2]
-                                        bases = [0, 0, 0]
-                                        
-                                    runs[hitting_side] += new_runs
-                                    props['player_events'][b_name]['rbi'] += new_runs
-                                    if is_sp: props[f"{pitching_side}_pitcher_er"] += new_runs
-                                else:
-                                    outs += 1
-                            else:
-                                strikes += 1
-                                if strikes == 3:
-                                    pa_resolved = True
-                                    outs += 1
-                                    if is_sp: props[f"{pitching_side}_pitcher_k"] += 1
-                        else:
-                            if np.random.rand() < 0.05:
-                                if strikes < 2: strikes += 1
-                            else:
-                                balls += 1
-                                if balls == 4:
-                                    pa_resolved = True
-                                    if bases[0] == 1:
-                                        if bases[1] == 1:
-                                            if bases[2] == 1:
-                                                runs[hitting_side] += 1
-                                                if is_sp: props[f"{pitching_side}_pitcher_er"] += 1
-                                            bases[2] = 1
-                                        bases[1] = 1
-                                    bases[0] = 1
+        # Inning Pitcher Props Scaling
+        k_away = np.random.poisson(metrics['props']['away_pitcher']['k'] / env, num_sims)
+        k_home = np.random.poisson(metrics['props']['home_pitcher']['k'] / env, num_sims)
+        er_away = np.random.poisson(metrics['props']['away_pitcher']['er'] * env, num_sims)
+        er_home = np.random.poisson(metrics['props']['home_pitcher']['er'] * env, num_sims)
 
-                    lineup_index[hitting_side] += 1
-                    
-            if inning == 3:
-                inning_scores['F3'] = runs.copy()
-            elif inning == 5:
-                inning_scores['F5'] = runs.copy()
-            elif inning == 7:
-                inning_scores['F7'] = runs.copy()
-                
-        inning_scores['FG'] = runs.copy()
-        return inning_scores, props
+        # Inning Batter Props Scaling
+        simulated_batters = []
+        for b in metrics['props']['batters']:
+            simulated_batters.append({
+                'name': b['name'], 'team': b['team'],
+                'hits': np.random.poisson(b['hits'] * env, num_sims),
+                'tb': np.random.poisson(b['tb'] * env, num_sims),
+                'rbi': np.random.poisson(b['rbi'] * env, num_sims),
+                'runs': np.random.poisson(b['runs'] * env, num_sims),
+                'hr': np.random.binomial(1, np.clip(b['hr'] * env, 0, 1), num_sims)
+            })
+
+        return {
+            'F3': (np.sum(runs_away[:, :3], axis=1), np.sum(runs_home[:, :3], axis=1)),
+            'F5': (np.sum(runs_away[:, :5], axis=1), np.sum(runs_home[:, :5], axis=1)),
+            'F7': (np.sum(runs_away[:, :7], axis=1), np.sum(runs_home[:, :7], axis=1)),
+            'FG': (np.sum(runs_away, axis=1), np.sum(runs_home, axis=1)),
+            'pitcher_props': {'away_k': k_away, 'home_k': k_home, 'away_er': er_away, 'home_er': er_er_home if 'er_home' in locals() else er_home},
+            'batter_props': simulated_batters
+        }
     def _calculate_score_mode(self, away_scores, home_scores):
-        df = pd.DataFrame({'away': away_scores, 'home': home_scores})
-        mode_pair = df.value_counts().idxmax()
-        return mode_pair[0], mode_pair[1]
+        df = pd.DataFrame({'away': away_scores.astype(int), 'home': home_scores.astype(int)})
+        return df.value_counts().idxmax()
 
-    def _calculate_array_mode(self, data_list):
-        return int(pd.Series(data_list).value_counts().idxmax())
+    def _calculate_array_mode(self, data_array):
+        return int(pd.Series(data_array.astype(int)).value_counts().idxmax())
 
-    def run_monte_carlo(self, metrics, num_sims=1000):
-        pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home = [], [], [], []
-        segment_data = {'F3': {'away': [], 'home': []}, 'F5': {'away': [], 'home': []}, 'F7': {'away': [], 'home': []}, 'FG': {'away': [], 'home': []}}
-        hitter_aggregates = {}
-
-        for _ in range(num_sims):
-            scores, props = self._simulate_single_game_pbp(metrics)
+    def compute_market_edges(self, sim_data, game):
+        results = []
+        segments = {'First 3 Innings': 'F3', 'First 5 Innings': 'F5', 'First 7 Innings': 'F7', 'Full Game': 'FG'}
+        for seg_name, key in segments.items():
+            away_scores, home_scores = sim_data[key]
             
-            for k in ['F3', 'F5', 'F7', 'FG']:
-                segment_data[k]['away'].append(scores[k]['away'])
-                segment_data[k]['home'].append(scores[k]['home'])
-                
-            pitcher_k_away.append(props['away_pitcher_k'])
-            pitcher_k_home.append(props['home_pitcher_k'])
-            pitcher_er_away.append(props['away_pitcher_er'])
-            pitcher_er_home.append(props['home_pitcher_er'])
+            resolved = np.sum(home_scores != away_scores)
+            home_ml_prob = np.sum(home_scores > away_scores) / resolved if resolved > 0 else 0.50
+            away_ml_prob = np.sum(away_scores > home_scores) / resolved if resolved > 0 else 0.50
             
-            for player, events in props['player_events'].items():
-                if player not in hitter_aggregates:
-                    hitter_aggregates[player] = {'hits': [], 'tb': [], 'rbi': [], 'runs': [], 'hr': []}
-                for m in ['hits', 'tb', 'rbi', 'runs', 'hr']:
-                    hitter_aggregates[player][m].append(events[m])
+            dk_total_line = round(np.mean(away_scores + home_scores) * 2) / 2
+            over_prob = np.sum((away_scores + home_scores) > dk_total_line) / len(away_scores)
+            
+            mode_pair = self._calculate_score_mode(away_scores, home_scores)
+            
+            results.append({
+                'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
+                'Proj_Score': f"{mode_pair[0]} - {mode_pair[1]}",
+                'Home_ML_Probability': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Probability': f"{away_ml_prob * 100:.1f}%",
+                'Target_DK_Total_Line': dk_total_line, 'Over_Total_Probability': f"{over_prob * 100:.1f}%", 'Under_Total_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
+            })
+        return results
 
-        return segment_data, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home, hitter_aggregates
+    def process_all_dk_props(self, sim_data, game):
+        props_list = []
+        p_sim = sim_data['pitcher_props']
+        
+        # 1. Pitchers
+        pitchers = [('away', game['away_pitcher'], game['away_team']), ('home', game['home_pitcher'], game['home_team'])]
+        for side, name, team in pitchers:
+            for p_key, label in [('k', 'Strikeouts (O/U)'), ('er', 'Earned Runs (O/U)')]:
+                arr = p_sim[f"{side}_{p_key}"]
+                m_outcome = self._calculate_array_mode(arr)
+                over_p = np.sum(arr > m_outcome) / len(arr)
+                props_list.append({
+                    'Player_Name': name, 'Team': team, 'Market_Type': label, 'Most_Likely_Line_Outcome': m_outcome,
+                    'Over_Probability': f"{over_p * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_p) * 100:.1f}%"
+                })
+
+        # 2. Batters
+        b_markets = [('hits', 'Hits (O/U)'), ('tb', 'Total Bases (O/U)'), ('rbi', 'RBIs (O/U)'), ('runs', 'Runs Scored (O/U)'), ('hr', 'Home Runs (O/U)')]
+        for b_data in sim_data['batter_props']:
+            for key, label in b_markets:
+                arr = b_data[key]
+                m_outcome = self._calculate_array_mode(arr)
+                over_p = np.sum(arr > m_outcome) / len(arr)
+                props_list.append({
+                    'Player_Name': b_data['name'], 'Team': b_data['team'], 'Market_Type': label, 'Most_Likely_Line_Outcome': m_outcome,
+                    'Over_Probability': f"{over_p * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_p) * 100:.1f}%"
+                })
+        return props_list
 
     async def run_pipeline(self):
         schedule_df = self.fetch_live_schedule()
@@ -365,9 +352,8 @@ class MLBPitchByPitchEngine:
             away_team = game['away_team']
             home_team = game['home_team']
 
-            # Safety check: Skip game if either starting pitcher is unannounced
             if away_sp == 'Unknown Starter' or home_sp == 'Unknown Starter':
-                print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher line.")
+                print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher.")
                 continue
 
             city = self.team_cities.get(home_team, 'New York')
@@ -375,44 +361,11 @@ class MLBPitchByPitchEngine:
             delta_env = self.calculate_environmental_modifier(home_team, weather_snapshot)
             computed_matrix = self.calculate_custom_engine_metrics(game, metrics_db, delta_env)
             
-            print(f"🚀 Executing 1,000-Run Pitch-by-Pitch Simulation for {away_team} @ {home_team} ({away_sp} vs {home_sp})...")
-            seg_data, k_a, k_h, er_a, er_h, h_aggr = self.run_monte_carlo(computed_matrix)
+            print(f"🚀 Executing 10,000-Run Inning-by-Inning Simulation for {away_team} @ {home_team}...")
+            sim_data = self.execute_segment_simulation(computed_matrix)
             
-            # 1. Translate Segment Moneylines & Totals
-            for label, key in [('First 3 Innings', 'F3'), ('First 5 Innings', 'F5'), ('First 7 Innings', 'F7'), ('Full Game', 'FG')]:
-                a_scores = np.array(seg_data[key]['away'])
-                h_scores = np.array(seg_data[key]['home'])
-                mode_a, mode_h = self._calculate_score_mode(a_scores, h_scores)
-                over_prob = np.sum((a_scores + h_scores) > (round(np.mean(a_scores + h_scores) * 2) / 2)) / len(a_scores)
-                
-                all_segments_out.append({
-                    'Matchup': f"{away_team} @ {home_team}", 'Segment': label, 'Proj_Score': f"{mode_a} - {mode_h}",
-                    'Home_ML_Probability': f"{(np.sum(h_scores > a_scores)/len(a_scores))*100:.1f}%",
-                    'Away_ML_Probability': f"{(np.sum(a_scores > h_scores)/len(a_scores))*100:.1f}%",
-                    'Over_Probability': f"{over_prob * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
-                })
-
-            # 2. Translate Named Pitcher Profiles
-            for name, team, k_arr, er_arr in [(away_sp, away_team, k_a, er_a), (home_sp, home_team, k_h, er_h)]:
-                for arr, label in [(k_arr, 'Strikeouts (O/U)'), (er_arr, 'Earned Runs (O/U)')]:
-                    mode_line = self._calculate_array_mode(np.array(arr))
-                    over_p = np.sum(np.array(arr) > mode_line) / len(arr)
-                    all_props_out.append({
-                        'Player_Name': name, 'Team': team, 'Market_Type': label, 'Most_Likely_Line_Outcome': mode_line,
-                        'Over_Probability': f"{over_p*100:.1f}%", 'Under_Probability': f"{(1.0 - over_p)*100:.1f}%"
-                    })
-
-            # 3. Translate Named Hitter Profiles
-            for p_name, datasets in h_aggr.items():
-                for market_key, label in [('hits', 'Hits (O/U)'), ('tb', 'Total Bases (O/U)'), ('rbi', 'RBIs (O/U)'), ('runs', 'Runs Scored (O/U)'), ('hr', 'Home Runs (O/U)')]:
-                    arr = np.array(datasets[market_key])
-                    mode_line = self._calculate_array_mode(arr)
-                    over_p = np.sum(arr > mode_line) / len(arr)
-                    all_props_out.append({
-                        'Player_Name': p_name, 'Team': home_team if p_name in game['home_lineup'] else away_team,
-                        'Market_Type': label, 'Most_Likely_Line_Outcome': mode_line,
-                        'Over_Probability': f"{over_p*100:.1f}%", 'Under_Probability': f"{(1.0 - over_p)*100:.1f}%"
-                    })
+            all_segments_out.extend(self.compute_market_edges(sim_data, game))
+            all_props_out.extend(self.process_all_dk_props(sim_data, game))
 
         os.makedirs('data/predictions', exist_ok=True)
         pd.DataFrame(all_segments_out).to_csv(f"data/predictions/mlb_market_segments_{self.today}.csv", index=False)
@@ -420,5 +373,5 @@ class MLBPitchByPitchEngine:
         print("Data compilation successfully saved to repository.")
 
 if __name__ == "__main__":
-    engine = MLBPitchByPitchEngine()
+    engine = MLBInningByInningEngine()
     asyncio.run(engine.run_pipeline())
