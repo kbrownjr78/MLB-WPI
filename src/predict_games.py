@@ -97,14 +97,13 @@ class MLBWeatherEnrichedEngine:
             return pd.DataFrame()
 
     def scrape_historical_and_savant_data(self):
-        """Scrapes deep batter tracking layers from Baseball Savant and FanGraphs."""
+        """Scrapes advanced data frames from Baseball Savant and FanGraphs."""
         try:
-            print("Querying Baseball Savant Leaderboards...")
+            print("Querying Baseball Savant Hitter & Pitcher Leaderboards...")
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
             savant_pitchers = pb.statcast_pitcher_expected_stats(self.current_year)
             
-            print("Querying FanGraphs Cumulative Team Leaderboards...")
-            # Set qual to low value to ingest full roster subsets
+            print("Querying FanGraphs Batting & Pitching Roster Overlays...")
             fg_batting = pb.batting_stats(self.current_year - 1, self.current_year, qual=10)
             fg_pitching = pb.pitching_stats(self.current_year - 1, self.current_year, qual=10)
             
@@ -146,19 +145,21 @@ class MLBWeatherEnrichedEngine:
         return base_pf * (1 + delta_density + delta_wind)
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Dynamically computes team OSF from scraped Baseball Savant and FanGraphs stats."""
-        # 1. Standard safety fallbacks if specific data hooks are absent
+        """Calculates precise matchups by contrasting dynamic hitter vs pitcher stats."""
+        # 1. Base fallbacks if structural tracking queries return empty rows
         away_osf, home_osf = 0.320, 0.320 
+        away_psi, home_psi = 4.20, 4.20 # Scaled to FIP (lower is sharper)
+        away_bsi, home_bsi = 4.30, 4.30 # Team bullpen FIP tracking values
+        away_sp_k, home_sp_k = 5.2, 5.2 # Standard baseline strikeout prop values
         
-        away_team = game['away_team']
-        home_team = game['home_team']
+        away_team, home_team = game['away_team'], game['home_team']
+        away_sp, home_sp = game['away_pitcher'], game['home_pitcher']
         
-        # Translate full names to FanGraphs codes (e.g. 'New York Yankees' -> 'NYY')
         fg_away_code = self.fg_team_map.get(away_team, 'MIN')
         fg_home_code = self.fg_team_map.get(home_team, 'MIN')
 
         if db is not None:
-            # Parse FanGraphs Team-wide wOBA averages
+            # --- 1. DYNAMIC HITTER EXTRACTION (FanGraphs + Savant) ---
             fgb = db['fg_batting']
             if not fgb.empty and 'Team' in fgb.columns:
                 away_rows = fgb[fgb['Team'] == fg_away_code]
@@ -168,38 +169,72 @@ class MLBWeatherEnrichedEngine:
                 if not home_rows.empty:
                     home_osf = float(home_rows['wOBA'].mean())
 
-            # Refine baseline using advanced Savant tracking layers if available
-            sb = db['savant_hitters']
-            if not sb.empty and 'team_name' in sb.columns and 'est_woba' in sb.columns:
-                # Standardize long team names inside Savant data structures
-                s_away = sb[sb['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
-                s_home = sb[sb['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
+            sb_h = db['savant_hitters']
+            if not sb_h.empty and 'team_name' in sb_h.columns and 'est_woba' in sb_h.columns:
+                s_away = sb_h[sb_h['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
+                s_home = sb_h[sb_h['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
                 if not s_away.empty:
-                    # Balance real outcomes (wOBA) with expected skill parameters (xwOBA / est_woba)
                     away_osf = (away_osf + float(s_away['est_woba'].mean())) / 2
                 if not s_home.empty:
                     home_osf = (home_osf + float(s_home['est_woba'].mean())) / 2
 
-        # 2. Scale expected run per inning models dynamically using the derived hitting arrays
+            # --- 2. DYNAMIC PITCHER EXTRACTION (FanGraphs FIP + Savant xwOBA) ---
+            fgp = db['fg_pitching']
+            if not fgp.empty and 'Name' in fgp.columns and 'FIP' in fgp.columns:
+                asp_row = fgp[fgp['Name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
+                hsp_row = fgp[fgp['Name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+                
+                if not asp_row.empty:
+                    away_psi = float(asp_row['FIP'].mean())
+                    if 'SO' in asp_row.columns:
+                        away_sp_k = (float(asp_row['SO'].mean()) / 32.0) * 5.5
+                if not hsp_row.empty:
+                    home_psi = float(hsp_row['FIP'].mean())
+                    if 'SO' in hsp_row.columns:
+                        home_sp_k = (float(hsp_row['SO'].mean()) / 32.0) * 5.5
+
+                # Pull historical Team Bullpen performance from collective pitching tables
+                away_bp_rows = fgp[fgp['Team'] == fg_away_code]
+                home_bp_rows = fgp[fgp['Team'] == fg_home_code]
+                if not away_bp_rows.empty:
+                    away_bsi = float(away_bp_rows['FIP'].mean())
+                if not home_bp_rows.empty:
+                    home_bsi = float(home_bp_rows['FIP'].mean())
+
+            sb_p = db['savant_pitchers']
+            if not sb_p.empty and 'player_name' in sb_p.columns and 'est_woba' in sb_p.columns:
+                p_asp = sb_p[sb_p['player_name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
+                p_hsp = sb_p[sb_p['player_name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+                
+                # Refine standard FIP using Savant Expected xwOBA against Pitchers
+                if not p_asp.empty:
+                    away_psi = (away_psi + (float(p_asp['est_woba'].mean()) * 12.5)) / 2
+                if not p_hsp.empty:
+                    home_psi = (home_psi + (float(p_hsp['est_woba'].mean()) * 12.5)) / 2
+
+        # 3. TRUE HITTER VS PITCHER CONTRAST EQUATION
+        # Away offense is matched against Home pitching; Home offense is matched against Away pitching.
         metrics = {
             'away_osf': away_osf, 'home_osf': home_osf,
-            'away_psi': 32.5, 'home_psi': 34.1,
-            'away_bsi': 64.2, 'home_bsi': 62.8,
+            'away_psi': away_psi, 'home_psi': home_psi,
+            'away_bsi': away_bsi, 'home_bsi': home_bsi,
             'delta_env': delta_env,
-            'away_avg_runs_per_inning': (away_osf * 1.62) * delta_env,
-            'home_avg_runs_per_inning': (home_osf * 1.62) * delta_env,
-            'away_sp_k_prop': 5.5 / delta_env,
-            'home_sp_k_prop': 6.0 / delta_env
+            'away_avg_runs_per_inning': (away_osf * 1.62) * (home_psi / 4.20) * delta_env,
+            'home_avg_runs_per_inning': (home_osf * 1.62) * (away_psi / 4.20) * delta_env,
+            'away_sp_k_prop': away_sp_k / delta_env,
+            'home_sp_k_prop': home_sp_k / delta_env
         }
         return metrics
     def execute_segment_simulation(self, metrics, num_sims=10000):
         """Runs the 10,000-trial simulation parsing multi-inning game tracks."""
         env = np.random.normal(metrics['delta_env'], 0.04, num_sims)
         
-        lambda_away_sp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_psi'] / 34.0)
-        lambda_home_sp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_psi'] / 34.0)
-        lambda_away_rp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_bsi'] / 63.0)
-        lambda_home_rp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_bsi'] / 63.0)
+        lambda_away_sp = metrics['away_avg_runs_per_inning'] * env
+        lambda_home_sp = metrics['home_avg_runs_per_inning'] * env
+        
+        # Bullpen suppression adjustments
+        lambda_away_rp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_bsi'] / metrics['home_psi'])
+        lambda_home_rp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_bsi'] / metrics['away_psi'])
 
         runs_away = np.zeros((num_sims, 9))
         runs_home = np.zeros((num_sims, 9))
