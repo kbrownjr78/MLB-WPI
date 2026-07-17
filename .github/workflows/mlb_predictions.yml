@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Allows manual one-click execution from the GitHub Actions tab
 
 permissions:
-  contents: write # Crucial: Gives the workflow write access to commit back to the main branch
+  contents: write # Grants the runner explicit write access to commit code changes back to the main branch
 
 jobs:
   run-predictions:
@@ -16,44 +16,49 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        persist-credentials: true # Allows the runner to push updates back to GitHub
+        persist-credentials: true # Persists auth token enabling git pushes back to the branch
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        cache: 'pip'
+        cache: 'pip' # Speeds up execution by caching downloaded python packages
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Create Directories
+    - name: Create Architecture Directories
       run: |
         mkdir -p data/predictions
+        mkdir -p data/analysis
 
-    - name: Run MLB Predictive Model
-      env:
-        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+    - name: Run Inning-by-Inning Predictive Model
       run: |
         python src/predict_games.py
 
-    - name: Commit and Push Prediction CSV to Main Branch
+    - name: Isolate Daily Top 5 Highest Probability Bets
+      run: |
+        python src/get_top_bets.py
+
+    - name: Execute Historical Backtest and ROI Ledger Settlement
+      run: |
+        python src/backtest_engine.py
+
+    - name: Commit and Push Compiled Matrix Logs to Main Branch
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@://github.com"
         
-        # Add the newly generated CSV file
+        # Stage all newly generated prediction sheets and backtest ledgers
         git add data/predictions/*.csv
+        git add data/analysis/*.csv
         
-        # Check if changes exist before trying to commit to avoid workflow failure errors
+        # Check if new files exist before attempting commit to prevent generic workflow exit errors
         if git diff --cached --quiet; then
-          echo "No new prediction data found. Skipping commit."
+          echo "No structural dataset changes detected. Skipping commit sequence."
         else
-          git commit -m "Automated Data Push: Generated Predictions for $(date +'%Y-%m-%d')"
+          git commit -m "Automated Pipeline Update: Generated Predictions, Top Bets, and Settle Ledger for $(date +'%Y-%m-%d')"
           git push origin main
         fi
-    - name: Run Historical Backtest Engine
-      run: |
-        python src/backtest_engine.py
