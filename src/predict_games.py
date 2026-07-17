@@ -7,7 +7,7 @@ import statsapi
 import pybaseball as pb
 import python_weather
 
-# Enable pybaseball caching to stay under API limits
+# Enable pybaseball caching to optimize resource utilization
 pb.cache.enable()
 
 class MLBInningByInningEngine:
@@ -15,7 +15,7 @@ class MLBInningByInningEngine:
         self.today = datetime.date.today().strftime('%Y-%m-%d')
         self.current_year = datetime.date.today().year
         
-        # 1. Official MLB Team-to-City Mapping (for Weather Queries)
+        # 1. Official MLB Team-to-City Mapping (for Live Weather Queries)
         self.team_cities = {
             'Arizona Diamondbacks': 'Phoenix', 'Atlanta Braves': 'Atlanta', 'Baltimore Orioles': 'Baltimore',
             'Boston Red Sox': 'Boston', 'Chicago Cubs': 'Chicago', 'Chicago White Sox': 'Chicago',
@@ -109,21 +109,17 @@ class MLBInningByInningEngine:
             return pd.DataFrame()
 
     def scrape_historical_and_savant_data(self):
-        """Scrapes advanced baseball tracking layers from historical endpoints."""
+        """Scrapes advanced baseball tracking layers directly from Savant to bypass FanGraphs 403 blocks."""
         try:
-            print("Querying Baseball Savant Leaderboards...")
+            print("Querying Official Baseball Savant Statcast Metrics...")
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
             savant_pitchers = pb.statcast_pitcher_expected_stats(self.current_year)
-            
-            print("Querying FanGraphs Batting & Pitching Roster Overlays...")
-            fg_batting = pb.batting_stats(self.current_year - 1, self.current_year, qual=5)
-            fg_pitching = pb.pitching_stats(self.current_year - 1, self.current_year, qual=5)
             
             return {
                 'savant_hitters': savant_hitters if savant_hitters is not None else pd.DataFrame(),
                 'savant_pitchers': savant_pitchers if savant_pitchers is not None else pd.DataFrame(),
-                'fg_batting': fg_batting if fg_batting is not None else pd.DataFrame(),
-                'fg_pitching': fg_pitching if fg_pitching is not None else pd.DataFrame()
+                'fg_batting': pd.DataFrame(),
+                'fg_pitching': pd.DataFrame()
             }
         except Exception as e:
             print(f"Scraping failed: {e}. Executing with pipeline defaults.")
@@ -156,15 +152,12 @@ class MLBInningByInningEngine:
         return base_pf * (1 + delta_density + delta_wind)
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Calculates inning-by-inning baselines from scraped player stats."""
+        """Calculates precise matchups by contrasting dynamic hitter vs pitcher stats from Savant datasets."""
         league_woba_median = 0.315
         league_fip_median = 4.25
         
         away_team, home_team = game['away_team'], game['home_team']
         away_sp, home_sp = game['away_pitcher'], game['home_pitcher']
-        
-        fg_away_code = self.fg_team_map.get(away_team, 'MIN')
-        fg_home_code = self.fg_team_map.get(home_team, 'MIN')
 
         away_osf, home_osf = league_woba_median, league_woba_median
         away_psi, home_psi = league_fip_median, league_fip_median
@@ -176,48 +169,38 @@ class MLBInningByInningEngine:
         prop_baselines = {'away_pitcher': {'name': away_sp, 'k': 5.2, 'er': 2.4}, 'home_pitcher': {'name': home_sp, 'k': 5.2, 'er': 2.4}, 'batters': []}
 
         if db is not None:
-            fgb = db['fg_batting']
-            if not fgb.empty and 'Team' in fgb.columns:
-                a_rows = fgb[fgb['Team'] == fg_away_code]
-                h_rows = fgb[fgb['Team'] == fg_home_code]
-                if not a_rows.empty: away_osf = float(a_rows['wOBA'].mean())
-                if not h_rows.empty: home_osf = float(h_rows['wOBA'].mean())
+            # Map batter metrics from Statcast tables
+            sb_h = db['savant_hitters']
+            if not sb_h.empty and 'team_name' in sb_h.columns and 'est_woba' in sb_h.columns:
+                s_away = sb_h[sb_h['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
+                s_home = sb_h[sb_h['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
+                if not s_away.empty: away_osf = float(s_away['est_woba'].mean())
+                if not s_home.empty: home_osf = float(s_home['est_woba'].mean())
 
-            fgp = db['fg_pitching']
-            if not fgp.empty and 'Name' in fgp.columns and 'FIP' in fgp.columns:
-                asp_row = fgp[fgp['Name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
-                hsp_row = fgp[fgp['Name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
-                
-                if not asp_row.empty:
-                    away_psi = float(asp_row['FIP'].mean())
-                    prop_baselines['away_pitcher']['k'] = (float(asp_row['SO'].mean()) / 32.0) * 5.5 if 'SO' in asp_row.columns else 5.2
-                    prop_baselines['away_pitcher']['er'] = (float(asp_row['ER'].mean()) / 32.0) * 2.4 if 'ER' in asp_row.columns else 2.4
-                if not hsp_row.empty:
-                    home_psi = float(hsp_row['FIP'].mean())
-                    prop_baselines['home_pitcher']['k'] = (float(hsp_row['SO'].mean()) / 32.0) * 5.5 if 'SO' in hsp_row.columns else 5.2
-                    prop_baselines['home_pitcher']['er'] = (float(hsp_row['ER'].mean()) / 32.0) * 2.4 if 'ER' in hsp_row.columns else 2.4
+            # Map pitcher metrics from Statcast tables
+            sb_p = db['savant_pitchers']
+            if not sb_p.empty and 'player_name' in sb_p.columns and 'est_woba' in sb_p.columns:
+                p_asp = sb_p[sb_p['player_name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
+                p_hsp = sb_p[sb_p['player_name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+                if not p_asp.empty:
+                    away_psi = float(p_asp['est_woba'].mean()) * 12.5
+                    prop_baselines['away_pitcher']['k'] = 5.5
+                if not p_hsp.empty:
+                    home_psi = float(p_hsp['est_woba'].mean()) * 12.5
+                    prop_baselines['home_pitcher']['k'] = 5.5
 
-                away_bp = fgp[fgp['Team'] == fg_away_code]
-                home_bp = fgp[fgp['Team'] == fg_home_code]
-                if not away_bp.empty: away_bsi = float(away_bp['FIP'].mean())
-                if not home_bp.empty: home_bsi = float(home_bp['FIP'].mean())
-
+            # Map individual hitters
             for side, roster, t_lbl in [('away', a_lineup, away_team), ('home', h_lineup, home_team)]:
                 for name in roster[:9]:
                     pH, pTB, pRBI, pR, pHR = 0.85, 1.35, 0.45, 0.45, 0.12
-                    if not fgb.empty and 'Name' in fgb.columns:
-                        p_row = fgb[fgb['Name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
+                    if not sb_h.empty and 'player_name' in sb_h.columns:
+                        p_row = sb_h[sb_h['player_name'].str.contains(name.split()[-1], na=False, case=False)] if len(name.split()) > 0 else pd.DataFrame()
                         if not p_row.empty:
-                            g_max = float(p_row['G'].max()) if 'G' in p_row.columns and p_row['G'].max() > 0 else 162.0
-                            pH = float(p_row['H'].sum()) / g_max if 'H' in p_row.columns else 0.85
-                            pTB = float(p_row['TB'].sum()) / g_max if 'TB' in p_row.columns else 1.35
-                            pRBI = float(p_row['RBI'].sum()) / g_max if 'RBI' in p_row.columns else 0.45
-                            pR = float(p_row['R'].sum()) / g_max if 'R' in p_row.columns else 0.45
-                            pHR = float(p_row['HR'].sum()) / g_max if 'HR' in p_row.columns else 0.12
+                            pH = float(p_row['est_woba'].mean()) * 2.5
+                            pTB = pH * 1.6
 
                     prop_baselines['batters'].append({'name': name, 'side': side, 'team': t_lbl, 'hits': pH, 'tb': pTB, 'rbi': pRBI, 'runs': pR, 'hr': pHR})
 
-        # Multi-Inning Rate Mappings (lambda)
         metrics = {
             'away_osf': away_osf, 'home_osf': home_osf,
             'away_psi': away_psi, 'home_psi': home_psi,
@@ -243,7 +226,7 @@ class MLBInningByInningEngine:
         runs_away = np.zeros((num_sims, 9))
         runs_home = np.zeros((num_sims, 9))
         
-        # --- GRANULAR INNING-BY-INNING SIMULATION LOOP ---
+        # Granular Inning Simulation Loop
         for i in range(9):
             if i < 5:  # Innings 1-5: Starting Pitcher Dominance Matrix
                 runs_away[:, i] = np.random.poisson(l_away_sp, num_sims)
@@ -275,7 +258,7 @@ class MLBInningByInningEngine:
             'F5': (np.sum(runs_away[:, :5], axis=1), np.sum(runs_home[:, :5], axis=1)),
             'F7': (np.sum(runs_away[:, :7], axis=1), np.sum(runs_home[:, :7], axis=1)),
             'FG': (np.sum(runs_away, axis=1), np.sum(runs_home, axis=1)),
-            'pitcher_props': {'away_k': k_away, 'home_k': k_home, 'away_er': er_away, 'home_er': er_er_home if 'er_home' in locals() else er_home},
+            'pitcher_props': {'away_k': k_away, 'home_k': k_home, 'away_er': er_away, 'home_er': er_home},
             'batter_props': simulated_batters
         }
     def _calculate_score_mode(self, away_scores, home_scores):
@@ -302,7 +285,7 @@ class MLBInningByInningEngine:
             
             results.append({
                 'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
-                'Proj_Score': f"{mode_pair[0]} - {mode_pair[1]}",
+                'Proj_Score': f"{mode_pair} - {mode_pair}",
                 'Home_ML_Probability': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Probability': f"{away_ml_prob * 100:.1f}%",
                 'Target_DK_Total_Line': dk_total_line, 'Over_Total_Probability': f"{over_prob * 100:.1f}%", 'Under_Total_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
             })
