@@ -328,20 +328,19 @@ class MLBPitchByPitchEngine:
         return inning_scores, props
     def _calculate_score_mode(self, away_scores, home_scores):
         df = pd.DataFrame({'away': away_scores, 'home': home_scores})
-        return df.value_counts().idxmax()
+        return df.value_counts().idxmax(), df.value_counts().idxmax()
 
     def _calculate_array_mode(self, data_list):
         return int(pd.Series(data_list).value_counts().idxmax())
 
-    def run_monte_carlo(self, metrics, num_sims=1000): # Scale to 1,000 runs to keep local processing fast
-        all_markets, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_er_home = [], [], [], [], []
+    def run_monte_carlo(self, metrics, num_sims=1000):
+        all_markets, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home = [], [], [], [], []
         segment_data = {'F3': ([], []), 'F5': ([], []), 'F7': ([], []), 'FG': ([], [])}
         hitter_aggregates = {}
 
         for _ in range(num_sims):
             scores, props = self._simulate_single_game_pbp(metrics)
             
-            # Map structural checkpoints
             for k in ['F3', 'F5', 'F7', 'FG']:
                 segment_data[k][0].append(scores[k]['away'])
                 segment_data[k][1].append(scores[k]['home'])
@@ -349,16 +348,15 @@ class MLBPitchByPitchEngine:
             pitcher_k_away.append(props['away_pitcher_k'])
             pitcher_k_home.append(props['home_pitcher_k'])
             pitcher_er_away.append(props['away_pitcher_er'])
-            pitcher_er_er_home.append(props['home_pitcher_er'])
+            pitcher_er_home.append(props['home_pitcher_er'])
             
-            # Accumulate individual hitter paths
             for player, events in props['player_events'].items():
                 if player not in hitter_aggregates:
                     hitter_aggregates[player] = {'hits': [], 'tb': [], 'rbi': [], 'runs': [], 'hr': []}
                 for m in ['hits', 'tb', 'rbi', 'runs', 'hr']:
                     hitter_aggregates[player][m].append(events[m])
 
-        return segment_data, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_er_home, hitter_aggregates
+        return segment_data, pitcher_k_away, pitcher_k_home, pitcher_er_away, pitcher_er_home, hitter_aggregates
 
     async def run_pipeline(self):
         schedule_df = self.fetch_live_schedule()
@@ -370,31 +368,40 @@ class MLBPitchByPitchEngine:
         all_segments_out, all_props_out = [], []
 
         for _, game in schedule_df.iterrows():
+            away_sp = game.get('away_pitcher', 'Unknown Starter')
+            home_sp = game.get('home_pitcher', 'Unknown Starter')
+            away_team = game['away_team']
             home_team = game['home_team']
+
+            # 🛑 CRITICAL SAFETY CHECK: Skip game if either starting pitcher is unannounced
+            if away_sp == 'Unknown Starter' or home_sp == 'Unknown Starter':
+                print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher line.")
+                continue
+
             city = self.team_cities.get(home_team, 'New York')
-            
             weather_snapshot = await self.get_live_weather(city)
             delta_env = self.calculate_environmental_modifier(home_team, weather_snapshot)
             computed_matrix = self.calculate_custom_engine_metrics(game, metrics_db, delta_env)
             
-            print(f"Executing 1,000-Run Pitch-by-Pitch Simulation for {game['away_team']} @ {home_team}...")
+            print(f"🚀 Executing 1,000-Run Pitch-by-Pitch Simulation for {away_team} @ {home_team} ({away_sp} vs {home_sp})...")
             seg_data, k_a, k_h, er_a, er_h, h_aggr = self.run_monte_carlo(computed_matrix)
             
             # 1. Translate Segment Moneylines & Totals
             for label, key in [('First 3 Innings', 'F3'), ('First 5 Innings', 'F5'), ('First 7 Innings', 'F7'), ('Full Game', 'FG')]:
-                a_scores, h_scores = np.array(seg_data[key][0]), np.array(seg_data[key][1])
-                mode_a, mode_h = self._calculate_score_mode(a_scores, h_scores)
+                a_scores = np.array(seg_data[key][0])
+                h_scores = np.array(seg_data[key][1])
+                mode_pair = self._calculate_score_mode(a_scores, h_scores)
                 over_prob = np.sum((a_scores + h_scores) > (round(np.mean(a_scores + h_scores) * 2) / 2)) / len(a_scores)
                 
                 all_segments_out.append({
-                    'Matchup': f"{game['away_team']} @ {home_team}", 'Segment': label, 'Proj_Score': f"{mode_a} - {mode_h}",
+                    'Matchup': f"{away_team} @ {home_team}", 'Segment': label, 'Proj_Score': f"{mode_pair[0][0]} - {mode_pair[0][1]}",
                     'Home_ML_Probability': f"{(np.sum(h_scores > a_scores)/len(a_scores))*100:.1f}%",
                     'Away_ML_Probability': f"{(np.sum(a_scores > h_scores)/len(a_scores))*100:.1f}%",
                     'Over_Probability': f"{over_prob * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
                 })
 
             # 2. Translate Named Pitcher Profiles
-            for name, team, k_arr, er_arr in [(game['away_pitcher'], game['away_team'], k_a, er_a), (game['home_pitcher'], game['home_team'], k_h, er_h)]:
+            for name, team, k_arr, er_arr in [(away_sp, away_team, k_a, er_a), (home_sp, home_team, k_h, er_h)]:
                 for arr, label in [(k_arr, 'Strikeouts (O/U)'), (er_arr, 'Earned Runs (O/U)')]:
                     mode_line = self._calculate_array_mode(np.array(arr))
                     over_p = np.sum(np.array(arr) > mode_line) / len(arr)
@@ -410,7 +417,7 @@ class MLBPitchByPitchEngine:
                     mode_line = self._calculate_array_mode(arr)
                     over_p = np.sum(arr > mode_line) / len(arr)
                     all_props_out.append({
-                        'Player_Name': p_name, 'Team': home_team if p_name in game['home_lineup'] else game['away_team'],
+                        'Player_Name': p_name, 'Team': home_team if p_name in game['home_lineup'] else away_team,
                         'Market_Type': label, 'Most_Likely_Line_Outcome': mode_line,
                         'Over_Probability': f"{over_p*100:.1f}%", 'Under_Probability': f"{(1.0 - over_p)*100:.1f}%"
                     })
@@ -421,5 +428,5 @@ class MLBPitchByPitchEngine:
         print("Data compilation successfully saved to repository.")
 
 if __name__ == "__main__":
-    engine = MLBPitchByPitchEngine()
+    engine = MLBFullIndividualPropEngine()
     asyncio.run(engine.run_pipeline())
