@@ -7,27 +7,22 @@ import statsapi
 
 class MLBBacktestEngine:
     def __init__(self, unit_size=100.0):
-        # Establish testing bankroll constraints
+        # Establish flat bet sizing thresholds ($100 per bet)
         self.unit_size = unit_size
         self.predictions_path = "data/predictions/mlb_market_segments_*.csv"
         
-        # Standardize standard bookmaker vigorish juiced odds fallbacks
-        # -110 means wager $110 to win $100 profit
-        self.standard_juiced_payout = 100.0 / 110.0 
-        # +100 even money proxy fallback for standard moneylines
-        self.moneyline_payout_multiplier = 1.00 
+        # Standard bookmaker juice configurations (-110 odds parameters)
+        self.standard_juiced_payout = 100.0 / 110.0
+        self.moneyline_payout_multiplier = 1.00
     def _fetch_actual_results(self, target_date):
         """Queries MLB StatsAPI to grab official game scores for verification."""
         print(f"Retrieving official structural box scores for {target_date}...")
         results = {}
         try:
-            # Pull full slate matching historical date parameter
             games = statsapi.schedule(date=target_date)
             for g in games:
                 if g.get('status') != 'Final':
                     continue
-                    
-                # Clean team name keys to ensure exact matching loops
                 away = g['away_name']
                 home = g['home_name']
                 matchup_key = f"{away} @ {home}"
@@ -43,7 +38,6 @@ class MLBBacktestEngine:
             return {}
     def _evaluate_bets(self, pred_row, actual):
         """Applies true sports betting settlement matrix constraints with flexible column string parsing."""
-        # Flexible Column Mapping Resolution
         def get_row_value(row, choices, default="0%"):
             for choice in choices:
                 if choice in row.index:
@@ -54,26 +48,23 @@ class MLBBacktestEngine:
         raw_away_ml = get_row_value(pred_row, ['Away_ML_Probability', 'Away_ML_Prob'])
         raw_over = get_row_value(pred_row, ['Over_Total_Probability', 'Over_Probability'])
         
-        # Safe float conversion strips text % tags
         p_home_ml = float(raw_home_ml.replace('%', '')) / 100.0
         p_away_ml = float(raw_away_ml.replace('%', '')) / 100.0
         p_over = float(raw_over.replace('%', '')) / 100.0
         
-        # Flexible lookup for the sportsbook total line threshold
         line_total = 8.5
         for total_key in ['Target_DK_Total_Line', 'Target_DK_Total', 'DK_Total_Line']:
             if total_key in pred_row.index:
                 line_total = float(pred_row[total_key])
                 break
         
-        # Pull actual final scores from StatsAPI data container
         act_away = actual['away_score']
         act_home = actual['home_score']
         act_total = actual['total_runs']
         
         wagers = []
         
-        # 1. SETTLE MONEYLINE MARKETS (+EV Threshold configured at 54% Probability Edge)
+        # Moneyline execution (+EV threshold set to 54%)
         if p_home_ml > 0.54:
             win = 1.0 if act_home > act_away else 0.0
             profit = self.unit_size * self.moneyline_payout_multiplier if win else -self.unit_size
@@ -83,9 +74,9 @@ class MLBBacktestEngine:
             profit = self.unit_size * self.moneyline_payout_multiplier if win else -self.unit_size
             wagers.append({'Market': 'Moneyline', 'Selection': 'Away', 'Win': win, 'Profit': profit})
             
-        # 2. SETTLE TOTALS OVER/UNDER MARKETS
+        # Totals Over/Under execution
         if p_over > 0.54:
-            if act_total == line_total:  # Push condition handler
+            if act_total == line_total:
                 wagers.append({'Market': 'Total', 'Selection': 'Over', 'Win': 0.5, 'Profit': 0.0})
             else:
                 win = 1.0 if act_total > line_total else 0.0
@@ -103,24 +94,25 @@ class MLBBacktestEngine:
     def execute_historical_backtest(self):
         """Crawls local file paths directory logs to process full batch files settlement."""
         csv_files = glob.glob(self.predictions_path)
+        
+        # 🛡️ FIX: If no files exist yet, initialize an empty template file to prevent pipeline crashes
         if not csv_files:
-            print("No daily historical prediction files located inside data/predictions/ path targets.")
+            print("No daily historical prediction files located inside data/predictions/. Initializing blank ledger.")
+            os.makedirs('data/analysis', exist_ok=True)
+            pd.DataFrame(columns=['Market', 'Selection', 'Win', 'Profit']).to_csv('data/analysis/backtest_settlement_ledger.csv', index=False)
             return pd.DataFrame()
             
         compiled_wagers = []
         
         for file_path in csv_files:
-            # Extract date timestamp token structure from layout file name layout string
             file_name = os.path.basename(file_path)
             date_str = file_name.replace("mlb_market_segments_", "").replace(".csv", "")
             
-            # Extract official scores matching timestamp sequence loops
             actuals_db = self._fetch_actual_results(date_str)
             if not actuals_db:
                 continue
                 
             df_preds = pd.read_csv(file_path)
-            # Filter solely down to Full Game profiles for historical validation integrity
             fg_preds = df_preds[df_preds['Segment'] == 'Full Game']
             
             for _, row in fg_preds.iterrows():
@@ -140,7 +132,6 @@ class MLBBacktestEngine:
         total_capital_risked = total_wagers_placed * self.unit_size
         net_profit_loss = df_wagers['Profit'].sum()
         
-        # Calculate win efficiency percentages (counting pushes cleanly as half-wins)
         win_pct = (df_wagers['Win'].sum() / total_wagers_placed) * 100.0
         final_roi = (net_profit_loss / total_capital_risked) * 100.0
         
@@ -154,7 +145,6 @@ class MLBBacktestEngine:
         print(f" Final Model Return (ROI%)   : {final_roi:.2f}%")
         print("="*45 + "\n")
         
-        # Archive results data tracking metrics file to branch path
         os.makedirs('data/analysis', exist_ok=True)
         df_wagers.to_csv('data/analysis/backtest_settlement_ledger.csv', index=False)
         print("Historical ledger ledger cleanly archived inside data/analysis/ path location.")
