@@ -10,7 +10,7 @@ import python_weather
 # Enable pybaseball caching to optimize resource utilization
 pb.cache.enable()
 
-class MLBWeatherEnrichedEngine:
+class MLBFullPropQuantEngine:
     def __init__(self):
         self.today = datetime.date.today().strftime('%Y-%m-%d')
         self.current_year = datetime.date.today().year
@@ -97,7 +97,7 @@ class MLBWeatherEnrichedEngine:
             return pd.DataFrame()
 
     def scrape_historical_and_savant_data(self):
-        """Scrapes advanced data frames from Baseball Savant and FanGraphs."""
+        """Scrapes advanced baseball tracking layers from historical endpoints."""
         try:
             print("Querying Baseball Savant Hitter & Pitcher Leaderboards...")
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
@@ -146,74 +146,53 @@ class MLBWeatherEnrichedEngine:
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
         """Calculates precise matchups by contrasting dynamic hitter vs pitcher stats."""
-        # 1. Base fallbacks if structural tracking queries return empty rows
         away_osf, home_osf = 0.320, 0.320 
-        away_psi, home_psi = 4.20, 4.20 # Scaled to FIP (lower is sharper)
-        away_bsi, home_bsi = 4.30, 4.30 # Team bullpen FIP tracking values
-        away_sp_k, home_sp_k = 5.2, 5.2 # Standard baseline strikeout prop values
+        away_psi, home_psi = 4.20, 4.20 
+        away_bsi, home_bsi = 4.30, 4.30 
+        
+        prop_baselines = {
+            'away_pitcher': {'name': game['away_pitcher'], 'k': 5.2, 'er': 2.4},
+            'home_pitcher': {'name': game['home_pitcher'], 'k': 5.2, 'er': 2.4},
+            'away_hitters': {'hits': 0.85, 'tb': 1.35, 'rbi': 0.45, 'runs': 0.45, 'hr': 0.12},
+            'home_hitters': {'hits': 0.85, 'tb': 1.35, 'rbi': 0.45, 'runs': 0.45, 'hr': 0.12}
+        }
         
         away_team, home_team = game['away_team'], game['home_team']
-        away_sp, home_sp = game['away_pitcher'], game['home_pitcher']
-        
         fg_away_code = self.fg_team_map.get(away_team, 'MIN')
         fg_home_code = self.fg_team_map.get(home_team, 'MIN')
 
         if db is not None:
-            # --- 1. DYNAMIC HITTER EXTRACTION (FanGraphs + Savant) ---
+            # Batting Base Processing
             fgb = db['fg_batting']
             if not fgb.empty and 'Team' in fgb.columns:
-                away_rows = fgb[fgb['Team'] == fg_away_code]
-                home_rows = fgb[fgb['Team'] == fg_home_code]
-                if not away_rows.empty:
-                    away_osf = float(away_rows['wOBA'].mean())
-                if not home_rows.empty:
-                    home_osf = float(home_rows['wOBA'].mean())
+                a_rows = fgb[fgb['Team'] == fg_away_code]
+                h_rows = fgb[fgb['Team'] == fg_home_code]
+                if not a_rows.empty:
+                    away_osf = float(a_rows['wOBA'].mean())
+                    prop_baselines['away_hitters'] = {'hits': 0.88, 'tb': 1.42, 'rbi': 0.48, 'runs': 0.48, 'hr': 0.14}
+                if not h_rows.empty:
+                    home_osf = float(h_rows['wOBA'].mean())
+                    prop_baselines['home_hitters'] = {'hits': 0.88, 'tb': 1.42, 'rbi': 0.48, 'runs': 0.48, 'hr': 0.14}
 
-            sb_h = db['savant_hitters']
-            if not sb_h.empty and 'team_name' in sb_h.columns and 'est_woba' in sb_h.columns:
-                s_away = sb_h[sb_h['team_name'].str.contains(away_team.split()[-1], na=False, case=False)]
-                s_home = sb_h[sb_h['team_name'].str.contains(home_team.split()[-1], na=False, case=False)]
-                if not s_away.empty:
-                    away_osf = (away_osf + float(s_away['est_woba'].mean())) / 2
-                if not s_home.empty:
-                    home_osf = (home_osf + float(s_home['est_woba'].mean())) / 2
-
-            # --- 2. DYNAMIC PITCHER EXTRACTION (FanGraphs FIP + Savant xwOBA) ---
+            # Pitcher Base Processing
             fgp = db['fg_pitching']
             if not fgp.empty and 'Name' in fgp.columns and 'FIP' in fgp.columns:
-                asp_row = fgp[fgp['Name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
-                hsp_row = fgp[fgp['Name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+                asp_row = fgp[fgp['Name'].str.contains(game['away_pitcher'].split()[-1], na=False, case=False)] if game['away_pitcher'] != 'Unknown Starter' else pd.DataFrame()
+                hsp_row = fgp[fgp['Name'].str.contains(game['home_pitcher'].split()[-1], na=False, case=False)] if game['home_pitcher'] != 'Unknown Starter' else pd.DataFrame()
                 
                 if not asp_row.empty:
                     away_psi = float(asp_row['FIP'].mean())
                     if 'SO' in asp_row.columns:
-                        away_sp_k = (float(asp_row['SO'].mean()) / 32.0) * 5.5
+                        prop_baselines['away_pitcher']['k'] = (float(asp_row['SO'].mean()) / 32.0) * 5.5
+                    if 'ER' in asp_row.columns:
+                        prop_baselines['away_pitcher']['er'] = float(asp_row['ER'].mean()) / 32.0 * 5.0
                 if not hsp_row.empty:
                     home_psi = float(hsp_row['FIP'].mean())
                     if 'SO' in hsp_row.columns:
-                        home_sp_k = (float(hsp_row['SO'].mean()) / 32.0) * 5.5
+                        prop_baselines['home_pitcher']['k'] = (float(hsp_row['SO'].mean()) / 32.0) * 5.5
+                    if 'ER' in hsp_row.columns:
+                        prop_baselines['home_pitcher']['er'] = float(hsp_row['ER'].mean()) / 32.0 * 5.0
 
-                # Pull historical Team Bullpen performance from collective pitching tables
-                away_bp_rows = fgp[fgp['Team'] == fg_away_code]
-                home_bp_rows = fgp[fgp['Team'] == fg_home_code]
-                if not away_bp_rows.empty:
-                    away_bsi = float(away_bp_rows['FIP'].mean())
-                if not home_bp_rows.empty:
-                    home_bsi = float(home_bp_rows['FIP'].mean())
-
-            sb_p = db['savant_pitchers']
-            if not sb_p.empty and 'player_name' in sb_p.columns and 'est_woba' in sb_p.columns:
-                p_asp = sb_p[sb_p['player_name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
-                p_hsp = sb_p[sb_p['player_name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
-                
-                # Refine standard FIP using Savant Expected xwOBA against Pitchers
-                if not p_asp.empty:
-                    away_psi = (away_psi + (float(p_asp['est_woba'].mean()) * 12.5)) / 2
-                if not p_hsp.empty:
-                    home_psi = (home_psi + (float(p_hsp['est_woba'].mean()) * 12.5)) / 2
-
-        # 3. TRUE HITTER VS PITCHER CONTRAST EQUATION
-        # Away offense is matched against Home pitching; Home offense is matched against Away pitching.
         metrics = {
             'away_osf': away_osf, 'home_osf': home_osf,
             'away_psi': away_psi, 'home_psi': home_psi,
@@ -221,21 +200,16 @@ class MLBWeatherEnrichedEngine:
             'delta_env': delta_env,
             'away_avg_runs_per_inning': (away_osf * 1.62) * (home_psi / 4.20) * delta_env,
             'home_avg_runs_per_inning': (home_osf * 1.62) * (away_psi / 4.20) * delta_env,
-            'away_sp_k_prop': away_sp_k / delta_env,
-            'home_sp_k_prop': home_sp_k / delta_env
+            'props': prop_baselines
         }
         return metrics
     def execute_segment_simulation(self, metrics, num_sims=10000):
-        """Runs the 10,000-trial simulation parsing multi-inning game tracks."""
+        """Vectorizes Monte Carlo paths to generate team scoring and all DraftKings prop matrices."""
         env = np.random.normal(metrics['delta_env'], 0.04, num_sims)
         
         lambda_away_sp = metrics['away_avg_runs_per_inning'] * env
         lambda_home_sp = metrics['home_avg_runs_per_inning'] * env
         
-        # Bullpen suppression adjustments
-        lambda_away_rp = metrics['away_avg_runs_per_inning'] * env * (metrics['home_bsi'] / metrics['home_psi'])
-        lambda_home_rp = metrics['home_avg_runs_per_inning'] * env * (metrics['away_bsi'] / metrics['away_psi'])
-
         runs_away = np.zeros((num_sims, 9))
         runs_home = np.zeros((num_sims, 9))
         
@@ -244,19 +218,51 @@ class MLBWeatherEnrichedEngine:
                 runs_away[:, i] = np.random.poisson(lambda_away_sp, num_sims)
                 runs_home[:, i] = np.random.poisson(lambda_home_sp, num_sims)
             else:
-                runs_away[:, i] = np.random.poisson(lambda_away_rp, num_sims)
-                runs_home[:, i] = np.random.poisson(lambda_home_rp, num_sims)
+                runs_away[:, i] = np.random.poisson(lambda_away_sp * 1.05, num_sims)
+                runs_home[:, i] = np.random.poisson(lambda_home_sp * 1.05, num_sims)
+
+        # Pitcher Prop Vectors
+        k_away_sp = np.random.poisson(metrics['props']['away_pitcher']['k'] / env, num_sims)
+        k_home_sp = np.random.poisson(metrics['props']['home_pitcher']['k'] / env, num_sims)
+        er_away_sp = np.random.poisson(metrics['props']['away_pitcher']['er'] * env, num_sims)
+        er_home_sp = np.random.poisson(metrics['props']['home_pitcher']['er'] * env, num_sims)
+
+        # Batter Prop Vectors
+        p_away = metrics['props']['away_hitters']
+        p_home = metrics['props']['home_hitters']
+
+        away_hits = np.random.poisson(p_away['hits'] * env, num_sims)
+        home_hits = np.random.poisson(p_home['hits'] * env, num_sims)
+        away_tb = np.random.poisson(p_away['tb'] * env, num_sims)
+        home_tb = np.random.poisson(p_home['tb'] * env, num_sims)
+        away_rbi = np.random.poisson(p_away['rbi'] * env, num_sims)
+        home_rbi = np.random.poisson(p_home['rbi'] * env, num_sims)
+        away_runs = np.random.poisson(p_away['runs'] * env, num_sims)
+        home_runs = np.random.poisson(p_home['runs'] * env, num_sims)
+        away_hr = np.random.binomial(1, np.clip(p_away['hr'] * env, 0, 1), num_sims)
+        home_hr = np.random.binomial(1, np.clip(p_home['hr'] * env, 0, 1), num_sims)
 
         return {
             'F3': (np.sum(runs_away[:, :3], axis=1), np.sum(runs_home[:, :3], axis=1)),
             'F5': (np.sum(runs_away[:, :5], axis=1), np.sum(runs_home[:, :5], axis=1)),
             'F7': (np.sum(runs_away[:, :7], axis=1), np.sum(runs_home[:, :7], axis=1)),
             'FG': (np.sum(runs_away, axis=1), np.sum(runs_home, axis=1)),
-            'away_sp_k': np.random.poisson(metrics['away_sp_k_prop'] * env, num_sims),
-            'home_sp_k': np.random.poisson(metrics['home_sp_k_prop'] * env, num_sims)
+            'pitcher_props': {
+                'away_k': k_away_sp, 'home_k': k_home_sp, 'away_er': er_away_sp, 'home_er': er_home_sp
+            },
+            'batter_props': {
+                'away_hits': away_hits, 'home_hits': home_hits, 'away_tb': away_tb, 'home_tb': home_tb,
+                'away_rbi': away_rbi, 'home_rbi': home_rbi, 'away_runs': away_runs, 'home_runs': home_runs,
+                'away_hr': away_hr, 'home_hr': home_hr
+            }
         }
+    def _calculate_score_mode(self, away_scores, home_scores):
+        """Finds the single most frequent exact score combination from the simulation matrix."""
+        df_scores = pd.DataFrame({'away': away_scores.astype(int), 'home': home_scores.astype(int)})
+        mode_row = df_scores.value_counts().idxmax()
+        return mode_row[0], mode_row[1]
+
     def compute_market_edges(self, sim_data, game):
-        """Extracts win probabilities and over/under parameters across targets."""
         results = []
         segments = {'First 3 Innings': 'F3', 'First 5 Innings': 'F5', 'First 7 Innings': 'F7', 'Full Game': 'FG'}
         for seg_name, key in segments.items():
@@ -266,35 +272,50 @@ class MLBWeatherEnrichedEngine:
             dk_total_line = round(np.mean(away_scores + home_scores) * 2) / 2
             over_prob = np.sum((away_scores + home_scores) > dk_total_line) / len(away_scores)
             
+            # Mode processing integration
+            mode_away, mode_home = self._calculate_score_mode(away_scores, home_scores)
+            
             results.append({
-                'Matchup': f"{game['away_team']} @ {game['home_team']}",
-                'Segment': seg_name,
-                'Proj_Score': f"{np.mean(away_scores):.1f} - {np.mean(home_scores):.1f}",
-                'Home_ML_Prob': f"{home_ml_prob * 100:.1f}%",
-                'Away_ML_Prob': f"{away_ml_prob * 100:.1f}%",
-                'Target_DK_Total': dk_total_line,
-                'Over_Probability': f"{over_prob * 100:.1f}%",
+                'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
+                'Proj_Score': f"{mode_away} - {mode_home}",
+                'Home_ML_Prob': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Prob': f"{away_ml_prob * 100:.1f}%",
+                'Target_DK_Total': dk_total_line, 'Over_Probability': f"{over_prob * 100:.1f}%"
             })
         return results
 
-    def process_prop_board(self, sim_data, game):
-        """Processes specific player strikeout metrics against thresholds."""
-        props = []
-        for side, key in [('away', 'away_sp_k'), ('home', 'home_sp_k')]:
-            mean_k = np.mean(sim_data[key])
-            dk_line = round(mean_k * 2) / 2
-            props.append({
-                'Player': game[f"{side}_pitcher"],
-                'Team': game[f"{side}_team"],
-                'Prop_Type': 'Strikeouts (O/U)',
-                'DraftKings_Line': dk_line,
-                'Simulated_Value': f"{mean_k:.2f}",
-                'Over_Probability': f"{np.sum(sim_data[key] > dk_line) / len(sim_data[key]) * 100:.1f}%"
-            })
-        return props
+    def process_all_dk_props(self, sim_data, game):
+        props_list = []
+        p_sim = sim_data['pitcher_props']
+        b_sim = sim_data['batter_props']
+        
+        # 1. Map Pitcher Props Markets (Strikeouts & Earned Runs)
+        pitchers = [('away', game['away_pitcher'], game['away_team']), ('home', game['home_pitcher'], game['home_team'])]
+        for side, name, team in pitchers:
+            for prop_key, label in [('k', 'Strikeouts (O/U)'), ('er', 'Earned Runs (O/U)')]:
+                arr = p_sim[f"{side}_{prop_key}"]
+                mean_val = np.mean(arr)
+                line = round(mean_val * 2) / 2
+                props_list.append({
+                    'Player/Lineup': name, 'Team': team, 'Market_Type': label,
+                    'DraftKings_Line': line, 'Simulated_Mean': f"{mean_val:.2f}",
+                    'Over_Probability': f"{np.sum(arr > line) / len(arr) * 100:.1f}%"
+                })
+
+        # 2. Map Lineup Batter Props Markets (Hits, Total Bases, RBIs, Runs, Home Runs)
+        batters = [('away', 'Away Lineup Average', game['away_team']), ('home', 'Home Lineup Average', game['home_team'])]
+        b_markets = [('hits', 'Hits (O/U)', 0.5), ('tb', 'Total Bases (O/U)', 1.5), ('rbi', 'RBIs (O/U)', 0.5), ('runs', 'Runs Scored (O/U)', 0.5), ('hr', 'To Hit a Home Run (Yes)', 0.5)]
+        for side, name, team in batters:
+            for key, label, dk_std_line in b_markets:
+                arr = b_sim[f"{side}_{key}"]
+                mean_val = np.mean(arr)
+                props_list.append({
+                    'Player/Lineup': name, 'Team': team, 'Market_Type': label,
+                    'DraftKings_Line': dk_std_line, 'Simulated_Mean': f"{mean_val:.2f}",
+                    'Over_Probability': f"{np.sum(arr > dk_std_line) / len(arr) * 100:.1f}%"
+                })
+        return props_list
 
     async def run_pipeline(self):
-        """Coordinates execution loop flow to calculate daily sheets."""
         schedule_df = self.fetch_live_schedule()
         if schedule_df.empty:
             print("No active games scheduled for today.")
@@ -307,23 +328,21 @@ class MLBWeatherEnrichedEngine:
             home_team = game['home_team']
             city = self.team_cities.get(home_team, 'New York')
             
-            # Asynchronous weather call mapping
             weather_snapshot = await self.get_live_weather(city)
-            print(f"Matchup: {game['away_team']} @ {home_team} | Weather Forecast: {weather_snapshot}")
+            print(f"Matchup: {game['away_team']} @ {home_team} | Weather: {weather_snapshot}")
             
             delta_env = self.calculate_environmental_modifier(home_team, weather_snapshot)
             computed_matrix = self.calculate_custom_engine_metrics(game, metrics_db, delta_env)
             sim_data = self.execute_segment_simulation(computed_matrix)
             
             all_markets.extend(self.compute_market_edges(sim_data, game))
-            all_props.extend(self.process_prop_board(sim_data, game))
+            all_props.extend(self.process_all_dk_props(sim_data, game))
 
-        # Export compiled outputs to artifacts paths
         os.makedirs('data/predictions', exist_ok=True)
         pd.DataFrame(all_markets).to_csv(f"data/predictions/mlb_market_segments_{self.today}.csv", index=False)
         pd.DataFrame(all_props).to_csv(f"data/predictions/mlb_dk_props_{self.today}.csv", index=False)
         print("Data compilation successfully saved to repository.")
 
 if __name__ == "__main__":
-    engine = MLBWeatherEnrichedEngine()
+    engine = MLBFullPropQuantEngine()
     asyncio.run(engine.run_pipeline())
