@@ -115,6 +115,22 @@ class MLBInningByInningEngine:
             savant_hitters = pb.statcast_batter_expected_stats(self.current_year)
             savant_pitchers = pb.statcast_pitcher_expected_stats(self.current_year)
             
+            # --- STANDARDIZE BATTER COLUMN LAYOUTS ---
+            if savant_hitters is not None and not savant_hitters.empty:
+                for col in ['last_name, first_name', 'name']:
+                    if col in savant_hitters.columns:
+                        savant_hitters = savant_hitters.rename(columns={col: 'clean_p_name'})
+                if 'clean_p_name' in savant_hitters.columns:
+                    savant_hitters['clean_p_name'] = savant_hitters['clean_p_name'].str.replace(r'[^a-zA-Z\s,]', '', regex=True)
+
+            # --- STANDARDIZE PITCHER COLUMN LAYOUTS ---
+            if savant_pitchers is not None and not savant_pitchers.empty:
+                for col in ['last_name, first_name', 'name', 'player_name']:
+                    if col in savant_pitchers.columns:
+                        savant_pitchers = savant_pitchers.rename(columns={col: 'clean_p_name'})
+                if 'clean_p_name' in savant_pitchers.columns:
+                    savant_pitchers['clean_p_name'] = savant_pitchers['clean_p_name'].str.replace(r'[^a-zA-Z\s,]', '', regex=True)
+            
             return {
                 'savant_hitters': savant_hitters if savant_hitters is not None else pd.DataFrame(),
                 'savant_pitchers': savant_pitchers if savant_pitchers is not None else pd.DataFrame(),
@@ -160,7 +176,7 @@ class MLBInningByInningEngine:
         return numerator / denominator
 
     def calculate_custom_engine_metrics(self, game, db, delta_env):
-        """Calculates precise matchups by running Log5 odds intersections on player tracking stats."""
+        """Calculates precise matchups by running Log5 odds intersections on normalized Savant metrics."""
         league_woba_avg = 0.315
         league_fip_avg = 4.20
         
@@ -189,9 +205,13 @@ class MLBInningByInningEngine:
                 if not s_home.empty: home_team_woba = float(s_home['est_woba'].mean())
 
             sb_p = db['savant_pitchers']
-            if not sb_p.empty and 'player_name' in sb_p.columns and 'est_woba' in sb_p.columns:
-                p_asp = sb_p[sb_p['player_name'].str.contains(away_sp.split()[-1], na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
-                p_hsp = sb_p[sb_p['player_name'].str.contains(home_sp.split()[-1], na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+            if not sb_p.empty and 'clean_p_name' in sb_p.columns and 'est_woba' in sb_p.columns:
+                asp_last = away_sp.split()[-1] if len(away_sp.split()) > 0 else 'UNKNOWN_TOKEN'
+                hsp_last = home_sp.split()[-1] if len(home_sp.split()) > 0 else 'UNKNOWN_TOKEN'
+                
+                p_asp = sb_p[sb_p['clean_p_name'].str.contains(asp_last, na=False, case=False)] if away_sp != 'Unknown Starter' else pd.DataFrame()
+                p_hsp = sb_p[sb_p['clean_p_name'].str.contains(hsp_last, na=False, case=False)] if home_sp != 'Unknown Starter' else pd.DataFrame()
+                
                 if not p_asp.empty:
                     away_sp_fip = float(p_asp['est_woba'].mean()) * 12.5
                     prop_baselines['away_pitcher']['k'] = 6.0 if float(p_asp['est_woba'].mean()) < 0.300 else 5.0
@@ -199,19 +219,21 @@ class MLBInningByInningEngine:
                     home_sp_fip = float(p_hsp['est_woba'].mean()) * 12.5
                     prop_baselines['home_pitcher']['k'] = 6.0 if float(p_hsp['est_woba'].mean()) < 0.300 else 5.0
 
-        # Run Log5 to intersect Team vs Team Run Expectancy rates per inning
+        # Run Log5 Team scoring matrices
         away_runs_vs_sp = (self._calculate_log5_intersect(away_team_woba, home_sp_fip/12.5, league_woba_avg) * 1.62) * delta_env
         home_runs_vs_sp = (self._calculate_log5_intersect(home_team_woba, away_sp_fip/12.5, league_woba_avg) * 1.62) * delta_env
         away_runs_vs_bp = (self._calculate_log5_intersect(away_team_woba, home_bp_fip/12.5, league_woba_avg) * 1.62) * delta_env
         home_runs_vs_bp = (self._calculate_log5_intersect(home_team_woba, away_bp_fip/12.5, league_woba_avg) * 1.62) * delta_env
 
-        # Run Log5 for Named Individual Hitters Props
-        if db is not None and not sb_h.empty:
+        # 3. Match Individual Hitters by Last Name tokens
+        if db is not None and not sb_h.empty and 'clean_p_name' in sb_h.columns:
             for side, lineup, team_label, opp_sp_fip in [('away', a_lineup, away_team, home_sp_fip), ('home', h_lineup, home_team, away_sp_fip)]:
                 for player_name in lineup[:9]:
                     pHits, pTB, pRBI, pRuns, pHR = 0.85, 1.35, 0.45, 0.45, 0.12
-                    p_row = sb_h[sb_h['player_name'].str.contains(player_name.split()[-1], na=False, case=False)] if len(player_name.split()) > 0 else pd.DataFrame()
-                    if not p_row.empty:
+                    p_last = player_name.split()[-1] if len(player_name.split()) > 0 else 'UNKNOWN_TOKEN'
+                    
+                    p_row = sb_h[sb_h['clean_p_name'].str.contains(p_last, na=False, case=False)]
+                    if not p_row.empty and 'est_woba' in p_row.columns:
                         hitter_xwoba = float(p_row['est_woba'].mean())
                         matched_woba = self._calculate_log5_intersect(hitter_xwoba, opp_sp_fip/12.5, league_woba_avg)
                         pHits = 0.85 * (matched_woba / league_woba_avg)
@@ -305,7 +327,7 @@ class MLBInningByInningEngine:
             
             results.append({
                 'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
-                'Proj_Score': f"{mode_pair[0]} - {mode_pair[1]}",
+                'Proj_Score': f"{mode_pair} - {mode_pair}",
                 'Home_ML_Probability': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Probability': f"{away_ml_prob * 100:.1f}%",
                 'Target_DK_Total_Line': dk_total_line, 'Over_Total_Probability': f"{over_prob * 100:.1f}%", 'Under_Total_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
             })
@@ -315,7 +337,7 @@ class MLBInningByInningEngine:
         props_list = []
         p_sim = sim_data['pitcher_props']
         
-        # 1. Identified Pitchers by Name
+        # 1. Pitchers
         pitchers = [('away', game['away_pitcher'], game['away_team']), ('home', game['home_pitcher'], game['home_team'])]
         for side, name, team in pitchers:
             for p_key, label in [('k', 'Strikeouts (O/U)'), ('er', 'Earned Runs (O/U)')]:
@@ -327,7 +349,7 @@ class MLBInningByInningEngine:
                     'Over_Probability': f"{over_p * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_p) * 100:.1f}%"
                 })
 
-        # 2. Identified Batters by Name
+        # 2. Batters
         b_markets = [('hits', 'Hits (O/U)'), ('tb', 'Total Bases (O/U)'), ('rbi', 'RBIs (O/U)'), ('runs', 'Runs Scored (O/U)'), ('hr', 'Home Runs (O/U)')]
         for b_data in sim_data['batter_props']:
             for key, label in b_markets:
@@ -355,7 +377,6 @@ class MLBInningByInningEngine:
             away_team = game['away_team']
             home_team = game['home_team']
 
-            # Safety Skipping Trigger
             if away_sp == 'Unknown Starter' or home_sp == 'Unknown Starter':
                 print(f"⚠️ [SKIPPED] {away_team} @ {home_team} - Simulation aborted due to unconfirmed Starting Pitcher.")
                 continue
