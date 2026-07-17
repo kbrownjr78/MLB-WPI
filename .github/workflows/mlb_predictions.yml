@@ -54,3 +54,6 @@ jobs:
           git commit -m "Automated Data Push: Generated Predictions for $(date +'%Y-%m-%d')"
           git push origin main
         fi
+    - name: Run Historical Backtest Engine
+      run: |
+        python src/backtest_engine.py
