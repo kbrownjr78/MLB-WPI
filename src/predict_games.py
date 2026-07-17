@@ -259,7 +259,6 @@ class MLBInningByInningEngine:
         """Vectorizes Monte Carlo paths to generate inning-by-inning team scoring matrices and player props."""
         env = np.random.normal(metrics['delta_env'], 0.04, num_sims)
         
-        # Pull inning scoring rates
         l_away_sp = metrics['lambda_away_sp'] * env
         l_home_sp = metrics['lambda_home_sp'] * env
         l_away_rp = metrics['lambda_away_rp'] * env
@@ -268,22 +267,19 @@ class MLBInningByInningEngine:
         runs_away = np.zeros((num_sims, 9))
         runs_home = np.zeros((num_sims, 9))
         
-        # Granular Inning Simulation Loop
         for i in range(9):
-            if i < 5:  # Innings 1-5: Starting Pitcher Dominance Matrix
+            if i < 5:
                 runs_away[:, i] = np.random.poisson(l_away_sp, num_sims)
                 runs_home[:, i] = np.random.poisson(l_home_sp, num_sims)
-            else:  # Innings 6-9: Bullpen Prevention Matrix
+            else:
                 runs_away[:, i] = np.random.poisson(l_away_rp, num_sims)
                 runs_home[:, i] = np.random.poisson(l_home_rp, num_sims)
 
-        # Inning Pitcher Props Scaling
         k_away = np.random.poisson(metrics['props']['away_pitcher']['k'] / env, num_sims)
         k_home = np.random.poisson(metrics['props']['home_pitcher']['k'] / env, num_sims)
         er_away = np.random.poisson(metrics['props']['away_pitcher']['er'] * env, num_sims)
         er_home = np.random.poisson(metrics['props']['home_pitcher']['er'] * env, num_sims)
 
-        # Inning Batter Props Scaling
         simulated_batters = []
         for b in metrics['props']['batters']:
             simulated_batters.append({
@@ -304,8 +300,10 @@ class MLBInningByInningEngine:
             'batter_props': simulated_batters
         }
     def _calculate_score_mode(self, away_scores, home_scores):
+        """Finds the single most frequent exact score combination and unpacks clean integers."""
         df = pd.DataFrame({'away': away_scores.astype(int), 'home': home_scores.astype(int)})
-        return df.value_counts().idxmax()
+        mode_tuple = df.value_counts().idxmax()
+        return int(mode_tuple[0]), int(mode_tuple[1])
 
     def _calculate_array_mode(self, data_array):
         return int(pd.Series(data_array.astype(int)).value_counts().idxmax())
@@ -323,11 +321,11 @@ class MLBInningByInningEngine:
             dk_total_line = round(np.mean(away_scores + home_scores) * 2) / 2
             over_prob = np.sum((away_scores + home_scores) > dk_total_line) / len(away_scores)
             
-            mode_pair = self._calculate_score_mode(away_scores, home_scores)
+            mode_a, mode_h = self._calculate_score_mode(away_scores, home_scores)
             
             results.append({
                 'Matchup': f"{game['away_team']} @ {game['home_team']}", 'Segment': seg_name,
-                'Proj_Score': f"{mode_pair} - {mode_pair}",
+                'Proj_Score': f"{mode_a} - {mode_h}",
                 'Home_ML_Probability': f"{home_ml_prob * 100:.1f}%", 'Away_ML_Probability': f"{away_ml_prob * 100:.1f}%",
                 'Target_DK_Total_Line': dk_total_line, 'Over_Total_Probability': f"{over_prob * 100:.1f}%", 'Under_Total_Probability': f"{(1.0 - over_prob) * 100:.1f}%"
             })
@@ -337,7 +335,6 @@ class MLBInningByInningEngine:
         props_list = []
         p_sim = sim_data['pitcher_props']
         
-        # 1. Pitchers
         pitchers = [('away', game['away_pitcher'], game['away_team']), ('home', game['home_pitcher'], game['home_team'])]
         for side, name, team in pitchers:
             for p_key, label in [('k', 'Strikeouts (O/U)'), ('er', 'Earned Runs (O/U)')]:
@@ -349,7 +346,6 @@ class MLBInningByInningEngine:
                     'Over_Probability': f"{over_p * 100:.1f}%", 'Under_Probability': f"{(1.0 - over_p) * 100:.1f}%"
                 })
 
-        # 2. Batters
         b_markets = [('hits', 'Hits (O/U)'), ('tb', 'Total Bases (O/U)'), ('rbi', 'RBIs (O/U)'), ('runs', 'Runs Scored (O/U)'), ('hr', 'Home Runs (O/U)')]
         for b_data in sim_data['batter_props']:
             for key, label in b_markets:
