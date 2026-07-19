@@ -1,0 +1,1411 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Sean Burke,Chicago White Sox,Strikeouts (O/U),5,38.5%,61.5%
+Sean Burke,Chicago White Sox,Earned Runs (O/U),2,37.4%,62.6%
+Trey Yesavage,Toronto Blue Jays,Strikeouts (O/U),5,55.0%,45.0%
+Trey Yesavage,Toronto Blue Jays,Earned Runs (O/U),2,38.3%,61.7%
+Lineup Fielder 1,Chicago White Sox,Hits (O/U),0,56.4%,43.6%
+Lineup Fielder 1,Chicago White Sox,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 1,Chicago White Sox,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 1,Chicago White Sox,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 1,Chicago White Sox,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 2,Chicago White Sox,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 2,Chicago White Sox,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 2,Chicago White Sox,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 2,Chicago White Sox,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 2,Chicago White Sox,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 3,Chicago White Sox,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 3,Chicago White Sox,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 3,Chicago White Sox,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 3,Chicago White Sox,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 3,Chicago White Sox,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,Chicago White Sox,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 4,Chicago White Sox,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 4,Chicago White Sox,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 4,Chicago White Sox,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 4,Chicago White Sox,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 5,Chicago White Sox,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 5,Chicago White Sox,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 5,Chicago White Sox,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Chicago White Sox,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 5,Chicago White Sox,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 6,Chicago White Sox,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 6,Chicago White Sox,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 6,Chicago White Sox,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Chicago White Sox,Runs Scored (O/U),0,37.0%,63.1%
+Lineup Fielder 6,Chicago White Sox,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 7,Chicago White Sox,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 7,Chicago White Sox,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 7,Chicago White Sox,RBIs (O/U),0,36.6%,63.3%
+Lineup Fielder 7,Chicago White Sox,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 7,Chicago White Sox,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 8,Chicago White Sox,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 8,Chicago White Sox,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 8,Chicago White Sox,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 8,Chicago White Sox,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 8,Chicago White Sox,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 9,Chicago White Sox,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 9,Chicago White Sox,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 9,Chicago White Sox,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 9,Chicago White Sox,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Chicago White Sox,Home Runs (O/U),0,11.8%,88.1%
+Lineup Fielder 1,Toronto Blue Jays,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 1,Toronto Blue Jays,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 1,Toronto Blue Jays,RBIs (O/U),0,34.9%,65.1%
+Lineup Fielder 1,Toronto Blue Jays,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 1,Toronto Blue Jays,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 2,Toronto Blue Jays,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 2,Toronto Blue Jays,Total Bases (O/U),1,39.6%,60.5%
+Lineup Fielder 2,Toronto Blue Jays,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 2,Toronto Blue Jays,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 2,Toronto Blue Jays,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 3,Toronto Blue Jays,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 3,Toronto Blue Jays,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 3,Toronto Blue Jays,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 3,Toronto Blue Jays,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 3,Toronto Blue Jays,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 4,Toronto Blue Jays,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,Toronto Blue Jays,Total Bases (O/U),1,38.4%,61.7%
+Lineup Fielder 4,Toronto Blue Jays,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 4,Toronto Blue Jays,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 4,Toronto Blue Jays,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 5,Toronto Blue Jays,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 5,Toronto Blue Jays,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 5,Toronto Blue Jays,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 5,Toronto Blue Jays,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 5,Toronto Blue Jays,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,Toronto Blue Jays,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 6,Toronto Blue Jays,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 6,Toronto Blue Jays,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 6,Toronto Blue Jays,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 6,Toronto Blue Jays,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 7,Toronto Blue Jays,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 7,Toronto Blue Jays,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 7,Toronto Blue Jays,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 7,Toronto Blue Jays,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 7,Toronto Blue Jays,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Toronto Blue Jays,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 8,Toronto Blue Jays,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 8,Toronto Blue Jays,RBIs (O/U),0,35.6%,64.3%
+Lineup Fielder 8,Toronto Blue Jays,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 8,Toronto Blue Jays,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 9,Toronto Blue Jays,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 9,Toronto Blue Jays,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 9,Toronto Blue Jays,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Toronto Blue Jays,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Toronto Blue Jays,Home Runs (O/U),0,11.7%,88.3%
+Yoshinobu Yamamoto,Los Angeles Dodgers,Strikeouts (O/U),5,49.1%,50.9%
+Yoshinobu Yamamoto,Los Angeles Dodgers,Earned Runs (O/U),2,42.3%,57.7%
+Cam Schlittler,New York Yankees,Strikeouts (O/U),5,50.7%,49.3%
+Cam Schlittler,New York Yankees,Earned Runs (O/U),2,41.4%,58.6%
+Lineup Fielder 1,Los Angeles Dodgers,Hits (O/U),0,59.4%,40.6%
+Lineup Fielder 1,Los Angeles Dodgers,Total Bases (O/U),1,42.4%,57.6%
+Lineup Fielder 1,Los Angeles Dodgers,RBIs (O/U),0,37.8%,62.2%
+Lineup Fielder 1,Los Angeles Dodgers,Runs Scored (O/U),0,37.9%,62.1%
+Lineup Fielder 1,Los Angeles Dodgers,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 2,Los Angeles Dodgers,Hits (O/U),0,59.3%,40.7%
+Lineup Fielder 2,Los Angeles Dodgers,Total Bases (O/U),1,42.6%,57.4%
+Lineup Fielder 2,Los Angeles Dodgers,RBIs (O/U),0,37.2%,62.7%
+Lineup Fielder 2,Los Angeles Dodgers,Runs Scored (O/U),0,38.0%,62.0%
+Lineup Fielder 2,Los Angeles Dodgers,Home Runs (O/U),0,13.0%,87.1%
+Lineup Fielder 3,Los Angeles Dodgers,Hits (O/U),0,59.5%,40.5%
+Lineup Fielder 3,Los Angeles Dodgers,Total Bases (O/U),1,42.2%,57.8%
+Lineup Fielder 3,Los Angeles Dodgers,RBIs (O/U),0,39.0%,61.0%
+Lineup Fielder 3,Los Angeles Dodgers,Runs Scored (O/U),0,38.0%,62.0%
+Lineup Fielder 3,Los Angeles Dodgers,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 4,Los Angeles Dodgers,Hits (O/U),0,59.8%,40.2%
+Lineup Fielder 4,Los Angeles Dodgers,Total Bases (O/U),1,42.1%,57.9%
+Lineup Fielder 4,Los Angeles Dodgers,RBIs (O/U),0,37.9%,62.1%
+Lineup Fielder 4,Los Angeles Dodgers,Runs Scored (O/U),0,38.5%,61.5%
+Lineup Fielder 4,Los Angeles Dodgers,Home Runs (O/U),0,13.4%,86.6%
+Lineup Fielder 5,Los Angeles Dodgers,Hits (O/U),0,59.5%,40.5%
+Lineup Fielder 5,Los Angeles Dodgers,Total Bases (O/U),1,42.3%,57.7%
+Lineup Fielder 5,Los Angeles Dodgers,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 5,Los Angeles Dodgers,Runs Scored (O/U),0,38.5%,61.5%
+Lineup Fielder 5,Los Angeles Dodgers,Home Runs (O/U),0,13.2%,86.8%
+Lineup Fielder 6,Los Angeles Dodgers,Hits (O/U),0,59.8%,40.2%
+Lineup Fielder 6,Los Angeles Dodgers,Total Bases (O/U),1,41.9%,58.1%
+Lineup Fielder 6,Los Angeles Dodgers,RBIs (O/U),0,37.6%,62.4%
+Lineup Fielder 6,Los Angeles Dodgers,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 6,Los Angeles Dodgers,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 7,Los Angeles Dodgers,Hits (O/U),0,60.1%,39.9%
+Lineup Fielder 7,Los Angeles Dodgers,Total Bases (O/U),1,42.4%,57.6%
+Lineup Fielder 7,Los Angeles Dodgers,RBIs (O/U),0,37.7%,62.3%
+Lineup Fielder 7,Los Angeles Dodgers,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 7,Los Angeles Dodgers,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 8,Los Angeles Dodgers,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 8,Los Angeles Dodgers,Total Bases (O/U),1,41.5%,58.5%
+Lineup Fielder 8,Los Angeles Dodgers,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 8,Los Angeles Dodgers,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 8,Los Angeles Dodgers,Home Runs (O/U),0,13.2%,86.8%
+Lineup Fielder 9,Los Angeles Dodgers,Hits (O/U),0,59.8%,40.2%
+Lineup Fielder 9,Los Angeles Dodgers,Total Bases (O/U),1,42.2%,57.8%
+Lineup Fielder 9,Los Angeles Dodgers,RBIs (O/U),0,38.8%,61.2%
+Lineup Fielder 9,Los Angeles Dodgers,Runs Scored (O/U),0,37.8%,62.2%
+Lineup Fielder 9,Los Angeles Dodgers,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 1,New York Yankees,Hits (O/U),0,60.0%,40.0%
+Lineup Fielder 1,New York Yankees,Total Bases (O/U),1,42.0%,58.0%
+Lineup Fielder 1,New York Yankees,RBIs (O/U),0,38.5%,61.5%
+Lineup Fielder 1,New York Yankees,Runs Scored (O/U),0,37.8%,62.2%
+Lineup Fielder 1,New York Yankees,Home Runs (O/U),0,13.0%,87.0%
+Lineup Fielder 2,New York Yankees,Hits (O/U),0,60.0%,40.0%
+Lineup Fielder 2,New York Yankees,Total Bases (O/U),1,43.1%,56.9%
+Lineup Fielder 2,New York Yankees,RBIs (O/U),0,38.4%,61.6%
+Lineup Fielder 2,New York Yankees,Runs Scored (O/U),0,38.0%,62.1%
+Lineup Fielder 2,New York Yankees,Home Runs (O/U),0,13.4%,86.6%
+Lineup Fielder 3,New York Yankees,Hits (O/U),0,59.0%,41.0%
+Lineup Fielder 3,New York Yankees,Total Bases (O/U),1,41.4%,58.6%
+Lineup Fielder 3,New York Yankees,RBIs (O/U),0,38.7%,61.3%
+Lineup Fielder 3,New York Yankees,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 3,New York Yankees,Home Runs (O/U),0,13.2%,86.8%
+Lineup Fielder 4,New York Yankees,Hits (O/U),0,60.4%,39.6%
+Lineup Fielder 4,New York Yankees,Total Bases (O/U),1,42.0%,58.0%
+Lineup Fielder 4,New York Yankees,RBIs (O/U),0,38.0%,62.0%
+Lineup Fielder 4,New York Yankees,Runs Scored (O/U),0,38.3%,61.7%
+Lineup Fielder 4,New York Yankees,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 5,New York Yankees,Hits (O/U),0,59.3%,40.7%
+Lineup Fielder 5,New York Yankees,Total Bases (O/U),1,42.2%,57.8%
+Lineup Fielder 5,New York Yankees,RBIs (O/U),0,37.9%,62.1%
+Lineup Fielder 5,New York Yankees,Runs Scored (O/U),0,37.7%,62.3%
+Lineup Fielder 5,New York Yankees,Home Runs (O/U),0,13.0%,87.0%
+Lineup Fielder 6,New York Yankees,Hits (O/U),0,60.4%,39.6%
+Lineup Fielder 6,New York Yankees,Total Bases (O/U),1,42.0%,58.0%
+Lineup Fielder 6,New York Yankees,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 6,New York Yankees,Runs Scored (O/U),0,38.3%,61.7%
+Lineup Fielder 6,New York Yankees,Home Runs (O/U),0,12.8%,87.1%
+Lineup Fielder 7,New York Yankees,Hits (O/U),0,59.9%,40.1%
+Lineup Fielder 7,New York Yankees,Total Bases (O/U),1,41.7%,58.3%
+Lineup Fielder 7,New York Yankees,RBIs (O/U),0,37.6%,62.4%
+Lineup Fielder 7,New York Yankees,Runs Scored (O/U),0,38.0%,62.1%
+Lineup Fielder 7,New York Yankees,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 8,New York Yankees,Hits (O/U),0,60.4%,39.6%
+Lineup Fielder 8,New York Yankees,Total Bases (O/U),1,42.9%,57.1%
+Lineup Fielder 8,New York Yankees,RBIs (O/U),0,38.4%,61.7%
+Lineup Fielder 8,New York Yankees,Runs Scored (O/U),0,38.2%,61.8%
+Lineup Fielder 8,New York Yankees,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 9,New York Yankees,Hits (O/U),0,59.1%,40.9%
+Lineup Fielder 9,New York Yankees,Total Bases (O/U),1,41.9%,58.1%
+Lineup Fielder 9,New York Yankees,RBIs (O/U),0,38.8%,61.2%
+Lineup Fielder 9,New York Yankees,Runs Scored (O/U),0,39.0%,61.0%
+Lineup Fielder 9,New York Yankees,Home Runs (O/U),0,12.8%,87.2%
+Shane McClanahan,Tampa Bay Rays,Strikeouts (O/U),4,46.8%,53.2%
+Shane McClanahan,Tampa Bay Rays,Earned Runs (O/U),2,44.1%,55.9%
+Sonny Gray,Boston Red Sox,Strikeouts (O/U),4,46.1%,53.9%
+Sonny Gray,Boston Red Sox,Earned Runs (O/U),2,43.5%,56.5%
+Lineup Fielder 1,Tampa Bay Rays,Hits (O/U),0,60.5%,39.5%
+Lineup Fielder 1,Tampa Bay Rays,Total Bases (O/U),1,44.0%,56.0%
+Lineup Fielder 1,Tampa Bay Rays,RBIs (O/U),0,39.1%,60.9%
+Lineup Fielder 1,Tampa Bay Rays,Runs Scored (O/U),0,39.1%,60.9%
+Lineup Fielder 1,Tampa Bay Rays,Home Runs (O/U),0,13.0%,87.0%
+Lineup Fielder 2,Tampa Bay Rays,Hits (O/U),0,61.2%,38.8%
+Lineup Fielder 2,Tampa Bay Rays,Total Bases (O/U),1,44.9%,55.1%
+Lineup Fielder 2,Tampa Bay Rays,RBIs (O/U),0,39.4%,60.6%
+Lineup Fielder 2,Tampa Bay Rays,Runs Scored (O/U),0,40.0%,60.0%
+Lineup Fielder 2,Tampa Bay Rays,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 3,Tampa Bay Rays,Hits (O/U),0,61.7%,38.3%
+Lineup Fielder 3,Tampa Bay Rays,Total Bases (O/U),1,44.2%,55.8%
+Lineup Fielder 3,Tampa Bay Rays,RBIs (O/U),0,38.5%,61.5%
+Lineup Fielder 3,Tampa Bay Rays,Runs Scored (O/U),0,38.8%,61.2%
+Lineup Fielder 3,Tampa Bay Rays,Home Runs (O/U),0,13.1%,86.9%
+Lineup Fielder 4,Tampa Bay Rays,Hits (O/U),0,61.2%,38.8%
+Lineup Fielder 4,Tampa Bay Rays,Total Bases (O/U),1,44.3%,55.7%
+Lineup Fielder 4,Tampa Bay Rays,RBIs (O/U),0,38.6%,61.4%
+Lineup Fielder 4,Tampa Bay Rays,Runs Scored (O/U),0,38.9%,61.1%
+Lineup Fielder 4,Tampa Bay Rays,Home Runs (O/U),0,13.4%,86.6%
+Lineup Fielder 5,Tampa Bay Rays,Hits (O/U),0,60.8%,39.2%
+Lineup Fielder 5,Tampa Bay Rays,Total Bases (O/U),1,43.6%,56.4%
+Lineup Fielder 5,Tampa Bay Rays,RBIs (O/U),0,38.8%,61.2%
+Lineup Fielder 5,Tampa Bay Rays,Runs Scored (O/U),0,39.3%,60.7%
+Lineup Fielder 5,Tampa Bay Rays,Home Runs (O/U),0,13.5%,86.5%
+Lineup Fielder 6,Tampa Bay Rays,Hits (O/U),0,60.5%,39.5%
+Lineup Fielder 6,Tampa Bay Rays,Total Bases (O/U),1,45.1%,54.9%
+Lineup Fielder 6,Tampa Bay Rays,RBIs (O/U),0,39.4%,60.6%
+Lineup Fielder 6,Tampa Bay Rays,Runs Scored (O/U),0,38.9%,61.1%
+Lineup Fielder 6,Tampa Bay Rays,Home Runs (O/U),0,13.4%,86.7%
+Lineup Fielder 7,Tampa Bay Rays,Hits (O/U),0,60.5%,39.5%
+Lineup Fielder 7,Tampa Bay Rays,Total Bases (O/U),1,44.2%,55.8%
+Lineup Fielder 7,Tampa Bay Rays,RBIs (O/U),0,40.1%,59.9%
+Lineup Fielder 7,Tampa Bay Rays,Runs Scored (O/U),0,39.5%,60.5%
+Lineup Fielder 7,Tampa Bay Rays,Home Runs (O/U),0,13.6%,86.4%
+Lineup Fielder 8,Tampa Bay Rays,Hits (O/U),0,61.3%,38.7%
+Lineup Fielder 8,Tampa Bay Rays,Total Bases (O/U),1,43.9%,56.1%
+Lineup Fielder 8,Tampa Bay Rays,RBIs (O/U),0,39.5%,60.5%
+Lineup Fielder 8,Tampa Bay Rays,Runs Scored (O/U),0,40.0%,60.0%
+Lineup Fielder 8,Tampa Bay Rays,Home Runs (O/U),0,13.0%,87.0%
+Lineup Fielder 9,Tampa Bay Rays,Hits (O/U),0,61.2%,38.8%
+Lineup Fielder 9,Tampa Bay Rays,Total Bases (O/U),1,44.8%,55.2%
+Lineup Fielder 9,Tampa Bay Rays,RBIs (O/U),0,38.6%,61.4%
+Lineup Fielder 9,Tampa Bay Rays,Runs Scored (O/U),0,39.5%,60.5%
+Lineup Fielder 9,Tampa Bay Rays,Home Runs (O/U),0,13.6%,86.4%
+Lineup Fielder 1,Boston Red Sox,Hits (O/U),0,61.7%,38.3%
+Lineup Fielder 1,Boston Red Sox,Total Bases (O/U),1,43.8%,56.2%
+Lineup Fielder 1,Boston Red Sox,RBIs (O/U),0,38.7%,61.3%
+Lineup Fielder 1,Boston Red Sox,Runs Scored (O/U),0,39.5%,60.5%
+Lineup Fielder 1,Boston Red Sox,Home Runs (O/U),0,13.6%,86.4%
+Lineup Fielder 2,Boston Red Sox,Hits (O/U),0,60.0%,40.0%
+Lineup Fielder 2,Boston Red Sox,Total Bases (O/U),1,44.1%,55.9%
+Lineup Fielder 2,Boston Red Sox,RBIs (O/U),0,38.9%,61.1%
+Lineup Fielder 2,Boston Red Sox,Runs Scored (O/U),0,39.6%,60.5%
+Lineup Fielder 2,Boston Red Sox,Home Runs (O/U),0,13.7%,86.3%
+Lineup Fielder 3,Boston Red Sox,Hits (O/U),0,60.7%,39.3%
+Lineup Fielder 3,Boston Red Sox,Total Bases (O/U),1,45.2%,54.8%
+Lineup Fielder 3,Boston Red Sox,RBIs (O/U),0,39.1%,60.9%
+Lineup Fielder 3,Boston Red Sox,Runs Scored (O/U),0,38.9%,61.1%
+Lineup Fielder 3,Boston Red Sox,Home Runs (O/U),0,13.5%,86.5%
+Lineup Fielder 4,Boston Red Sox,Hits (O/U),0,61.1%,38.9%
+Lineup Fielder 4,Boston Red Sox,Total Bases (O/U),1,44.2%,55.8%
+Lineup Fielder 4,Boston Red Sox,RBIs (O/U),0,39.1%,60.9%
+Lineup Fielder 4,Boston Red Sox,Runs Scored (O/U),0,39.1%,60.9%
+Lineup Fielder 4,Boston Red Sox,Home Runs (O/U),0,13.7%,86.3%
+Lineup Fielder 5,Boston Red Sox,Hits (O/U),0,59.8%,40.2%
+Lineup Fielder 5,Boston Red Sox,Total Bases (O/U),1,43.8%,56.2%
+Lineup Fielder 5,Boston Red Sox,RBIs (O/U),0,39.3%,60.7%
+Lineup Fielder 5,Boston Red Sox,Runs Scored (O/U),0,38.2%,61.7%
+Lineup Fielder 5,Boston Red Sox,Home Runs (O/U),0,13.4%,86.6%
+Lineup Fielder 6,Boston Red Sox,Hits (O/U),0,61.5%,38.5%
+Lineup Fielder 6,Boston Red Sox,Total Bases (O/U),1,43.3%,56.7%
+Lineup Fielder 6,Boston Red Sox,RBIs (O/U),0,39.2%,60.8%
+Lineup Fielder 6,Boston Red Sox,Runs Scored (O/U),0,39.1%,60.9%
+Lineup Fielder 6,Boston Red Sox,Home Runs (O/U),0,13.9%,86.1%
+Lineup Fielder 7,Boston Red Sox,Hits (O/U),0,62.0%,38.0%
+Lineup Fielder 7,Boston Red Sox,Total Bases (O/U),1,43.9%,56.1%
+Lineup Fielder 7,Boston Red Sox,RBIs (O/U),0,39.1%,60.9%
+Lineup Fielder 7,Boston Red Sox,Runs Scored (O/U),0,38.8%,61.2%
+Lineup Fielder 7,Boston Red Sox,Home Runs (O/U),0,13.0%,87.0%
+Lineup Fielder 8,Boston Red Sox,Hits (O/U),0,60.5%,39.5%
+Lineup Fielder 8,Boston Red Sox,Total Bases (O/U),1,43.3%,56.7%
+Lineup Fielder 8,Boston Red Sox,RBIs (O/U),0,39.7%,60.3%
+Lineup Fielder 8,Boston Red Sox,Runs Scored (O/U),0,40.3%,59.7%
+Lineup Fielder 8,Boston Red Sox,Home Runs (O/U),0,13.2%,86.8%
+Lineup Fielder 9,Boston Red Sox,Hits (O/U),0,61.8%,38.2%
+Lineup Fielder 9,Boston Red Sox,Total Bases (O/U),1,44.0%,56.0%
+Lineup Fielder 9,Boston Red Sox,RBIs (O/U),0,38.4%,61.6%
+Lineup Fielder 9,Boston Red Sox,Runs Scored (O/U),0,38.6%,61.4%
+Lineup Fielder 9,Boston Red Sox,Home Runs (O/U),0,12.8%,87.2%
+Nolan McLean,New York Mets,Strikeouts (O/U),5,51.2%,48.8%
+Nolan McLean,New York Mets,Earned Runs (O/U),2,40.3%,59.7%
+Alan Rangel,Philadelphia Phillies,Strikeouts (O/U),5,43.4%,56.6%
+Alan Rangel,Philadelphia Phillies,Earned Runs (O/U),2,40.4%,59.6%
+Lineup Fielder 1,New York Mets,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 1,New York Mets,Total Bases (O/U),1,41.9%,58.1%
+Lineup Fielder 1,New York Mets,RBIs (O/U),0,37.6%,62.4%
+Lineup Fielder 1,New York Mets,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 1,New York Mets,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 2,New York Mets,Hits (O/U),0,59.9%,40.1%
+Lineup Fielder 2,New York Mets,Total Bases (O/U),1,40.7%,59.3%
+Lineup Fielder 2,New York Mets,RBIs (O/U),0,37.4%,62.7%
+Lineup Fielder 2,New York Mets,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 2,New York Mets,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 3,New York Mets,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 3,New York Mets,Total Bases (O/U),1,41.5%,58.5%
+Lineup Fielder 3,New York Mets,RBIs (O/U),0,38.3%,61.7%
+Lineup Fielder 3,New York Mets,Runs Scored (O/U),0,37.7%,62.3%
+Lineup Fielder 3,New York Mets,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 4,New York Mets,Hits (O/U),0,59.8%,40.2%
+Lineup Fielder 4,New York Mets,Total Bases (O/U),1,42.2%,57.8%
+Lineup Fielder 4,New York Mets,RBIs (O/U),0,37.8%,62.2%
+Lineup Fielder 4,New York Mets,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 4,New York Mets,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,New York Mets,Hits (O/U),0,60.1%,39.9%
+Lineup Fielder 5,New York Mets,Total Bases (O/U),1,41.7%,58.3%
+Lineup Fielder 5,New York Mets,RBIs (O/U),0,37.6%,62.4%
+Lineup Fielder 5,New York Mets,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 5,New York Mets,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 6,New York Mets,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 6,New York Mets,Total Bases (O/U),1,41.7%,58.3%
+Lineup Fielder 6,New York Mets,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 6,New York Mets,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 6,New York Mets,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 7,New York Mets,Hits (O/U),0,59.0%,41.0%
+Lineup Fielder 7,New York Mets,Total Bases (O/U),1,41.4%,58.6%
+Lineup Fielder 7,New York Mets,RBIs (O/U),0,38.3%,61.7%
+Lineup Fielder 7,New York Mets,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 7,New York Mets,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 8,New York Mets,Hits (O/U),0,59.7%,40.3%
+Lineup Fielder 8,New York Mets,Total Bases (O/U),1,41.9%,58.1%
+Lineup Fielder 8,New York Mets,RBIs (O/U),0,37.9%,62.1%
+Lineup Fielder 8,New York Mets,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 8,New York Mets,Home Runs (O/U),0,13.3%,86.7%
+Lineup Fielder 9,New York Mets,Hits (O/U),0,59.2%,40.8%
+Lineup Fielder 9,New York Mets,Total Bases (O/U),1,41.9%,58.1%
+Lineup Fielder 9,New York Mets,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 9,New York Mets,Runs Scored (O/U),0,38.2%,61.8%
+Lineup Fielder 9,New York Mets,Home Runs (O/U),0,13.1%,86.9%
+Lineup Fielder 1,Philadelphia Phillies,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 1,Philadelphia Phillies,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 1,Philadelphia Phillies,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 1,Philadelphia Phillies,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 1,Philadelphia Phillies,Home Runs (O/U),0,12.6%,87.5%
+Lineup Fielder 2,Philadelphia Phillies,Hits (O/U),0,58.5%,41.5%
+Lineup Fielder 2,Philadelphia Phillies,Total Bases (O/U),1,42.6%,57.4%
+Lineup Fielder 2,Philadelphia Phillies,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 2,Philadelphia Phillies,Runs Scored (O/U),0,38.0%,62.0%
+Lineup Fielder 2,Philadelphia Phillies,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 3,Philadelphia Phillies,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 3,Philadelphia Phillies,Total Bases (O/U),1,41.4%,58.6%
+Lineup Fielder 3,Philadelphia Phillies,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 3,Philadelphia Phillies,Runs Scored (O/U),0,38.4%,61.6%
+Lineup Fielder 3,Philadelphia Phillies,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 4,Philadelphia Phillies,Hits (O/U),0,59.0%,41.0%
+Lineup Fielder 4,Philadelphia Phillies,Total Bases (O/U),1,41.5%,58.5%
+Lineup Fielder 4,Philadelphia Phillies,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 4,Philadelphia Phillies,Runs Scored (O/U),0,38.0%,62.1%
+Lineup Fielder 4,Philadelphia Phillies,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 5,Philadelphia Phillies,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 5,Philadelphia Phillies,Total Bases (O/U),1,40.8%,59.2%
+Lineup Fielder 5,Philadelphia Phillies,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 5,Philadelphia Phillies,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 5,Philadelphia Phillies,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 6,Philadelphia Phillies,Hits (O/U),0,59.0%,41.0%
+Lineup Fielder 6,Philadelphia Phillies,Total Bases (O/U),1,41.5%,58.5%
+Lineup Fielder 6,Philadelphia Phillies,RBIs (O/U),0,38.1%,61.9%
+Lineup Fielder 6,Philadelphia Phillies,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 6,Philadelphia Phillies,Home Runs (O/U),0,13.1%,86.9%
+Lineup Fielder 7,Philadelphia Phillies,Hits (O/U),0,59.9%,40.1%
+Lineup Fielder 7,Philadelphia Phillies,Total Bases (O/U),1,41.5%,58.5%
+Lineup Fielder 7,Philadelphia Phillies,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 7,Philadelphia Phillies,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 7,Philadelphia Phillies,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 8,Philadelphia Phillies,Hits (O/U),0,59.6%,40.4%
+Lineup Fielder 8,Philadelphia Phillies,Total Bases (O/U),1,41.6%,58.4%
+Lineup Fielder 8,Philadelphia Phillies,RBIs (O/U),0,37.8%,62.2%
+Lineup Fielder 8,Philadelphia Phillies,Runs Scored (O/U),0,37.9%,62.1%
+Lineup Fielder 8,Philadelphia Phillies,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 9,Philadelphia Phillies,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 9,Philadelphia Phillies,Total Bases (O/U),1,41.8%,58.2%
+Lineup Fielder 9,Philadelphia Phillies,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 9,Philadelphia Phillies,Runs Scored (O/U),0,37.7%,62.3%
+Lineup Fielder 9,Philadelphia Phillies,Home Runs (O/U),0,13.0%,87.0%
+Nathan Eovaldi,Texas Rangers,Strikeouts (O/U),4,56.1%,43.9%
+Nathan Eovaldi,Texas Rangers,Earned Runs (O/U),2,37.1%,62.9%
+Grant Holmes,Atlanta Braves,Strikeouts (O/U),4,55.4%,44.6%
+Grant Holmes,Atlanta Braves,Earned Runs (O/U),2,38.5%,61.5%
+Lineup Fielder 1,Texas Rangers,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 1,Texas Rangers,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 1,Texas Rangers,RBIs (O/U),0,37.2%,62.8%
+Lineup Fielder 1,Texas Rangers,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 1,Texas Rangers,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 2,Texas Rangers,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 2,Texas Rangers,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 2,Texas Rangers,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 2,Texas Rangers,Runs Scored (O/U),0,35.2%,64.8%
+Lineup Fielder 2,Texas Rangers,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 3,Texas Rangers,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 3,Texas Rangers,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 3,Texas Rangers,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 3,Texas Rangers,Runs Scored (O/U),0,36.6%,63.3%
+Lineup Fielder 3,Texas Rangers,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 4,Texas Rangers,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,Texas Rangers,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 4,Texas Rangers,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 4,Texas Rangers,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Texas Rangers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 5,Texas Rangers,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 5,Texas Rangers,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 5,Texas Rangers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 5,Texas Rangers,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 5,Texas Rangers,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,Texas Rangers,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 6,Texas Rangers,Total Bases (O/U),1,39.2%,60.7%
+Lineup Fielder 6,Texas Rangers,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 6,Texas Rangers,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Texas Rangers,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 7,Texas Rangers,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 7,Texas Rangers,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 7,Texas Rangers,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 7,Texas Rangers,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 7,Texas Rangers,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 8,Texas Rangers,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 8,Texas Rangers,Total Bases (O/U),1,38.2%,61.8%
+Lineup Fielder 8,Texas Rangers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 8,Texas Rangers,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 8,Texas Rangers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 9,Texas Rangers,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 9,Texas Rangers,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 9,Texas Rangers,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 9,Texas Rangers,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 9,Texas Rangers,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 1,Atlanta Braves,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 1,Atlanta Braves,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 1,Atlanta Braves,RBIs (O/U),0,36.8%,63.3%
+Lineup Fielder 1,Atlanta Braves,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 1,Atlanta Braves,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 2,Atlanta Braves,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 2,Atlanta Braves,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 2,Atlanta Braves,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 2,Atlanta Braves,Runs Scored (O/U),0,37.5%,62.5%
+Lineup Fielder 2,Atlanta Braves,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 3,Atlanta Braves,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 3,Atlanta Braves,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 3,Atlanta Braves,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 3,Atlanta Braves,Runs Scored (O/U),0,37.0%,63.1%
+Lineup Fielder 3,Atlanta Braves,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 4,Atlanta Braves,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 4,Atlanta Braves,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 4,Atlanta Braves,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 4,Atlanta Braves,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 5,Atlanta Braves,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 5,Atlanta Braves,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 5,Atlanta Braves,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Atlanta Braves,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Atlanta Braves,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,Atlanta Braves,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 6,Atlanta Braves,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 6,Atlanta Braves,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 6,Atlanta Braves,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 6,Atlanta Braves,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 7,Atlanta Braves,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 7,Atlanta Braves,Total Bases (O/U),1,39.4%,60.7%
+Lineup Fielder 7,Atlanta Braves,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 7,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 7,Atlanta Braves,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 8,Atlanta Braves,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 8,Atlanta Braves,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 8,Atlanta Braves,RBIs (O/U),0,37.0%,62.9%
+Lineup Fielder 8,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 8,Atlanta Braves,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 9,Atlanta Braves,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 9,Atlanta Braves,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 9,Atlanta Braves,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 9,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 9,Atlanta Braves,Home Runs (O/U),0,12.3%,87.7%
+Paul Skenes,Pittsburgh Pirates,Strikeouts (O/U),6,39.7%,60.3%
+Paul Skenes,Pittsburgh Pirates,Earned Runs (O/U),2,37.6%,62.4%
+Joey Cantillo,Cleveland Guardians,Strikeouts (O/U),5,39.0%,61.0%
+Joey Cantillo,Cleveland Guardians,Earned Runs (O/U),2,37.2%,62.8%
+Lineup Fielder 1,Pittsburgh Pirates,Hits (O/U),0,56.3%,43.7%
+Lineup Fielder 1,Pittsburgh Pirates,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 1,Pittsburgh Pirates,RBIs (O/U),0,35.2%,64.8%
+Lineup Fielder 1,Pittsburgh Pirates,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 1,Pittsburgh Pirates,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 2,Pittsburgh Pirates,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 2,Pittsburgh Pirates,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 2,Pittsburgh Pirates,RBIs (O/U),0,35.2%,64.8%
+Lineup Fielder 2,Pittsburgh Pirates,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 2,Pittsburgh Pirates,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 3,Pittsburgh Pirates,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 3,Pittsburgh Pirates,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 3,Pittsburgh Pirates,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 3,Pittsburgh Pirates,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 3,Pittsburgh Pirates,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 4,Pittsburgh Pirates,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 4,Pittsburgh Pirates,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 4,Pittsburgh Pirates,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 4,Pittsburgh Pirates,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 4,Pittsburgh Pirates,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 5,Pittsburgh Pirates,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 5,Pittsburgh Pirates,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 5,Pittsburgh Pirates,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 5,Pittsburgh Pirates,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Pittsburgh Pirates,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 6,Pittsburgh Pirates,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 6,Pittsburgh Pirates,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 6,Pittsburgh Pirates,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 6,Pittsburgh Pirates,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Pittsburgh Pirates,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 7,Pittsburgh Pirates,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 7,Pittsburgh Pirates,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 7,Pittsburgh Pirates,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 7,Pittsburgh Pirates,Runs Scored (O/U),0,37.0%,62.9%
+Lineup Fielder 7,Pittsburgh Pirates,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 8,Pittsburgh Pirates,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 8,Pittsburgh Pirates,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 8,Pittsburgh Pirates,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Pittsburgh Pirates,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 8,Pittsburgh Pirates,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 9,Pittsburgh Pirates,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 9,Pittsburgh Pirates,Total Bases (O/U),1,37.5%,62.5%
+Lineup Fielder 9,Pittsburgh Pirates,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 9,Pittsburgh Pirates,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 9,Pittsburgh Pirates,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 1,Cleveland Guardians,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 1,Cleveland Guardians,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 1,Cleveland Guardians,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 1,Cleveland Guardians,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 1,Cleveland Guardians,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 2,Cleveland Guardians,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 2,Cleveland Guardians,Total Bases (O/U),1,39.0%,61.1%
+Lineup Fielder 2,Cleveland Guardians,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Cleveland Guardians,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 2,Cleveland Guardians,Home Runs (O/U),0,12.2%,87.9%
+Lineup Fielder 3,Cleveland Guardians,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 3,Cleveland Guardians,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 3,Cleveland Guardians,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 3,Cleveland Guardians,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 3,Cleveland Guardians,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 4,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,Cleveland Guardians,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 4,Cleveland Guardians,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 4,Cleveland Guardians,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 4,Cleveland Guardians,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 5,Cleveland Guardians,Hits (O/U),0,56.2%,43.8%
+Lineup Fielder 5,Cleveland Guardians,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 5,Cleveland Guardians,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 5,Cleveland Guardians,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 5,Cleveland Guardians,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 6,Cleveland Guardians,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 6,Cleveland Guardians,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 6,Cleveland Guardians,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Cleveland Guardians,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 6,Cleveland Guardians,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 7,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 7,Cleveland Guardians,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 7,Cleveland Guardians,RBIs (O/U),0,35.3%,64.7%
+Lineup Fielder 7,Cleveland Guardians,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 7,Cleveland Guardians,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 8,Cleveland Guardians,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 8,Cleveland Guardians,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 8,Cleveland Guardians,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Cleveland Guardians,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 8,Cleveland Guardians,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 9,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 9,Cleveland Guardians,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 9,Cleveland Guardians,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 9,Cleveland Guardians,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 9,Cleveland Guardians,Home Runs (O/U),0,12.1%,87.9%
+Brandon Young,Baltimore Orioles,Strikeouts (O/U),5,39.7%,60.3%
+Brandon Young,Baltimore Orioles,Earned Runs (O/U),2,35.9%,64.1%
+Hunter Brown,Houston Astros,Strikeouts (O/U),6,41.4%,58.6%
+Hunter Brown,Houston Astros,Earned Runs (O/U),2,36.8%,63.2%
+Lineup Fielder 1,Baltimore Orioles,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 1,Baltimore Orioles,Total Bases (O/U),1,37.4%,62.6%
+Lineup Fielder 1,Baltimore Orioles,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 1,Baltimore Orioles,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 1,Baltimore Orioles,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 2,Baltimore Orioles,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 2,Baltimore Orioles,Total Bases (O/U),1,38.0%,62.1%
+Lineup Fielder 2,Baltimore Orioles,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 2,Baltimore Orioles,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 2,Baltimore Orioles,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 3,Baltimore Orioles,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 3,Baltimore Orioles,Total Bases (O/U),1,37.1%,62.9%
+Lineup Fielder 3,Baltimore Orioles,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 3,Baltimore Orioles,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 3,Baltimore Orioles,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,Baltimore Orioles,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 4,Baltimore Orioles,Total Bases (O/U),1,37.6%,62.4%
+Lineup Fielder 4,Baltimore Orioles,RBIs (O/U),0,35.3%,64.7%
+Lineup Fielder 4,Baltimore Orioles,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 4,Baltimore Orioles,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,Baltimore Orioles,Hits (O/U),0,56.7%,43.3%
+Lineup Fielder 5,Baltimore Orioles,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 5,Baltimore Orioles,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 5,Baltimore Orioles,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 5,Baltimore Orioles,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 6,Baltimore Orioles,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 6,Baltimore Orioles,Total Bases (O/U),1,37.3%,62.7%
+Lineup Fielder 6,Baltimore Orioles,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Baltimore Orioles,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Baltimore Orioles,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 7,Baltimore Orioles,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 7,Baltimore Orioles,Total Bases (O/U),1,38.0%,62.1%
+Lineup Fielder 7,Baltimore Orioles,RBIs (O/U),0,34.9%,65.1%
+Lineup Fielder 7,Baltimore Orioles,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 7,Baltimore Orioles,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 8,Baltimore Orioles,Hits (O/U),0,56.7%,43.3%
+Lineup Fielder 8,Baltimore Orioles,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 8,Baltimore Orioles,RBIs (O/U),0,35.1%,64.9%
+Lineup Fielder 8,Baltimore Orioles,Runs Scored (O/U),0,34.9%,65.1%
+Lineup Fielder 8,Baltimore Orioles,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 9,Baltimore Orioles,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 9,Baltimore Orioles,Total Bases (O/U),1,37.6%,62.3%
+Lineup Fielder 9,Baltimore Orioles,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 9,Baltimore Orioles,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 9,Baltimore Orioles,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 1,Houston Astros,Hits (O/U),0,56.3%,43.7%
+Lineup Fielder 1,Houston Astros,Total Bases (O/U),1,37.0%,63.0%
+Lineup Fielder 1,Houston Astros,RBIs (O/U),0,34.8%,65.2%
+Lineup Fielder 1,Houston Astros,Runs Scored (O/U),0,35.2%,64.8%
+Lineup Fielder 1,Houston Astros,Home Runs (O/U),0,11.0%,89.0%
+Lineup Fielder 2,Houston Astros,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 2,Houston Astros,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 2,Houston Astros,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 2,Houston Astros,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 2,Houston Astros,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 3,Houston Astros,Hits (O/U),0,55.9%,44.1%
+Lineup Fielder 3,Houston Astros,Total Bases (O/U),1,37.5%,62.5%
+Lineup Fielder 3,Houston Astros,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 3,Houston Astros,Runs Scored (O/U),0,34.8%,65.2%
+Lineup Fielder 3,Houston Astros,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 4,Houston Astros,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 4,Houston Astros,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 4,Houston Astros,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 4,Houston Astros,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 4,Houston Astros,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 5,Houston Astros,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 5,Houston Astros,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 5,Houston Astros,RBIs (O/U),0,34.7%,65.3%
+Lineup Fielder 5,Houston Astros,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 5,Houston Astros,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 6,Houston Astros,Hits (O/U),0,56.2%,43.8%
+Lineup Fielder 6,Houston Astros,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 6,Houston Astros,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 6,Houston Astros,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 6,Houston Astros,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 7,Houston Astros,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 7,Houston Astros,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 7,Houston Astros,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 7,Houston Astros,Runs Scored (O/U),0,35.3%,64.7%
+Lineup Fielder 7,Houston Astros,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 8,Houston Astros,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 8,Houston Astros,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 8,Houston Astros,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 8,Houston Astros,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 8,Houston Astros,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 9,Houston Astros,Hits (O/U),0,55.6%,44.4%
+Lineup Fielder 9,Houston Astros,Total Bases (O/U),1,37.7%,62.3%
+Lineup Fielder 9,Houston Astros,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Houston Astros,Runs Scored (O/U),0,35.1%,64.9%
+Lineup Fielder 9,Houston Astros,Home Runs (O/U),0,11.7%,88.3%
+Germán Márquez,San Diego Padres,Strikeouts (O/U),5,44.7%,55.3%
+Germán Márquez,San Diego Padres,Earned Runs (O/U),2,38.6%,61.4%
+Noah Cameron,Kansas City Royals,Strikeouts (O/U),4,53.5%,46.5%
+Noah Cameron,Kansas City Royals,Earned Runs (O/U),2,38.9%,61.1%
+Lineup Fielder 1,San Diego Padres,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 1,San Diego Padres,Total Bases (O/U),1,40.2%,59.9%
+Lineup Fielder 1,San Diego Padres,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 1,San Diego Padres,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 1,San Diego Padres,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 2,San Diego Padres,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 2,San Diego Padres,Total Bases (O/U),1,40.1%,59.9%
+Lineup Fielder 2,San Diego Padres,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 2,San Diego Padres,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 2,San Diego Padres,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 3,San Diego Padres,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 3,San Diego Padres,Total Bases (O/U),1,41.1%,58.9%
+Lineup Fielder 3,San Diego Padres,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 3,San Diego Padres,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 3,San Diego Padres,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,San Diego Padres,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,San Diego Padres,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 4,San Diego Padres,RBIs (O/U),0,38.1%,61.9%
+Lineup Fielder 4,San Diego Padres,Runs Scored (O/U),0,37.5%,62.5%
+Lineup Fielder 4,San Diego Padres,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 5,San Diego Padres,Hits (O/U),0,58.5%,41.5%
+Lineup Fielder 5,San Diego Padres,Total Bases (O/U),1,40.7%,59.3%
+Lineup Fielder 5,San Diego Padres,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 5,San Diego Padres,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 5,San Diego Padres,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 6,San Diego Padres,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 6,San Diego Padres,Total Bases (O/U),1,40.9%,59.1%
+Lineup Fielder 6,San Diego Padres,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 6,San Diego Padres,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 6,San Diego Padres,Home Runs (O/U),0,13.0%,87.1%
+Lineup Fielder 7,San Diego Padres,Hits (O/U),0,59.2%,40.8%
+Lineup Fielder 7,San Diego Padres,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 7,San Diego Padres,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 7,San Diego Padres,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 7,San Diego Padres,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 8,San Diego Padres,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 8,San Diego Padres,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 8,San Diego Padres,RBIs (O/U),0,36.0%,63.9%
+Lineup Fielder 8,San Diego Padres,Runs Scored (O/U),0,37.7%,62.3%
+Lineup Fielder 8,San Diego Padres,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 9,San Diego Padres,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 9,San Diego Padres,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 9,San Diego Padres,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 9,San Diego Padres,Runs Scored (O/U),0,36.0%,63.9%
+Lineup Fielder 9,San Diego Padres,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 1,Kansas City Royals,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 1,Kansas City Royals,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 1,Kansas City Royals,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 1,Kansas City Royals,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 1,Kansas City Royals,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 2,Kansas City Royals,Hits (O/U),0,59.1%,40.9%
+Lineup Fielder 2,Kansas City Royals,Total Bases (O/U),1,40.1%,59.9%
+Lineup Fielder 2,Kansas City Royals,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 2,Kansas City Royals,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 2,Kansas City Royals,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 3,Kansas City Royals,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 3,Kansas City Royals,Total Bases (O/U),1,40.5%,59.5%
+Lineup Fielder 3,Kansas City Royals,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 3,Kansas City Royals,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 3,Kansas City Royals,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 4,Kansas City Royals,Hits (O/U),0,59.1%,40.9%
+Lineup Fielder 4,Kansas City Royals,Total Bases (O/U),1,40.9%,59.1%
+Lineup Fielder 4,Kansas City Royals,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 4,Kansas City Royals,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Kansas City Royals,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 5,Kansas City Royals,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 5,Kansas City Royals,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 5,Kansas City Royals,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 5,Kansas City Royals,Runs Scored (O/U),0,36.6%,63.3%
+Lineup Fielder 5,Kansas City Royals,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 6,Kansas City Royals,Hits (O/U),0,59.3%,40.7%
+Lineup Fielder 6,Kansas City Royals,Total Bases (O/U),1,40.4%,59.6%
+Lineup Fielder 6,Kansas City Royals,RBIs (O/U),0,37.7%,62.3%
+Lineup Fielder 6,Kansas City Royals,Runs Scored (O/U),0,36.4%,63.5%
+Lineup Fielder 6,Kansas City Royals,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 7,Kansas City Royals,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 7,Kansas City Royals,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 7,Kansas City Royals,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 7,Kansas City Royals,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 7,Kansas City Royals,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 8,Kansas City Royals,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 8,Kansas City Royals,Total Bases (O/U),1,39.2%,60.7%
+Lineup Fielder 8,Kansas City Royals,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 8,Kansas City Royals,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 8,Kansas City Royals,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 9,Kansas City Royals,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 9,Kansas City Royals,Total Bases (O/U),1,40.4%,59.6%
+Lineup Fielder 9,Kansas City Royals,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 9,Kansas City Royals,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 9,Kansas City Royals,Home Runs (O/U),0,12.6%,87.4%
+Eury Pérez,Miami Marlins,Strikeouts (O/U),5,46.1%,53.9%
+Eury Pérez,Miami Marlins,Earned Runs (O/U),2,38.4%,61.6%
+Robert Gasser,Milwaukee Brewers,Strikeouts (O/U),4,55.0%,45.0%
+Robert Gasser,Milwaukee Brewers,Earned Runs (O/U),2,38.1%,61.9%
+Lineup Fielder 1,Miami Marlins,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 1,Miami Marlins,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 1,Miami Marlins,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 1,Miami Marlins,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 1,Miami Marlins,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 2,Miami Marlins,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 2,Miami Marlins,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 2,Miami Marlins,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 2,Miami Marlins,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Miami Marlins,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 3,Miami Marlins,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 3,Miami Marlins,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 3,Miami Marlins,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 3,Miami Marlins,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 3,Miami Marlins,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 4,Miami Marlins,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 4,Miami Marlins,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 4,Miami Marlins,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 4,Miami Marlins,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 4,Miami Marlins,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,Miami Marlins,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 5,Miami Marlins,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 5,Miami Marlins,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 5,Miami Marlins,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 5,Miami Marlins,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,Miami Marlins,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 6,Miami Marlins,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 6,Miami Marlins,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Miami Marlins,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 6,Miami Marlins,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 7,Miami Marlins,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 7,Miami Marlins,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 7,Miami Marlins,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 7,Miami Marlins,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 7,Miami Marlins,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 8,Miami Marlins,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 8,Miami Marlins,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 8,Miami Marlins,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 8,Miami Marlins,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 8,Miami Marlins,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 9,Miami Marlins,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 9,Miami Marlins,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 9,Miami Marlins,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 9,Miami Marlins,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 9,Miami Marlins,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 1,Milwaukee Brewers,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 1,Milwaukee Brewers,Total Bases (O/U),1,39.6%,60.5%
+Lineup Fielder 1,Milwaukee Brewers,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 1,Milwaukee Brewers,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 1,Milwaukee Brewers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 2,Milwaukee Brewers,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 2,Milwaukee Brewers,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 2,Milwaukee Brewers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 2,Milwaukee Brewers,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 2,Milwaukee Brewers,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 3,Milwaukee Brewers,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 3,Milwaukee Brewers,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 3,Milwaukee Brewers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 3,Milwaukee Brewers,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 3,Milwaukee Brewers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,Milwaukee Brewers,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,Milwaukee Brewers,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 4,Milwaukee Brewers,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 4,Milwaukee Brewers,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 4,Milwaukee Brewers,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,Milwaukee Brewers,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 5,Milwaukee Brewers,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 5,Milwaukee Brewers,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 5,Milwaukee Brewers,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 5,Milwaukee Brewers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 6,Milwaukee Brewers,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 6,Milwaukee Brewers,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 6,Milwaukee Brewers,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 6,Milwaukee Brewers,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 6,Milwaukee Brewers,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 7,Milwaukee Brewers,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 7,Milwaukee Brewers,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 7,Milwaukee Brewers,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 7,Milwaukee Brewers,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 7,Milwaukee Brewers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 8,Milwaukee Brewers,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 8,Milwaukee Brewers,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 8,Milwaukee Brewers,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 8,Milwaukee Brewers,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 8,Milwaukee Brewers,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 9,Milwaukee Brewers,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 9,Milwaukee Brewers,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 9,Milwaukee Brewers,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 9,Milwaukee Brewers,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 9,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
+Zebby Matthews,Minnesota Twins,Strikeouts (O/U),4,56.0%,44.0%
+Zebby Matthews,Minnesota Twins,Earned Runs (O/U),2,38.2%,61.8%
+Shota Imanaga,Chicago Cubs,Strikeouts (O/U),4,55.1%,44.9%
+Shota Imanaga,Chicago Cubs,Earned Runs (O/U),2,37.4%,62.6%
+Lineup Fielder 1,Minnesota Twins,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 1,Minnesota Twins,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 1,Minnesota Twins,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 1,Minnesota Twins,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 1,Minnesota Twins,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 2,Minnesota Twins,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 2,Minnesota Twins,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 2,Minnesota Twins,RBIs (O/U),0,35.0%,65.0%
+Lineup Fielder 2,Minnesota Twins,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 2,Minnesota Twins,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 3,Minnesota Twins,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 3,Minnesota Twins,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 3,Minnesota Twins,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 3,Minnesota Twins,Runs Scored (O/U),0,38.0%,62.0%
+Lineup Fielder 3,Minnesota Twins,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 4,Minnesota Twins,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 4,Minnesota Twins,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 4,Minnesota Twins,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Minnesota Twins,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 4,Minnesota Twins,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 5,Minnesota Twins,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 5,Minnesota Twins,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 5,Minnesota Twins,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 5,Minnesota Twins,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Minnesota Twins,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 6,Minnesota Twins,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 6,Minnesota Twins,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 6,Minnesota Twins,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 6,Minnesota Twins,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 6,Minnesota Twins,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 7,Minnesota Twins,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 7,Minnesota Twins,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 7,Minnesota Twins,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 7,Minnesota Twins,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 7,Minnesota Twins,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 8,Minnesota Twins,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 8,Minnesota Twins,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 8,Minnesota Twins,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 8,Minnesota Twins,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 8,Minnesota Twins,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 9,Minnesota Twins,Hits (O/U),0,56.3%,43.7%
+Lineup Fielder 9,Minnesota Twins,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 9,Minnesota Twins,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 9,Minnesota Twins,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 9,Minnesota Twins,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 1,Chicago Cubs,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 1,Chicago Cubs,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 1,Chicago Cubs,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 1,Chicago Cubs,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 1,Chicago Cubs,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 2,Chicago Cubs,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 2,Chicago Cubs,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 2,Chicago Cubs,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Chicago Cubs,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 2,Chicago Cubs,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 3,Chicago Cubs,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 3,Chicago Cubs,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 3,Chicago Cubs,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 3,Chicago Cubs,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 3,Chicago Cubs,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 4,Chicago Cubs,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 4,Chicago Cubs,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 4,Chicago Cubs,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 4,Chicago Cubs,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 4,Chicago Cubs,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 5,Chicago Cubs,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 5,Chicago Cubs,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 5,Chicago Cubs,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Chicago Cubs,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 5,Chicago Cubs,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 6,Chicago Cubs,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 6,Chicago Cubs,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 6,Chicago Cubs,RBIs (O/U),0,35.1%,64.9%
+Lineup Fielder 6,Chicago Cubs,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Chicago Cubs,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 7,Chicago Cubs,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 7,Chicago Cubs,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 7,Chicago Cubs,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 7,Chicago Cubs,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 7,Chicago Cubs,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 8,Chicago Cubs,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 8,Chicago Cubs,Total Bases (O/U),1,39.0%,61.1%
+Lineup Fielder 8,Chicago Cubs,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 8,Chicago Cubs,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Chicago Cubs,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 9,Chicago Cubs,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 9,Chicago Cubs,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 9,Chicago Cubs,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 9,Chicago Cubs,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 9,Chicago Cubs,Home Runs (O/U),0,11.9%,88.1%
+Hunter Greene,Cincinnati Reds,Strikeouts (O/U),4,39.1%,60.9%
+Hunter Greene,Cincinnati Reds,Earned Runs (O/U),2,56.5%,43.5%
+Ryan Feltner,Colorado Rockies,Strikeouts (O/U),3,51.6%,48.4%
+Ryan Feltner,Colorado Rockies,Earned Runs (O/U),2,56.5%,43.5%
+Lineup Fielder 1,Cincinnati Reds,Hits (O/U),1,32.0%,68.0%
+Lineup Fielder 1,Cincinnati Reds,Total Bases (O/U),1,54.4%,45.6%
+Lineup Fielder 1,Cincinnati Reds,RBIs (O/U),0,45.2%,54.8%
+Lineup Fielder 1,Cincinnati Reds,Runs Scored (O/U),0,45.3%,54.7%
+Lineup Fielder 1,Cincinnati Reds,Home Runs (O/U),0,15.3%,84.7%
+Lineup Fielder 2,Cincinnati Reds,Hits (O/U),1,32.1%,67.9%
+Lineup Fielder 2,Cincinnati Reds,Total Bases (O/U),1,53.9%,46.1%
+Lineup Fielder 2,Cincinnati Reds,RBIs (O/U),0,45.2%,54.8%
+Lineup Fielder 2,Cincinnati Reds,Runs Scored (O/U),0,45.1%,54.9%
+Lineup Fielder 2,Cincinnati Reds,Home Runs (O/U),0,16.6%,83.4%
+Lineup Fielder 3,Cincinnati Reds,Hits (O/U),1,31.8%,68.2%
+Lineup Fielder 3,Cincinnati Reds,Total Bases (O/U),1,54.6%,45.4%
+Lineup Fielder 3,Cincinnati Reds,RBIs (O/U),0,45.6%,54.4%
+Lineup Fielder 3,Cincinnati Reds,Runs Scored (O/U),0,45.3%,54.7%
+Lineup Fielder 3,Cincinnati Reds,Home Runs (O/U),0,16.2%,83.8%
+Lineup Fielder 4,Cincinnati Reds,Hits (O/U),1,31.3%,68.7%
+Lineup Fielder 4,Cincinnati Reds,Total Bases (O/U),1,53.2%,46.8%
+Lineup Fielder 4,Cincinnati Reds,RBIs (O/U),0,45.4%,54.6%
+Lineup Fielder 4,Cincinnati Reds,Runs Scored (O/U),0,45.1%,54.9%
+Lineup Fielder 4,Cincinnati Reds,Home Runs (O/U),0,16.3%,83.7%
+Lineup Fielder 5,Cincinnati Reds,Hits (O/U),1,31.5%,68.5%
+Lineup Fielder 5,Cincinnati Reds,Total Bases (O/U),1,54.6%,45.4%
+Lineup Fielder 5,Cincinnati Reds,RBIs (O/U),0,45.0%,55.0%
+Lineup Fielder 5,Cincinnati Reds,Runs Scored (O/U),0,45.3%,54.7%
+Lineup Fielder 5,Cincinnati Reds,Home Runs (O/U),0,16.0%,84.0%
+Lineup Fielder 6,Cincinnati Reds,Hits (O/U),1,31.8%,68.2%
+Lineup Fielder 6,Cincinnati Reds,Total Bases (O/U),1,54.6%,45.4%
+Lineup Fielder 6,Cincinnati Reds,RBIs (O/U),0,45.4%,54.6%
+Lineup Fielder 6,Cincinnati Reds,Runs Scored (O/U),0,44.9%,55.1%
+Lineup Fielder 6,Cincinnati Reds,Home Runs (O/U),0,16.4%,83.6%
+Lineup Fielder 7,Cincinnati Reds,Hits (O/U),1,32.1%,67.9%
+Lineup Fielder 7,Cincinnati Reds,Total Bases (O/U),1,54.3%,45.7%
+Lineup Fielder 7,Cincinnati Reds,RBIs (O/U),0,46.4%,53.6%
+Lineup Fielder 7,Cincinnati Reds,Runs Scored (O/U),0,45.6%,54.4%
+Lineup Fielder 7,Cincinnati Reds,Home Runs (O/U),0,16.2%,83.8%
+Lineup Fielder 8,Cincinnati Reds,Hits (O/U),1,31.9%,68.1%
+Lineup Fielder 8,Cincinnati Reds,Total Bases (O/U),1,53.7%,46.3%
+Lineup Fielder 8,Cincinnati Reds,RBIs (O/U),0,45.9%,54.1%
+Lineup Fielder 8,Cincinnati Reds,Runs Scored (O/U),0,45.0%,55.0%
+Lineup Fielder 8,Cincinnati Reds,Home Runs (O/U),0,15.6%,84.4%
+Lineup Fielder 9,Cincinnati Reds,Hits (O/U),1,32.3%,67.7%
+Lineup Fielder 9,Cincinnati Reds,Total Bases (O/U),1,54.9%,45.1%
+Lineup Fielder 9,Cincinnati Reds,RBIs (O/U),0,45.4%,54.6%
+Lineup Fielder 9,Cincinnati Reds,Runs Scored (O/U),0,44.5%,55.5%
+Lineup Fielder 9,Cincinnati Reds,Home Runs (O/U),0,15.8%,84.2%
+Lineup Fielder 1,Colorado Rockies,Hits (O/U),1,32.0%,68.0%
+Lineup Fielder 1,Colorado Rockies,Total Bases (O/U),1,54.1%,45.9%
+Lineup Fielder 1,Colorado Rockies,RBIs (O/U),0,45.7%,54.3%
+Lineup Fielder 1,Colorado Rockies,Runs Scored (O/U),0,45.1%,54.9%
+Lineup Fielder 1,Colorado Rockies,Home Runs (O/U),0,16.4%,83.6%
+Lineup Fielder 2,Colorado Rockies,Hits (O/U),1,31.4%,68.6%
+Lineup Fielder 2,Colorado Rockies,Total Bases (O/U),1,54.4%,45.6%
+Lineup Fielder 2,Colorado Rockies,RBIs (O/U),0,45.8%,54.2%
+Lineup Fielder 2,Colorado Rockies,Runs Scored (O/U),0,45.7%,54.3%
+Lineup Fielder 2,Colorado Rockies,Home Runs (O/U),0,16.6%,83.5%
+Lineup Fielder 3,Colorado Rockies,Hits (O/U),1,31.2%,68.8%
+Lineup Fielder 3,Colorado Rockies,Total Bases (O/U),1,54.6%,45.4%
+Lineup Fielder 3,Colorado Rockies,RBIs (O/U),0,46.0%,54.0%
+Lineup Fielder 3,Colorado Rockies,Runs Scored (O/U),0,46.1%,53.9%
+Lineup Fielder 3,Colorado Rockies,Home Runs (O/U),0,16.4%,83.7%
+Lineup Fielder 4,Colorado Rockies,Hits (O/U),1,31.5%,68.5%
+Lineup Fielder 4,Colorado Rockies,Total Bases (O/U),1,54.7%,45.3%
+Lineup Fielder 4,Colorado Rockies,RBIs (O/U),0,44.9%,55.1%
+Lineup Fielder 4,Colorado Rockies,Runs Scored (O/U),0,45.5%,54.5%
+Lineup Fielder 4,Colorado Rockies,Home Runs (O/U),0,16.6%,83.5%
+Lineup Fielder 5,Colorado Rockies,Hits (O/U),1,32.4%,67.6%
+Lineup Fielder 5,Colorado Rockies,Total Bases (O/U),1,53.9%,46.1%
+Lineup Fielder 5,Colorado Rockies,RBIs (O/U),0,44.9%,55.1%
+Lineup Fielder 5,Colorado Rockies,Runs Scored (O/U),0,45.1%,54.9%
+Lineup Fielder 5,Colorado Rockies,Home Runs (O/U),0,16.1%,83.9%
+Lineup Fielder 6,Colorado Rockies,Hits (O/U),1,32.2%,67.8%
+Lineup Fielder 6,Colorado Rockies,Total Bases (O/U),1,54.1%,45.9%
+Lineup Fielder 6,Colorado Rockies,RBIs (O/U),0,45.6%,54.4%
+Lineup Fielder 6,Colorado Rockies,Runs Scored (O/U),0,46.3%,53.7%
+Lineup Fielder 6,Colorado Rockies,Home Runs (O/U),0,16.1%,83.9%
+Lineup Fielder 7,Colorado Rockies,Hits (O/U),1,32.0%,68.0%
+Lineup Fielder 7,Colorado Rockies,Total Bases (O/U),1,53.9%,46.1%
+Lineup Fielder 7,Colorado Rockies,RBIs (O/U),0,44.5%,55.5%
+Lineup Fielder 7,Colorado Rockies,Runs Scored (O/U),0,45.1%,54.9%
+Lineup Fielder 7,Colorado Rockies,Home Runs (O/U),0,16.1%,83.9%
+Lineup Fielder 8,Colorado Rockies,Hits (O/U),1,32.1%,67.9%
+Lineup Fielder 8,Colorado Rockies,Total Bases (O/U),1,54.0%,46.0%
+Lineup Fielder 8,Colorado Rockies,RBIs (O/U),0,46.1%,53.9%
+Lineup Fielder 8,Colorado Rockies,Runs Scored (O/U),0,44.7%,55.3%
+Lineup Fielder 8,Colorado Rockies,Home Runs (O/U),0,16.3%,83.7%
+Lineup Fielder 9,Colorado Rockies,Hits (O/U),1,31.6%,68.4%
+Lineup Fielder 9,Colorado Rockies,Total Bases (O/U),1,54.4%,45.6%
+Lineup Fielder 9,Colorado Rockies,RBIs (O/U),0,45.6%,54.4%
+Lineup Fielder 9,Colorado Rockies,Runs Scored (O/U),0,45.3%,54.7%
+Lineup Fielder 9,Colorado Rockies,Home Runs (O/U),0,16.5%,83.5%
+Foster Griffin,Washington Nationals,Strikeouts (O/U),4,53.6%,46.4%
+Foster Griffin,Washington Nationals,Earned Runs (O/U),2,39.1%,60.9%
+Jacob Lopez,Athletics,Strikeouts (O/U),4,53.4%,46.6%
+Jacob Lopez,Athletics,Earned Runs (O/U),2,39.7%,60.3%
+Lineup Fielder 1,Washington Nationals,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 1,Washington Nationals,Total Bases (O/U),1,40.8%,59.2%
+Lineup Fielder 1,Washington Nationals,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 1,Washington Nationals,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 1,Washington Nationals,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 2,Washington Nationals,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 2,Washington Nationals,Total Bases (O/U),1,40.8%,59.2%
+Lineup Fielder 2,Washington Nationals,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 2,Washington Nationals,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 2,Washington Nationals,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 3,Washington Nationals,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 3,Washington Nationals,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 3,Washington Nationals,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 3,Washington Nationals,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 3,Washington Nationals,Home Runs (O/U),0,12.6%,87.5%
+Lineup Fielder 4,Washington Nationals,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 4,Washington Nationals,Total Bases (O/U),1,40.4%,59.6%
+Lineup Fielder 4,Washington Nationals,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Washington Nationals,Runs Scored (O/U),0,37.9%,62.1%
+Lineup Fielder 4,Washington Nationals,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 5,Washington Nationals,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 5,Washington Nationals,Total Bases (O/U),1,41.3%,58.7%
+Lineup Fielder 5,Washington Nationals,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 5,Washington Nationals,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 5,Washington Nationals,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 6,Washington Nationals,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 6,Washington Nationals,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 6,Washington Nationals,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 6,Washington Nationals,Runs Scored (O/U),0,37.2%,62.7%
+Lineup Fielder 6,Washington Nationals,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 7,Washington Nationals,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 7,Washington Nationals,Total Bases (O/U),1,40.7%,59.3%
+Lineup Fielder 7,Washington Nationals,RBIs (O/U),0,37.2%,62.8%
+Lineup Fielder 7,Washington Nationals,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 7,Washington Nationals,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 8,Washington Nationals,Hits (O/U),0,59.1%,40.9%
+Lineup Fielder 8,Washington Nationals,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 8,Washington Nationals,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 8,Washington Nationals,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 8,Washington Nationals,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 9,Washington Nationals,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 9,Washington Nationals,Total Bases (O/U),1,40.5%,59.5%
+Lineup Fielder 9,Washington Nationals,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 9,Washington Nationals,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 9,Washington Nationals,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 1,Athletics,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 1,Athletics,Total Bases (O/U),1,41.2%,58.8%
+Lineup Fielder 1,Athletics,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 1,Athletics,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 1,Athletics,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 2,Athletics,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 2,Athletics,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 2,Athletics,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 2,Athletics,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 2,Athletics,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 3,Athletics,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 3,Athletics,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 3,Athletics,RBIs (O/U),0,37.2%,62.7%
+Lineup Fielder 3,Athletics,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 3,Athletics,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 4,Athletics,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 4,Athletics,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 4,Athletics,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Athletics,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 4,Athletics,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 5,Athletics,Hits (O/U),0,59.3%,40.7%
+Lineup Fielder 5,Athletics,Total Bases (O/U),1,40.1%,59.9%
+Lineup Fielder 5,Athletics,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 5,Athletics,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 5,Athletics,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 6,Athletics,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 6,Athletics,Total Bases (O/U),1,40.6%,59.5%
+Lineup Fielder 6,Athletics,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 6,Athletics,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 6,Athletics,Home Runs (O/U),0,13.2%,86.8%
+Lineup Fielder 7,Athletics,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 7,Athletics,Total Bases (O/U),1,40.9%,59.1%
+Lineup Fielder 7,Athletics,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 7,Athletics,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 7,Athletics,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 8,Athletics,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 8,Athletics,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 8,Athletics,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 8,Athletics,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 8,Athletics,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 9,Athletics,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 9,Athletics,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 9,Athletics,RBIs (O/U),0,37.2%,62.8%
+Lineup Fielder 9,Athletics,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 9,Athletics,Home Runs (O/U),0,11.9%,88.1%
+Casey Mize,Detroit Tigers,Strikeouts (O/U),5,57.2%,42.8%
+Casey Mize,Detroit Tigers,Earned Runs (O/U),2,35.8%,64.2%
+Ryan Johnson,Los Angeles Angels,Strikeouts (O/U),5,40.5%,59.5%
+Ryan Johnson,Los Angeles Angels,Earned Runs (O/U),2,36.5%,63.5%
+Lineup Fielder 1,Detroit Tigers,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 1,Detroit Tigers,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 1,Detroit Tigers,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 1,Detroit Tigers,Runs Scored (O/U),0,34.9%,65.1%
+Lineup Fielder 1,Detroit Tigers,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 2,Detroit Tigers,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 2,Detroit Tigers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 2,Detroit Tigers,RBIs (O/U),0,35.4%,64.5%
+Lineup Fielder 2,Detroit Tigers,Runs Scored (O/U),0,34.5%,65.5%
+Lineup Fielder 2,Detroit Tigers,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 3,Detroit Tigers,Hits (O/U),0,55.2%,44.8%
+Lineup Fielder 3,Detroit Tigers,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 3,Detroit Tigers,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 3,Detroit Tigers,Runs Scored (O/U),0,35.1%,64.9%
+Lineup Fielder 3,Detroit Tigers,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 4,Detroit Tigers,Hits (O/U),0,56.4%,43.6%
+Lineup Fielder 4,Detroit Tigers,Total Bases (O/U),1,38.8%,61.3%
+Lineup Fielder 4,Detroit Tigers,RBIs (O/U),0,34.7%,65.3%
+Lineup Fielder 4,Detroit Tigers,Runs Scored (O/U),0,34.2%,65.8%
+Lineup Fielder 4,Detroit Tigers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 5,Detroit Tigers,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 5,Detroit Tigers,Total Bases (O/U),1,37.5%,62.5%
+Lineup Fielder 5,Detroit Tigers,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 5,Detroit Tigers,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 5,Detroit Tigers,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 6,Detroit Tigers,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 6,Detroit Tigers,Total Bases (O/U),1,37.5%,62.5%
+Lineup Fielder 6,Detroit Tigers,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 6,Detroit Tigers,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Detroit Tigers,Home Runs (O/U),0,11.0%,89.0%
+Lineup Fielder 7,Detroit Tigers,Hits (O/U),0,56.7%,43.3%
+Lineup Fielder 7,Detroit Tigers,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 7,Detroit Tigers,RBIs (O/U),0,35.1%,64.9%
+Lineup Fielder 7,Detroit Tigers,Runs Scored (O/U),0,35.2%,64.8%
+Lineup Fielder 7,Detroit Tigers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Detroit Tigers,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 8,Detroit Tigers,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 8,Detroit Tigers,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 8,Detroit Tigers,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Detroit Tigers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 9,Detroit Tigers,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 9,Detroit Tigers,Total Bases (O/U),1,37.6%,62.3%
+Lineup Fielder 9,Detroit Tigers,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 9,Detroit Tigers,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 9,Detroit Tigers,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 1,Los Angeles Angels,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 1,Los Angeles Angels,Total Bases (O/U),1,37.5%,62.5%
+Lineup Fielder 1,Los Angeles Angels,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 1,Los Angeles Angels,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 1,Los Angeles Angels,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 2,Los Angeles Angels,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 2,Los Angeles Angels,Total Bases (O/U),1,36.9%,63.1%
+Lineup Fielder 2,Los Angeles Angels,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 2,Los Angeles Angels,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 2,Los Angeles Angels,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 3,Los Angeles Angels,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 3,Los Angeles Angels,Total Bases (O/U),1,37.3%,62.7%
+Lineup Fielder 3,Los Angeles Angels,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 3,Los Angeles Angels,Runs Scored (O/U),0,35.3%,64.7%
+Lineup Fielder 3,Los Angeles Angels,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 4,Los Angeles Angels,Hits (O/U),0,56.2%,43.8%
+Lineup Fielder 4,Los Angeles Angels,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 4,Los Angeles Angels,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 4,Los Angeles Angels,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 4,Los Angeles Angels,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 5,Los Angeles Angels,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 5,Los Angeles Angels,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 5,Los Angeles Angels,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 5,Los Angeles Angels,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 5,Los Angeles Angels,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 6,Los Angeles Angels,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 6,Los Angeles Angels,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 6,Los Angeles Angels,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Los Angeles Angels,Runs Scored (O/U),0,34.9%,65.1%
+Lineup Fielder 6,Los Angeles Angels,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 7,Los Angeles Angels,Hits (O/U),0,55.7%,44.3%
+Lineup Fielder 7,Los Angeles Angels,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 7,Los Angeles Angels,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 7,Los Angeles Angels,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 7,Los Angeles Angels,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 8,Los Angeles Angels,Hits (O/U),0,55.6%,44.4%
+Lineup Fielder 8,Los Angeles Angels,Total Bases (O/U),1,37.2%,62.8%
+Lineup Fielder 8,Los Angeles Angels,RBIs (O/U),0,35.2%,64.8%
+Lineup Fielder 8,Los Angeles Angels,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 8,Los Angeles Angels,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 9,Los Angeles Angels,Hits (O/U),0,56.3%,43.7%
+Lineup Fielder 9,Los Angeles Angels,Total Bases (O/U),1,37.4%,62.6%
+Lineup Fielder 9,Los Angeles Angels,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Los Angeles Angels,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 9,Los Angeles Angels,Home Runs (O/U),0,11.8%,88.1%
+Robbie Ray,San Francisco Giants,Strikeouts (O/U),5,45.8%,54.2%
+Robbie Ray,San Francisco Giants,Earned Runs (O/U),1,59.1%,40.9%
+Logan Gilbert,Seattle Mariners,Strikeouts (O/U),5,46.0%,54.0%
+Logan Gilbert,Seattle Mariners,Earned Runs (O/U),2,32.4%,67.6%
+Lineup Fielder 1,San Francisco Giants,Hits (O/U),0,54.5%,45.5%
+Lineup Fielder 1,San Francisco Giants,Total Bases (O/U),1,35.1%,64.9%
+Lineup Fielder 1,San Francisco Giants,RBIs (O/U),0,33.3%,66.7%
+Lineup Fielder 1,San Francisco Giants,Runs Scored (O/U),0,33.8%,66.2%
+Lineup Fielder 1,San Francisco Giants,Home Runs (O/U),0,11.1%,88.9%
+Lineup Fielder 2,San Francisco Giants,Hits (O/U),0,53.4%,46.6%
+Lineup Fielder 2,San Francisco Giants,Total Bases (O/U),1,34.7%,65.3%
+Lineup Fielder 2,San Francisco Giants,RBIs (O/U),0,34.2%,65.8%
+Lineup Fielder 2,San Francisco Giants,Runs Scored (O/U),0,34.2%,65.8%
+Lineup Fielder 2,San Francisco Giants,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 3,San Francisco Giants,Hits (O/U),0,53.8%,46.2%
+Lineup Fielder 3,San Francisco Giants,Total Bases (O/U),1,35.5%,64.5%
+Lineup Fielder 3,San Francisco Giants,RBIs (O/U),0,34.3%,65.7%
+Lineup Fielder 3,San Francisco Giants,Runs Scored (O/U),0,34.8%,65.2%
+Lineup Fielder 3,San Francisco Giants,Home Runs (O/U),0,10.7%,89.3%
+Lineup Fielder 4,San Francisco Giants,Hits (O/U),0,54.9%,45.1%
+Lineup Fielder 4,San Francisco Giants,Total Bases (O/U),1,35.8%,64.2%
+Lineup Fielder 4,San Francisco Giants,RBIs (O/U),0,34.1%,65.9%
+Lineup Fielder 4,San Francisco Giants,Runs Scored (O/U),0,34.4%,65.6%
+Lineup Fielder 4,San Francisco Giants,Home Runs (O/U),0,11.0%,89.0%
+Lineup Fielder 5,San Francisco Giants,Hits (O/U),0,55.2%,44.8%
+Lineup Fielder 5,San Francisco Giants,Total Bases (O/U),1,34.9%,65.1%
+Lineup Fielder 5,San Francisco Giants,RBIs (O/U),0,34.2%,65.8%
+Lineup Fielder 5,San Francisco Giants,Runs Scored (O/U),0,33.0%,67.0%
+Lineup Fielder 5,San Francisco Giants,Home Runs (O/U),0,11.1%,88.9%
+Lineup Fielder 6,San Francisco Giants,Hits (O/U),0,53.9%,46.1%
+Lineup Fielder 6,San Francisco Giants,Total Bases (O/U),1,35.6%,64.4%
+Lineup Fielder 6,San Francisco Giants,RBIs (O/U),0,34.1%,65.9%
+Lineup Fielder 6,San Francisco Giants,Runs Scored (O/U),0,34.3%,65.7%
+Lineup Fielder 6,San Francisco Giants,Home Runs (O/U),0,10.9%,89.0%
+Lineup Fielder 7,San Francisco Giants,Hits (O/U),0,54.3%,45.7%
+Lineup Fielder 7,San Francisco Giants,Total Bases (O/U),1,33.9%,66.1%
+Lineup Fielder 7,San Francisco Giants,RBIs (O/U),0,34.9%,65.1%
+Lineup Fielder 7,San Francisco Giants,Runs Scored (O/U),0,34.2%,65.8%
+Lineup Fielder 7,San Francisco Giants,Home Runs (O/U),0,10.9%,89.1%
+Lineup Fielder 8,San Francisco Giants,Hits (O/U),0,53.8%,46.2%
+Lineup Fielder 8,San Francisco Giants,Total Bases (O/U),1,34.8%,65.2%
+Lineup Fielder 8,San Francisco Giants,RBIs (O/U),0,33.9%,66.1%
+Lineup Fielder 8,San Francisco Giants,Runs Scored (O/U),0,32.6%,67.4%
+Lineup Fielder 8,San Francisco Giants,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 9,San Francisco Giants,Hits (O/U),0,53.9%,46.1%
+Lineup Fielder 9,San Francisco Giants,Total Bases (O/U),1,34.7%,65.3%
+Lineup Fielder 9,San Francisco Giants,RBIs (O/U),0,33.9%,66.1%
+Lineup Fielder 9,San Francisco Giants,Runs Scored (O/U),0,34.0%,66.0%
+Lineup Fielder 9,San Francisco Giants,Home Runs (O/U),0,10.8%,89.2%
+Lineup Fielder 1,Seattle Mariners,Hits (O/U),0,53.9%,46.1%
+Lineup Fielder 1,Seattle Mariners,Total Bases (O/U),1,35.8%,64.2%
+Lineup Fielder 1,Seattle Mariners,RBIs (O/U),0,34.2%,65.8%
+Lineup Fielder 1,Seattle Mariners,Runs Scored (O/U),0,34.2%,65.8%
+Lineup Fielder 1,Seattle Mariners,Home Runs (O/U),0,10.8%,89.2%
+Lineup Fielder 2,Seattle Mariners,Hits (O/U),0,54.1%,45.9%
+Lineup Fielder 2,Seattle Mariners,Total Bases (O/U),1,35.1%,64.9%
+Lineup Fielder 2,Seattle Mariners,RBIs (O/U),0,33.6%,66.4%
+Lineup Fielder 2,Seattle Mariners,Runs Scored (O/U),0,33.6%,66.4%
+Lineup Fielder 2,Seattle Mariners,Home Runs (O/U),0,10.8%,89.2%
+Lineup Fielder 3,Seattle Mariners,Hits (O/U),0,53.8%,46.2%
+Lineup Fielder 3,Seattle Mariners,Total Bases (O/U),1,35.6%,64.4%
+Lineup Fielder 3,Seattle Mariners,RBIs (O/U),0,33.7%,66.3%
+Lineup Fielder 3,Seattle Mariners,Runs Scored (O/U),0,34.1%,65.9%
+Lineup Fielder 3,Seattle Mariners,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 4,Seattle Mariners,Hits (O/U),0,54.2%,45.8%
+Lineup Fielder 4,Seattle Mariners,Total Bases (O/U),1,35.4%,64.6%
+Lineup Fielder 4,Seattle Mariners,RBIs (O/U),0,34.1%,65.9%
+Lineup Fielder 4,Seattle Mariners,Runs Scored (O/U),0,33.8%,66.2%
+Lineup Fielder 4,Seattle Mariners,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 5,Seattle Mariners,Hits (O/U),0,54.8%,45.2%
+Lineup Fielder 5,Seattle Mariners,Total Bases (O/U),1,35.5%,64.5%
+Lineup Fielder 5,Seattle Mariners,RBIs (O/U),0,34.2%,65.8%
+Lineup Fielder 5,Seattle Mariners,Runs Scored (O/U),0,34.9%,65.1%
+Lineup Fielder 5,Seattle Mariners,Home Runs (O/U),0,10.7%,89.3%
+Lineup Fielder 6,Seattle Mariners,Hits (O/U),0,54.9%,45.1%
+Lineup Fielder 6,Seattle Mariners,Total Bases (O/U),1,36.2%,63.8%
+Lineup Fielder 6,Seattle Mariners,RBIs (O/U),0,34.2%,65.8%
+Lineup Fielder 6,Seattle Mariners,Runs Scored (O/U),0,34.2%,65.8%
+Lineup Fielder 6,Seattle Mariners,Home Runs (O/U),0,10.9%,89.1%
+Lineup Fielder 7,Seattle Mariners,Hits (O/U),0,53.7%,46.3%
+Lineup Fielder 7,Seattle Mariners,Total Bases (O/U),1,35.4%,64.6%
+Lineup Fielder 7,Seattle Mariners,RBIs (O/U),0,34.7%,65.3%
+Lineup Fielder 7,Seattle Mariners,Runs Scored (O/U),0,34.4%,65.6%
+Lineup Fielder 7,Seattle Mariners,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 8,Seattle Mariners,Hits (O/U),0,54.6%,45.4%
+Lineup Fielder 8,Seattle Mariners,Total Bases (O/U),1,35.2%,64.8%
+Lineup Fielder 8,Seattle Mariners,RBIs (O/U),0,34.8%,65.2%
+Lineup Fielder 8,Seattle Mariners,Runs Scored (O/U),0,33.3%,66.7%
+Lineup Fielder 8,Seattle Mariners,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 9,Seattle Mariners,Hits (O/U),0,53.1%,46.9%
+Lineup Fielder 9,Seattle Mariners,Total Bases (O/U),1,35.6%,64.4%
+Lineup Fielder 9,Seattle Mariners,RBIs (O/U),0,33.7%,66.3%
+Lineup Fielder 9,Seattle Mariners,Runs Scored (O/U),0,33.9%,66.1%
+Lineup Fielder 9,Seattle Mariners,Home Runs (O/U),0,11.3%,88.7%
+Andre Pallante,St. Louis Cardinals,Strikeouts (O/U),5,37.7%,62.3%
+Andre Pallante,St. Louis Cardinals,Earned Runs (O/U),2,39.0%,61.0%
+Eduardo Rodriguez,Arizona Diamondbacks,Strikeouts (O/U),4,53.9%,46.1%
+Eduardo Rodriguez,Arizona Diamondbacks,Earned Runs (O/U),2,38.5%,61.5%
+Lineup Fielder 1,St. Louis Cardinals,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 1,St. Louis Cardinals,Total Bases (O/U),1,40.8%,59.2%
+Lineup Fielder 1,St. Louis Cardinals,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 1,St. Louis Cardinals,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 1,St. Louis Cardinals,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 2,St. Louis Cardinals,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 2,St. Louis Cardinals,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 2,St. Louis Cardinals,RBIs (O/U),0,37.2%,62.8%
+Lineup Fielder 2,St. Louis Cardinals,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 2,St. Louis Cardinals,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 3,St. Louis Cardinals,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 3,St. Louis Cardinals,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 3,St. Louis Cardinals,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 3,St. Louis Cardinals,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 3,St. Louis Cardinals,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 4,St. Louis Cardinals,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 4,St. Louis Cardinals,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 4,St. Louis Cardinals,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 4,St. Louis Cardinals,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 4,St. Louis Cardinals,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 5,St. Louis Cardinals,Hits (O/U),0,59.1%,40.9%
+Lineup Fielder 5,St. Louis Cardinals,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 5,St. Louis Cardinals,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 5,St. Louis Cardinals,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 5,St. Louis Cardinals,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 6,St. Louis Cardinals,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 6,St. Louis Cardinals,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 6,St. Louis Cardinals,RBIs (O/U),0,37.7%,62.3%
+Lineup Fielder 6,St. Louis Cardinals,Runs Scored (O/U),0,37.0%,63.1%
+Lineup Fielder 6,St. Louis Cardinals,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 7,St. Louis Cardinals,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 7,St. Louis Cardinals,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 7,St. Louis Cardinals,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 7,St. Louis Cardinals,Runs Scored (O/U),0,37.9%,62.1%
+Lineup Fielder 7,St. Louis Cardinals,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 8,St. Louis Cardinals,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 8,St. Louis Cardinals,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 8,St. Louis Cardinals,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 8,St. Louis Cardinals,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 8,St. Louis Cardinals,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 9,St. Louis Cardinals,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 9,St. Louis Cardinals,Total Bases (O/U),1,40.4%,59.7%
+Lineup Fielder 9,St. Louis Cardinals,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 9,St. Louis Cardinals,Runs Scored (O/U),0,37.3%,62.7%
+Lineup Fielder 9,St. Louis Cardinals,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 1,Arizona Diamondbacks,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 1,Arizona Diamondbacks,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 1,Arizona Diamondbacks,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 1,Arizona Diamondbacks,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 1,Arizona Diamondbacks,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 2,Arizona Diamondbacks,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 2,Arizona Diamondbacks,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 2,Arizona Diamondbacks,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 2,Arizona Diamondbacks,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 2,Arizona Diamondbacks,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 3,Arizona Diamondbacks,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 3,Arizona Diamondbacks,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 3,Arizona Diamondbacks,RBIs (O/U),0,36.8%,63.2%
+Lineup Fielder 3,Arizona Diamondbacks,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 3,Arizona Diamondbacks,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,Arizona Diamondbacks,Hits (O/U),0,58.3%,41.7%
+Lineup Fielder 4,Arizona Diamondbacks,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 4,Arizona Diamondbacks,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 4,Arizona Diamondbacks,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 4,Arizona Diamondbacks,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,Arizona Diamondbacks,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 5,Arizona Diamondbacks,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 5,Arizona Diamondbacks,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 5,Arizona Diamondbacks,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 5,Arizona Diamondbacks,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 6,Arizona Diamondbacks,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 6,Arizona Diamondbacks,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 6,Arizona Diamondbacks,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 6,Arizona Diamondbacks,Runs Scored (O/U),0,37.5%,62.5%
+Lineup Fielder 6,Arizona Diamondbacks,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 7,Arizona Diamondbacks,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 7,Arizona Diamondbacks,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 7,Arizona Diamondbacks,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 7,Arizona Diamondbacks,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 7,Arizona Diamondbacks,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 8,Arizona Diamondbacks,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 8,Arizona Diamondbacks,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 8,Arizona Diamondbacks,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 8,Arizona Diamondbacks,Runs Scored (O/U),0,37.5%,62.5%
+Lineup Fielder 8,Arizona Diamondbacks,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 9,Arizona Diamondbacks,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 9,Arizona Diamondbacks,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 9,Arizona Diamondbacks,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 9,Arizona Diamondbacks,Runs Scored (O/U),0,36.2%,63.7%
+Lineup Fielder 9,Arizona Diamondbacks,Home Runs (O/U),0,11.6%,88.4%
