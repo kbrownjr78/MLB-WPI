@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Aaron Nola,Philadelphia Phillies,Strikeouts (O/U),5,39.5%,60.5%
+Aaron Nola,Philadelphia Phillies,Earned Runs (O/U),2,36.9%,63.1%
+Ray Kerr,Atlanta Braves,Strikeouts (O/U),5,47.2%,52.8%
+Ray Kerr,Atlanta Braves,Earned Runs (O/U),2,37.2%,62.8%
+Lineup Fielder 1,Philadelphia Phillies,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 1,Philadelphia Phillies,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 1,Philadelphia Phillies,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 1,Philadelphia Phillies,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 1,Philadelphia Phillies,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 2,Philadelphia Phillies,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 2,Philadelphia Phillies,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 2,Philadelphia Phillies,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 2,Philadelphia Phillies,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 2,Philadelphia Phillies,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 3,Philadelphia Phillies,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 3,Philadelphia Phillies,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 3,Philadelphia Phillies,RBIs (O/U),0,35.2%,64.8%
+Lineup Fielder 3,Philadelphia Phillies,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 3,Philadelphia Phillies,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 4,Philadelphia Phillies,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 4,Philadelphia Phillies,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 4,Philadelphia Phillies,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 4,Philadelphia Phillies,Runs Scored (O/U),0,36.2%,63.7%
+Lineup Fielder 4,Philadelphia Phillies,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 5,Philadelphia Phillies,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 5,Philadelphia Phillies,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 5,Philadelphia Phillies,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 5,Philadelphia Phillies,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 5,Philadelphia Phillies,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 6,Philadelphia Phillies,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 6,Philadelphia Phillies,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 6,Philadelphia Phillies,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Philadelphia Phillies,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 6,Philadelphia Phillies,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 7,Philadelphia Phillies,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 7,Philadelphia Phillies,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 7,Philadelphia Phillies,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 7,Philadelphia Phillies,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 7,Philadelphia Phillies,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Philadelphia Phillies,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 8,Philadelphia Phillies,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 8,Philadelphia Phillies,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 8,Philadelphia Phillies,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 8,Philadelphia Phillies,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 9,Philadelphia Phillies,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 9,Philadelphia Phillies,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 9,Philadelphia Phillies,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 9,Philadelphia Phillies,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Philadelphia Phillies,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 1,Atlanta Braves,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 1,Atlanta Braves,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 1,Atlanta Braves,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 1,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 1,Atlanta Braves,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 2,Atlanta Braves,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 2,Atlanta Braves,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 2,Atlanta Braves,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Atlanta Braves,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Atlanta Braves,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 3,Atlanta Braves,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 3,Atlanta Braves,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 3,Atlanta Braves,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 3,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 3,Atlanta Braves,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 4,Atlanta Braves,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 4,Atlanta Braves,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 4,Atlanta Braves,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 4,Atlanta Braves,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 4,Atlanta Braves,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 5,Atlanta Braves,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 5,Atlanta Braves,Total Bases (O/U),1,39.0%,61.1%
+Lineup Fielder 5,Atlanta Braves,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 5,Atlanta Braves,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Atlanta Braves,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 6,Atlanta Braves,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 6,Atlanta Braves,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 6,Atlanta Braves,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Atlanta Braves,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 6,Atlanta Braves,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 7,Atlanta Braves,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 7,Atlanta Braves,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 7,Atlanta Braves,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 7,Atlanta Braves,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 7,Atlanta Braves,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 8,Atlanta Braves,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 8,Atlanta Braves,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 8,Atlanta Braves,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 8,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 8,Atlanta Braves,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 9,Atlanta Braves,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 9,Atlanta Braves,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 9,Atlanta Braves,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 9,Atlanta Braves,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 9,Atlanta Braves,Home Runs (O/U),0,12.1%,87.9%
