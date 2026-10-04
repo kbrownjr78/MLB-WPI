@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Michael King,San Diego Padres,Strikeouts (O/U),5,38.2%,61.8%
+Michael King,San Diego Padres,Earned Runs (O/U),2,38.8%,61.3%
+Logan Henderson,Milwaukee Brewers,Strikeouts (O/U),6,39.0%,61.0%
+Logan Henderson,Milwaukee Brewers,Earned Runs (O/U),2,38.6%,61.4%
+Lineup Fielder 1,San Diego Padres,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 1,San Diego Padres,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 1,San Diego Padres,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 1,San Diego Padres,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 1,San Diego Padres,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 2,San Diego Padres,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 2,San Diego Padres,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 2,San Diego Padres,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 2,San Diego Padres,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 2,San Diego Padres,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 3,San Diego Padres,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 3,San Diego Padres,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 3,San Diego Padres,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 3,San Diego Padres,Runs Scored (O/U),0,37.0%,63.1%
+Lineup Fielder 3,San Diego Padres,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 4,San Diego Padres,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 4,San Diego Padres,Total Bases (O/U),1,39.3%,60.7%
+Lineup Fielder 4,San Diego Padres,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 4,San Diego Padres,Runs Scored (O/U),0,36.4%,63.6%
+Lineup Fielder 4,San Diego Padres,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,San Diego Padres,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 5,San Diego Padres,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 5,San Diego Padres,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 5,San Diego Padres,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 5,San Diego Padres,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,San Diego Padres,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 6,San Diego Padres,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 6,San Diego Padres,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 6,San Diego Padres,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 6,San Diego Padres,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 7,San Diego Padres,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 7,San Diego Padres,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 7,San Diego Padres,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 7,San Diego Padres,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 7,San Diego Padres,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 8,San Diego Padres,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 8,San Diego Padres,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 8,San Diego Padres,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 8,San Diego Padres,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 8,San Diego Padres,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 9,San Diego Padres,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 9,San Diego Padres,Total Bases (O/U),1,39.6%,60.4%
+Lineup Fielder 9,San Diego Padres,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 9,San Diego Padres,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 9,San Diego Padres,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 1,Milwaukee Brewers,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 1,Milwaukee Brewers,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 1,Milwaukee Brewers,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 1,Milwaukee Brewers,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 1,Milwaukee Brewers,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 2,Milwaukee Brewers,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 2,Milwaukee Brewers,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 2,Milwaukee Brewers,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 2,Milwaukee Brewers,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 2,Milwaukee Brewers,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 3,Milwaukee Brewers,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 3,Milwaukee Brewers,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 3,Milwaukee Brewers,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 3,Milwaukee Brewers,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 3,Milwaukee Brewers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 4,Milwaukee Brewers,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 4,Milwaukee Brewers,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 4,Milwaukee Brewers,RBIs (O/U),0,37.1%,62.9%
+Lineup Fielder 4,Milwaukee Brewers,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 4,Milwaukee Brewers,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 5,Milwaukee Brewers,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 5,Milwaukee Brewers,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 5,Milwaukee Brewers,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 5,Milwaukee Brewers,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Milwaukee Brewers,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 6,Milwaukee Brewers,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 6,Milwaukee Brewers,Total Bases (O/U),1,39.5%,60.5%
+Lineup Fielder 6,Milwaukee Brewers,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 6,Milwaukee Brewers,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 6,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 7,Milwaukee Brewers,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 7,Milwaukee Brewers,Total Bases (O/U),1,39.4%,60.7%
+Lineup Fielder 7,Milwaukee Brewers,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 7,Milwaukee Brewers,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 7,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Milwaukee Brewers,Hits (O/U),0,56.7%,43.3%
+Lineup Fielder 8,Milwaukee Brewers,Total Bases (O/U),1,39.8%,60.2%
+Lineup Fielder 8,Milwaukee Brewers,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 8,Milwaukee Brewers,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 8,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 9,Milwaukee Brewers,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 9,Milwaukee Brewers,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 9,Milwaukee Brewers,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 9,Milwaukee Brewers,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 9,Milwaukee Brewers,Home Runs (O/U),0,12.0%,88.0%
