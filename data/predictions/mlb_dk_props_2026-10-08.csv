@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Parker Messick,Cleveland Guardians,Strikeouts (O/U),5,52.6%,47.4%
+Parker Messick,Cleveland Guardians,Earned Runs (O/U),2,39.7%,60.3%
+Hagen Smith,Chicago White Sox,Strikeouts (O/U),5,51.5%,48.5%
+Hagen Smith,Chicago White Sox,Earned Runs (O/U),2,39.5%,60.5%
+Lineup Fielder 1,Cleveland Guardians,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 1,Cleveland Guardians,Total Bases (O/U),1,41.3%,58.7%
+Lineup Fielder 1,Cleveland Guardians,RBIs (O/U),0,37.8%,62.2%
+Lineup Fielder 1,Cleveland Guardians,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 1,Cleveland Guardians,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 2,Cleveland Guardians,Hits (O/U),0,58.8%,41.2%
+Lineup Fielder 2,Cleveland Guardians,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 2,Cleveland Guardians,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 2,Cleveland Guardians,Runs Scored (O/U),0,38.1%,61.9%
+Lineup Fielder 2,Cleveland Guardians,Home Runs (O/U),0,13.1%,86.9%
+Lineup Fielder 3,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 3,Cleveland Guardians,Total Bases (O/U),1,41.1%,58.9%
+Lineup Fielder 3,Cleveland Guardians,RBIs (O/U),0,38.3%,61.7%
+Lineup Fielder 3,Cleveland Guardians,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 3,Cleveland Guardians,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 4,Cleveland Guardians,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 4,Cleveland Guardians,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 4,Cleveland Guardians,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 4,Cleveland Guardians,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 4,Cleveland Guardians,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 5,Cleveland Guardians,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 5,Cleveland Guardians,Total Bases (O/U),1,40.0%,60.1%
+Lineup Fielder 5,Cleveland Guardians,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 5,Cleveland Guardians,Runs Scored (O/U),0,37.0%,63.0%
+Lineup Fielder 5,Cleveland Guardians,Home Runs (O/U),0,12.7%,87.3%
+Lineup Fielder 6,Cleveland Guardians,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 6,Cleveland Guardians,Total Bases (O/U),1,41.1%,58.9%
+Lineup Fielder 6,Cleveland Guardians,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 6,Cleveland Guardians,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 6,Cleveland Guardians,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 7,Cleveland Guardians,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 7,Cleveland Guardians,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 7,Cleveland Guardians,RBIs (O/U),0,37.8%,62.2%
+Lineup Fielder 7,Cleveland Guardians,Runs Scored (O/U),0,36.8%,63.2%
+Lineup Fielder 7,Cleveland Guardians,Home Runs (O/U),0,12.9%,87.1%
+Lineup Fielder 8,Cleveland Guardians,Hits (O/U),0,58.8%,41.2%
+Lineup Fielder 8,Cleveland Guardians,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 8,Cleveland Guardians,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 8,Cleveland Guardians,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 8,Cleveland Guardians,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 9,Cleveland Guardians,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 9,Cleveland Guardians,Total Bases (O/U),1,40.0%,60.1%
+Lineup Fielder 9,Cleveland Guardians,RBIs (O/U),0,37.6%,62.4%
+Lineup Fielder 9,Cleveland Guardians,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 9,Cleveland Guardians,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 1,Chicago White Sox,Hits (O/U),0,58.0%,42.0%
+Lineup Fielder 1,Chicago White Sox,Total Bases (O/U),1,40.9%,59.1%
+Lineup Fielder 1,Chicago White Sox,RBIs (O/U),0,37.3%,62.7%
+Lineup Fielder 1,Chicago White Sox,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 1,Chicago White Sox,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 2,Chicago White Sox,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 2,Chicago White Sox,Total Bases (O/U),1,41.1%,58.9%
+Lineup Fielder 2,Chicago White Sox,RBIs (O/U),0,37.0%,62.9%
+Lineup Fielder 2,Chicago White Sox,Runs Scored (O/U),0,37.5%,62.5%
+Lineup Fielder 2,Chicago White Sox,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 3,Chicago White Sox,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 3,Chicago White Sox,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 3,Chicago White Sox,RBIs (O/U),0,37.7%,62.3%
+Lineup Fielder 3,Chicago White Sox,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 3,Chicago White Sox,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 4,Chicago White Sox,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 4,Chicago White Sox,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 4,Chicago White Sox,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 4,Chicago White Sox,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 4,Chicago White Sox,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 5,Chicago White Sox,Hits (O/U),0,58.6%,41.4%
+Lineup Fielder 5,Chicago White Sox,Total Bases (O/U),1,40.2%,59.9%
+Lineup Fielder 5,Chicago White Sox,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 5,Chicago White Sox,Runs Scored (O/U),0,38.3%,61.7%
+Lineup Fielder 5,Chicago White Sox,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 6,Chicago White Sox,Hits (O/U),0,58.9%,41.1%
+Lineup Fielder 6,Chicago White Sox,Total Bases (O/U),1,40.8%,59.2%
+Lineup Fielder 6,Chicago White Sox,RBIs (O/U),0,37.5%,62.5%
+Lineup Fielder 6,Chicago White Sox,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 6,Chicago White Sox,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 7,Chicago White Sox,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 7,Chicago White Sox,Total Bases (O/U),1,40.6%,59.4%
+Lineup Fielder 7,Chicago White Sox,RBIs (O/U),0,38.2%,61.8%
+Lineup Fielder 7,Chicago White Sox,Runs Scored (O/U),0,37.9%,62.1%
+Lineup Fielder 7,Chicago White Sox,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Chicago White Sox,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 8,Chicago White Sox,Total Bases (O/U),1,41.6%,58.4%
+Lineup Fielder 8,Chicago White Sox,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 8,Chicago White Sox,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 8,Chicago White Sox,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 9,Chicago White Sox,Hits (O/U),0,58.4%,41.6%
+Lineup Fielder 9,Chicago White Sox,Total Bases (O/U),1,41.0%,59.0%
+Lineup Fielder 9,Chicago White Sox,RBIs (O/U),0,37.7%,62.3%
+Lineup Fielder 9,Chicago White Sox,Runs Scored (O/U),0,37.0%,63.1%
+Lineup Fielder 9,Chicago White Sox,Home Runs (O/U),0,12.9%,87.1%
