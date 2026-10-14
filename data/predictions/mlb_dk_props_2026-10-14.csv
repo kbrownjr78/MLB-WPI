@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Robert Gasser,Milwaukee Brewers,Strikeouts (O/U),5,41.1%,58.9%
+Robert Gasser,Milwaukee Brewers,Earned Runs (O/U),2,36.3%,63.7%
+Blake Snell,Los Angeles Dodgers,Strikeouts (O/U),5,49.2%,50.8%
+Blake Snell,Los Angeles Dodgers,Earned Runs (O/U),2,36.6%,63.4%
+Lineup Fielder 1,Milwaukee Brewers,Hits (O/U),0,56.2%,43.8%
+Lineup Fielder 1,Milwaukee Brewers,Total Bases (O/U),1,37.1%,62.9%
+Lineup Fielder 1,Milwaukee Brewers,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 1,Milwaukee Brewers,Runs Scored (O/U),0,35.2%,64.8%
+Lineup Fielder 1,Milwaukee Brewers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 2,Milwaukee Brewers,Hits (O/U),0,55.7%,44.3%
+Lineup Fielder 2,Milwaukee Brewers,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 2,Milwaukee Brewers,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 2,Milwaukee Brewers,Runs Scored (O/U),0,34.9%,65.1%
+Lineup Fielder 2,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 3,Milwaukee Brewers,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 3,Milwaukee Brewers,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 3,Milwaukee Brewers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 3,Milwaukee Brewers,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 3,Milwaukee Brewers,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 4,Milwaukee Brewers,Hits (O/U),0,56.4%,43.6%
+Lineup Fielder 4,Milwaukee Brewers,Total Bases (O/U),1,38.4%,61.6%
+Lineup Fielder 4,Milwaukee Brewers,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 4,Milwaukee Brewers,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 4,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 5,Milwaukee Brewers,Hits (O/U),0,56.1%,43.9%
+Lineup Fielder 5,Milwaukee Brewers,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 5,Milwaukee Brewers,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Milwaukee Brewers,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 5,Milwaukee Brewers,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 6,Milwaukee Brewers,Hits (O/U),0,56.1%,43.9%
+Lineup Fielder 6,Milwaukee Brewers,Total Bases (O/U),1,38.6%,61.5%
+Lineup Fielder 6,Milwaukee Brewers,RBIs (O/U),0,35.1%,64.9%
+Lineup Fielder 6,Milwaukee Brewers,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 6,Milwaukee Brewers,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 7,Milwaukee Brewers,Hits (O/U),0,55.3%,44.7%
+Lineup Fielder 7,Milwaukee Brewers,Total Bases (O/U),1,39.0%,61.0%
+Lineup Fielder 7,Milwaukee Brewers,RBIs (O/U),0,36.0%,63.9%
+Lineup Fielder 7,Milwaukee Brewers,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 7,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Milwaukee Brewers,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 8,Milwaukee Brewers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 8,Milwaukee Brewers,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Milwaukee Brewers,Runs Scored (O/U),0,35.4%,64.5%
+Lineup Fielder 8,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 9,Milwaukee Brewers,Hits (O/U),0,56.3%,43.7%
+Lineup Fielder 9,Milwaukee Brewers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 9,Milwaukee Brewers,RBIs (O/U),0,34.3%,65.7%
+Lineup Fielder 9,Milwaukee Brewers,Runs Scored (O/U),0,35.0%,65.0%
+Lineup Fielder 9,Milwaukee Brewers,Home Runs (O/U),0,11.1%,88.9%
+Lineup Fielder 1,Los Angeles Dodgers,Hits (O/U),0,56.1%,43.9%
+Lineup Fielder 1,Los Angeles Dodgers,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 1,Los Angeles Dodgers,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 1,Los Angeles Dodgers,Runs Scored (O/U),0,36.0%,63.9%
+Lineup Fielder 1,Los Angeles Dodgers,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 2,Los Angeles Dodgers,Hits (O/U),0,57.0%,43.0%
+Lineup Fielder 2,Los Angeles Dodgers,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 2,Los Angeles Dodgers,RBIs (O/U),0,35.6%,64.4%
+Lineup Fielder 2,Los Angeles Dodgers,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 2,Los Angeles Dodgers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 3,Los Angeles Dodgers,Hits (O/U),0,56.1%,43.9%
+Lineup Fielder 3,Los Angeles Dodgers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 3,Los Angeles Dodgers,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 3,Los Angeles Dodgers,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 3,Los Angeles Dodgers,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 4,Los Angeles Dodgers,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 4,Los Angeles Dodgers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 4,Los Angeles Dodgers,RBIs (O/U),0,35.2%,64.8%
+Lineup Fielder 4,Los Angeles Dodgers,Runs Scored (O/U),0,35.3%,64.7%
+Lineup Fielder 4,Los Angeles Dodgers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 5,Los Angeles Dodgers,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 5,Los Angeles Dodgers,Total Bases (O/U),1,37.8%,62.2%
+Lineup Fielder 5,Los Angeles Dodgers,RBIs (O/U),0,34.9%,65.1%
+Lineup Fielder 5,Los Angeles Dodgers,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Los Angeles Dodgers,Home Runs (O/U),0,11.2%,88.8%
+Lineup Fielder 6,Los Angeles Dodgers,Hits (O/U),0,56.1%,43.9%
+Lineup Fielder 6,Los Angeles Dodgers,Total Bases (O/U),1,38.2%,61.8%
+Lineup Fielder 6,Los Angeles Dodgers,RBIs (O/U),0,35.0%,65.0%
+Lineup Fielder 6,Los Angeles Dodgers,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 6,Los Angeles Dodgers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 7,Los Angeles Dodgers,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 7,Los Angeles Dodgers,Total Bases (O/U),1,38.1%,61.9%
+Lineup Fielder 7,Los Angeles Dodgers,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 7,Los Angeles Dodgers,Runs Scored (O/U),0,35.0%,65.0%
+Lineup Fielder 7,Los Angeles Dodgers,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 8,Los Angeles Dodgers,Hits (O/U),0,56.0%,44.0%
+Lineup Fielder 8,Los Angeles Dodgers,Total Bases (O/U),1,37.2%,62.8%
+Lineup Fielder 8,Los Angeles Dodgers,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 8,Los Angeles Dodgers,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 8,Los Angeles Dodgers,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 9,Los Angeles Dodgers,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 9,Los Angeles Dodgers,Total Bases (O/U),1,38.0%,62.0%
+Lineup Fielder 9,Los Angeles Dodgers,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Los Angeles Dodgers,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 9,Los Angeles Dodgers,Home Runs (O/U),0,11.7%,88.3%
