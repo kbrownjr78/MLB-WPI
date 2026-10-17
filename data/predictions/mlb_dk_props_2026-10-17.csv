@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Nick Martinez,Tampa Bay Rays,Strikeouts (O/U),4,56.6%,43.4%
+Nick Martinez,Tampa Bay Rays,Earned Runs (O/U),2,37.7%,62.3%
+Shawn Armstrong,Cleveland Guardians,Strikeouts (O/U),5,48.0%,52.0%
+Shawn Armstrong,Cleveland Guardians,Earned Runs (O/U),2,37.9%,62.1%
+Lineup Fielder 1,Tampa Bay Rays,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 1,Tampa Bay Rays,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 1,Tampa Bay Rays,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 1,Tampa Bay Rays,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 1,Tampa Bay Rays,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 2,Tampa Bay Rays,Hits (O/U),0,57.4%,42.6%
+Lineup Fielder 2,Tampa Bay Rays,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 2,Tampa Bay Rays,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 2,Tampa Bay Rays,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 2,Tampa Bay Rays,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 3,Tampa Bay Rays,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 3,Tampa Bay Rays,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 3,Tampa Bay Rays,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 3,Tampa Bay Rays,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 3,Tampa Bay Rays,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 4,Tampa Bay Rays,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 4,Tampa Bay Rays,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 4,Tampa Bay Rays,RBIs (O/U),0,36.1%,63.9%
+Lineup Fielder 4,Tampa Bay Rays,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 4,Tampa Bay Rays,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 5,Tampa Bay Rays,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 5,Tampa Bay Rays,Total Bases (O/U),1,37.9%,62.1%
+Lineup Fielder 5,Tampa Bay Rays,RBIs (O/U),0,35.4%,64.6%
+Lineup Fielder 5,Tampa Bay Rays,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 5,Tampa Bay Rays,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 6,Tampa Bay Rays,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 6,Tampa Bay Rays,Total Bases (O/U),1,38.3%,61.7%
+Lineup Fielder 6,Tampa Bay Rays,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 6,Tampa Bay Rays,Runs Scored (O/U),0,35.4%,64.6%
+Lineup Fielder 6,Tampa Bay Rays,Home Runs (O/U),0,12.4%,87.6%
+Lineup Fielder 7,Tampa Bay Rays,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 7,Tampa Bay Rays,Total Bases (O/U),1,38.4%,61.7%
+Lineup Fielder 7,Tampa Bay Rays,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 7,Tampa Bay Rays,Runs Scored (O/U),0,36.7%,63.3%
+Lineup Fielder 7,Tampa Bay Rays,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 8,Tampa Bay Rays,Hits (O/U),0,56.2%,43.8%
+Lineup Fielder 8,Tampa Bay Rays,Total Bases (O/U),1,39.0%,61.1%
+Lineup Fielder 8,Tampa Bay Rays,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 8,Tampa Bay Rays,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 8,Tampa Bay Rays,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 9,Tampa Bay Rays,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 9,Tampa Bay Rays,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 9,Tampa Bay Rays,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 9,Tampa Bay Rays,Runs Scored (O/U),0,35.7%,64.3%
+Lineup Fielder 9,Tampa Bay Rays,Home Runs (O/U),0,11.4%,88.6%
+Lineup Fielder 1,Cleveland Guardians,Hits (O/U),0,57.1%,42.9%
+Lineup Fielder 1,Cleveland Guardians,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 1,Cleveland Guardians,RBIs (O/U),0,36.0%,64.0%
+Lineup Fielder 1,Cleveland Guardians,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 1,Cleveland Guardians,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 2,Cleveland Guardians,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 2,Cleveland Guardians,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 2,Cleveland Guardians,RBIs (O/U),0,35.3%,64.7%
+Lineup Fielder 2,Cleveland Guardians,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 2,Cleveland Guardians,Home Runs (O/U),0,11.7%,88.3%
+Lineup Fielder 3,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 3,Cleveland Guardians,Total Bases (O/U),1,39.2%,60.8%
+Lineup Fielder 3,Cleveland Guardians,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 3,Cleveland Guardians,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 3,Cleveland Guardians,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 4,Cleveland Guardians,Hits (O/U),0,56.7%,43.3%
+Lineup Fielder 4,Cleveland Guardians,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 4,Cleveland Guardians,RBIs (O/U),0,35.5%,64.5%
+Lineup Fielder 4,Cleveland Guardians,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 4,Cleveland Guardians,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 5,Cleveland Guardians,Hits (O/U),0,57.6%,42.4%
+Lineup Fielder 5,Cleveland Guardians,Total Bases (O/U),1,38.5%,61.5%
+Lineup Fielder 5,Cleveland Guardians,RBIs (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Cleveland Guardians,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 5,Cleveland Guardians,Home Runs (O/U),0,11.3%,88.7%
+Lineup Fielder 6,Cleveland Guardians,Hits (O/U),0,57.5%,42.5%
+Lineup Fielder 6,Cleveland Guardians,Total Bases (O/U),1,38.6%,61.3%
+Lineup Fielder 6,Cleveland Guardians,RBIs (O/U),0,35.1%,64.9%
+Lineup Fielder 6,Cleveland Guardians,Runs Scored (O/U),0,35.5%,64.5%
+Lineup Fielder 6,Cleveland Guardians,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 7,Cleveland Guardians,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 7,Cleveland Guardians,Total Bases (O/U),1,38.8%,61.2%
+Lineup Fielder 7,Cleveland Guardians,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 7,Cleveland Guardians,Runs Scored (O/U),0,34.8%,65.3%
+Lineup Fielder 7,Cleveland Guardians,Home Runs (O/U),0,11.5%,88.5%
+Lineup Fielder 8,Cleveland Guardians,Hits (O/U),0,55.9%,44.1%
+Lineup Fielder 8,Cleveland Guardians,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 8,Cleveland Guardians,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 8,Cleveland Guardians,Runs Scored (O/U),0,35.6%,64.4%
+Lineup Fielder 8,Cleveland Guardians,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 9,Cleveland Guardians,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 9,Cleveland Guardians,Total Bases (O/U),1,38.6%,61.4%
+Lineup Fielder 9,Cleveland Guardians,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 9,Cleveland Guardians,Runs Scored (O/U),0,35.1%,64.9%
+Lineup Fielder 9,Cleveland Guardians,Home Runs (O/U),0,12.6%,87.4%
