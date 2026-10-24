@@ -1,0 +1,95 @@
+Player_Name,Team,Market_Type,Most_Likely_Line_Outcome,Over_Probability,Under_Probability
+Drew Rasmussen,Tampa Bay Rays,Strikeouts (O/U),5,54.5%,45.5%
+Drew Rasmussen,Tampa Bay Rays,Earned Runs (O/U),2,38.3%,61.7%
+Logan Henderson,Milwaukee Brewers,Strikeouts (O/U),5,55.0%,45.0%
+Logan Henderson,Milwaukee Brewers,Earned Runs (O/U),2,38.8%,61.3%
+Lineup Fielder 1,Tampa Bay Rays,Hits (O/U),0,58.1%,41.9%
+Lineup Fielder 1,Tampa Bay Rays,Total Bases (O/U),1,40.1%,59.9%
+Lineup Fielder 1,Tampa Bay Rays,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 1,Tampa Bay Rays,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 1,Tampa Bay Rays,Home Runs (O/U),0,13.1%,86.9%
+Lineup Fielder 2,Tampa Bay Rays,Hits (O/U),0,56.6%,43.4%
+Lineup Fielder 2,Tampa Bay Rays,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 2,Tampa Bay Rays,RBIs (O/U),0,36.4%,63.6%
+Lineup Fielder 2,Tampa Bay Rays,Runs Scored (O/U),0,36.1%,63.9%
+Lineup Fielder 2,Tampa Bay Rays,Home Runs (O/U),0,12.1%,87.9%
+Lineup Fielder 3,Tampa Bay Rays,Hits (O/U),0,56.9%,43.1%
+Lineup Fielder 3,Tampa Bay Rays,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 3,Tampa Bay Rays,RBIs (O/U),0,36.3%,63.7%
+Lineup Fielder 3,Tampa Bay Rays,Runs Scored (O/U),0,36.0%,64.0%
+Lineup Fielder 3,Tampa Bay Rays,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 4,Tampa Bay Rays,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 4,Tampa Bay Rays,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 4,Tampa Bay Rays,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 4,Tampa Bay Rays,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 4,Tampa Bay Rays,Home Runs (O/U),0,12.5%,87.5%
+Lineup Fielder 5,Tampa Bay Rays,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 5,Tampa Bay Rays,Total Bases (O/U),1,39.7%,60.3%
+Lineup Fielder 5,Tampa Bay Rays,RBIs (O/U),0,35.6%,64.3%
+Lineup Fielder 5,Tampa Bay Rays,Runs Scored (O/U),0,37.6%,62.4%
+Lineup Fielder 5,Tampa Bay Rays,Home Runs (O/U),0,12.3%,87.7%
+Lineup Fielder 6,Tampa Bay Rays,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 6,Tampa Bay Rays,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 6,Tampa Bay Rays,RBIs (O/U),0,37.4%,62.6%
+Lineup Fielder 6,Tampa Bay Rays,Runs Scored (O/U),0,35.9%,64.1%
+Lineup Fielder 6,Tampa Bay Rays,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 7,Tampa Bay Rays,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 7,Tampa Bay Rays,Total Bases (O/U),1,39.6%,60.5%
+Lineup Fielder 7,Tampa Bay Rays,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 7,Tampa Bay Rays,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 7,Tampa Bay Rays,Home Runs (O/U),0,11.6%,88.4%
+Lineup Fielder 8,Tampa Bay Rays,Hits (O/U),0,56.8%,43.2%
+Lineup Fielder 8,Tampa Bay Rays,Total Bases (O/U),1,38.7%,61.3%
+Lineup Fielder 8,Tampa Bay Rays,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 8,Tampa Bay Rays,Runs Scored (O/U),0,36.6%,63.4%
+Lineup Fielder 8,Tampa Bay Rays,Home Runs (O/U),0,12.0%,87.9%
+Lineup Fielder 9,Tampa Bay Rays,Hits (O/U),0,56.5%,43.5%
+Lineup Fielder 9,Tampa Bay Rays,Total Bases (O/U),1,40.3%,59.7%
+Lineup Fielder 9,Tampa Bay Rays,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 9,Tampa Bay Rays,Runs Scored (O/U),0,36.2%,63.7%
+Lineup Fielder 9,Tampa Bay Rays,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 1,Milwaukee Brewers,Hits (O/U),0,57.7%,42.3%
+Lineup Fielder 1,Milwaukee Brewers,Total Bases (O/U),1,40.2%,59.8%
+Lineup Fielder 1,Milwaukee Brewers,RBIs (O/U),0,37.0%,63.0%
+Lineup Fielder 1,Milwaukee Brewers,Runs Scored (O/U),0,37.1%,62.9%
+Lineup Fielder 1,Milwaukee Brewers,Home Runs (O/U),0,12.8%,87.2%
+Lineup Fielder 2,Milwaukee Brewers,Hits (O/U),0,58.7%,41.3%
+Lineup Fielder 2,Milwaukee Brewers,Total Bases (O/U),1,39.1%,60.9%
+Lineup Fielder 2,Milwaukee Brewers,RBIs (O/U),0,36.9%,63.1%
+Lineup Fielder 2,Milwaukee Brewers,Runs Scored (O/U),0,36.3%,63.7%
+Lineup Fielder 2,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 3,Milwaukee Brewers,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 3,Milwaukee Brewers,Total Bases (O/U),1,40.4%,59.6%
+Lineup Fielder 3,Milwaukee Brewers,RBIs (O/U),0,36.7%,63.3%
+Lineup Fielder 3,Milwaukee Brewers,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 3,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
+Lineup Fielder 4,Milwaukee Brewers,Hits (O/U),0,57.3%,42.7%
+Lineup Fielder 4,Milwaukee Brewers,Total Bases (O/U),1,40.5%,59.5%
+Lineup Fielder 4,Milwaukee Brewers,RBIs (O/U),0,35.7%,64.3%
+Lineup Fielder 4,Milwaukee Brewers,Runs Scored (O/U),0,36.9%,63.1%
+Lineup Fielder 4,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 5,Milwaukee Brewers,Hits (O/U),0,57.2%,42.8%
+Lineup Fielder 5,Milwaukee Brewers,Total Bases (O/U),1,39.4%,60.6%
+Lineup Fielder 5,Milwaukee Brewers,RBIs (O/U),0,36.6%,63.4%
+Lineup Fielder 5,Milwaukee Brewers,Runs Scored (O/U),0,35.8%,64.2%
+Lineup Fielder 5,Milwaukee Brewers,Home Runs (O/U),0,11.8%,88.2%
+Lineup Fielder 6,Milwaukee Brewers,Hits (O/U),0,58.2%,41.8%
+Lineup Fielder 6,Milwaukee Brewers,Total Bases (O/U),1,39.9%,60.1%
+Lineup Fielder 6,Milwaukee Brewers,RBIs (O/U),0,36.5%,63.5%
+Lineup Fielder 6,Milwaukee Brewers,Runs Scored (O/U),0,37.4%,62.6%
+Lineup Fielder 6,Milwaukee Brewers,Home Runs (O/U),0,12.6%,87.4%
+Lineup Fielder 7,Milwaukee Brewers,Hits (O/U),0,57.9%,42.1%
+Lineup Fielder 7,Milwaukee Brewers,Total Bases (O/U),1,38.9%,61.1%
+Lineup Fielder 7,Milwaukee Brewers,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 7,Milwaukee Brewers,Runs Scored (O/U),0,37.2%,62.8%
+Lineup Fielder 7,Milwaukee Brewers,Home Runs (O/U),0,12.0%,88.0%
+Lineup Fielder 8,Milwaukee Brewers,Hits (O/U),0,57.8%,42.2%
+Lineup Fielder 8,Milwaukee Brewers,Total Bases (O/U),1,40.2%,59.7%
+Lineup Fielder 8,Milwaukee Brewers,RBIs (O/U),0,36.2%,63.8%
+Lineup Fielder 8,Milwaukee Brewers,Runs Scored (O/U),0,36.5%,63.5%
+Lineup Fielder 8,Milwaukee Brewers,Home Runs (O/U),0,12.2%,87.8%
+Lineup Fielder 9,Milwaukee Brewers,Hits (O/U),0,58.5%,41.5%
+Lineup Fielder 9,Milwaukee Brewers,Total Bases (O/U),1,40.0%,60.0%
+Lineup Fielder 9,Milwaukee Brewers,RBIs (O/U),0,35.9%,64.1%
+Lineup Fielder 9,Milwaukee Brewers,Runs Scored (O/U),0,36.2%,63.8%
+Lineup Fielder 9,Milwaukee Brewers,Home Runs (O/U),0,11.9%,88.1%
